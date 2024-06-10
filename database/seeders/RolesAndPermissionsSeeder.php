@@ -50,7 +50,7 @@ class RolesAndPermissionsSeeder extends Seeder
         // ]);
 
         // Give User Super-Admin Role
-        $user = User::whereEmail('abanoub@tech.com')->first(); // Change this to your email.
+        $user = User::whereEmail('abanoub@digital-vision-solutions')->first(); // Change this to your email.
         $user->assignRole('super-admin');
     }
 }
