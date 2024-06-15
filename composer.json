@@ -13,6 +13,7 @@
     "require": {
         "php": "^8.2",
         "armincms/json": "^0.5.2",
+        "dive-be/nova-froala-field": "^1.1",
         "ebess/advanced-nova-media-library": "^4.2",
         "inertiajs/inertia-laravel": "^1.0",
         "laravel/framework": "^11.0",

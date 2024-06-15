@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Nova\About;
 use App\Nova\City;
 use App\Nova\Type;
 use App\Nova\User;
@@ -21,6 +22,8 @@ use App\Nova\Question;
 use Laravel\Nova\Nova;
 use Illuminate\Http\Request;
 use App\Nova\Dashboards\Main;
+use App\Nova\Page;
+use App\Nova\Slider;
 use App\Nova\Subscription;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Number;
@@ -86,8 +89,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ])->icon('shield-check')->collapsable()->collapsedByDefault(),
 
                 MenuSection::make(__('Settings'), [
+                    MenuItem::resource(Page::class)->canSee(fn () => true),
+                    MenuItem::resource(Slider::class)->canSee(fn () => true),
                     MenuItem::link(__('Settings'), 'nova-settings/general'),
-                    MenuItem::make(__('Pages'))->path('resources/nova-page'),
                 ])->collapsable()->icon('cog'),
             ];
         });
