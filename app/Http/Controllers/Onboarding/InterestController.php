@@ -25,7 +25,7 @@ class InterestController extends Controller
     public function create(Request $request): Response|RedirectResponse
     {
         if ($request->user()->completed_onboarding) {
-            return Redirect::route("home");
+            // return Redirect::route("home");
         }
 
         return Inertia::render("OnBoarding/Interests", [

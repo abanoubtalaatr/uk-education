@@ -40,7 +40,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+    
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'users',
+        ],
+    
+        'tutor' => [
+            'driver' => 'session',
+            'provider' => 'tutors', // Ensure 'tutors' provider is defined
+        ],
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -62,14 +73,15 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
+            'model' => App\Models\User::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+    
+        'tutors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Tutor::class,
+        ],
     ],
+    
 
     /*
     |--------------------------------------------------------------------------

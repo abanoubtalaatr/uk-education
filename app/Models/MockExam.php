@@ -12,8 +12,14 @@ class MockExam extends Model
     protected $guarded = [];
 
     protected $casts = ['date' => 'datetime'];
+
     public function bookings()
     {
         return $this->morphMany(Booking::class, 'bookable');
+    }
+
+    public function tutors()
+    {
+        return $this->belongsToMany(Tutor::class, 'mock_exam_tutor');
     }
 }

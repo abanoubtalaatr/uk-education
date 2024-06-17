@@ -1,30 +1,46 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-white">
-
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title inertia>{{ config('app.name', 'Bikerz') }}</title>
-    <!-- favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    @routes
-    @vite(['resources/js/app.js', "resources/js/Pages/{$page['component']}.vue"])
-    @inertiaHead
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/slick.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/jquery-e-calendar.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/lightbox.css') }}" rel="stylesheet">
+    
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
+    <!-- Styles -->
+
+    @livewireStyles
 </head>
+<body>
+    
 
-<body class="h-full font-sans antialiased" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
-    @inertia
+    <div id="content">
+      
+      <div class="mt-5">
+          {{ isset($slot)? $slot : ''}}
+      </div>
+  
+  @yield('content')
+</div>
+
+    <script src="{{asset('assets/js/jquery-3.4.1.min.js')}}"></script>
+    <script src="{{asset('assets/js/slick.min.js')}}"></script>
+    <script src="{{asset('assets/js/popper.min.js')}}"></script>
+    <script src="{{asset('assets/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('assets/js/mixitup.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery.simple-calendar.js')}}"></script>
+    <script src="{{asset('assets/js/code.js')}}"></script>
+    
+    @livewireScripts
 </body>
-
 </html>

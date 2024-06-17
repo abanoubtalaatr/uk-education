@@ -3,13 +3,14 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
+use Illuminate\Validation\Rules;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
-use Illuminate\Validation\Rules;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Password;
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Text;
 
 class Tutor extends Resource
 {
@@ -51,11 +52,11 @@ class Tutor extends Resource
 
             ID::make(__('ID'), 'id')->sortable(),
 
-            Images::make(__('Profile Picture'), 'photo')
-                ->withResponsiveImages()
+            Image::make(__('Profile Picture'), 'photo')
+                
                 ->showOnPreview()
                 ->nullable()
-                ->mustCrop(),
+                ,
 
             Text::make(__('whats_app_number'), 'whats_app_number')
                 ->sortable()

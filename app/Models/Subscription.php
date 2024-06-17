@@ -20,4 +20,9 @@ class Subscription extends Model
     {
         return $this->hasMany(Video::class);
     }
+
+    public function tutors()
+    {
+        return $this->belongsToMany(Tutor::class,'subscription_tutor');
+    }
 }
