@@ -3,10 +3,11 @@
 namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\HasMany;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Textarea;
 
 class Subscription extends Resource
@@ -23,7 +24,7 @@ class Subscription extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Image')->rules('required', 'max:255'),
+            Image::make('Image')->rules('required', ),
             Text::make('Name')->rules('required', 'max:255'),
             Number::make('Price')->rules('required'),
             Textarea::make('Description')->rules('required'),

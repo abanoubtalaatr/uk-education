@@ -3,35 +3,37 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Casts\Attribute;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
-class Tutor  extends Authenticatable implements MustVerifyEmail, HasMedia
+class Tutor extends Authenticatable implements HasMedia
 {
     use HasFactory;
     use HasApiTokens;
-    use HasFactory;
     use Notifiable;
     use TwoFactorAuthenticatable;
     use HasRoles;
     use InteractsWithMedia;
 
-    protected $fillable = ['name', 'email', "what's_app_number", 'photo', 'password'];
+    protected $fillable = ['name', 'email', "whats_app_number", 'photo', 'password'];
 
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * Automatically hash the password attribute when setting it.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    
 
     public function bookings()
     {

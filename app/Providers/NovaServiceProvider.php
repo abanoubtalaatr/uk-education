@@ -11,6 +11,7 @@ use App\Nova\Event;
 use App\Nova\Model;
 use App\Nova\Tutor;
 use App\Nova\Answer;
+use App\Nova\Contact;
 use App\Nova\Course;
 use App\Nova\CrashCourse;
 use App\Nova\Region;
@@ -92,6 +93,11 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(Page::class)->canSee(fn () => true),
                     MenuItem::resource(Slider::class)->canSee(fn () => true),
                     MenuItem::link(__('Settings'), 'nova-settings/general'),
+                ])->collapsable()->icon('cog'),
+
+                MenuSection::make(__('Contact us & Subscribers'), [
+                    MenuItem::resource(Contact::class)->canSee(fn () => true),
+                    
                 ])->collapsable()->icon('cog'),
             ];
         });

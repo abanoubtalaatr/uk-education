@@ -17,4 +17,9 @@ class CrashCourse extends Model
     {
         return $this->morphMany(Booking::class, 'bookable');
     }
+
+    public function tutors()
+    {
+        return $this->belongsToMany(Tutor::class, 'crash_course_tutor');
+    }
 }
