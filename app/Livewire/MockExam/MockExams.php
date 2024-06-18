@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\MockExam;
 
 use Livewire\Component;
 
@@ -14,6 +14,6 @@ class MockExams extends Component
     }
     public function render()
     {
-        return view('livewire.mock-exams')->layout('app');
+        return view('livewire.mock-exam.mock-exams')->layout('app');
     }
 }

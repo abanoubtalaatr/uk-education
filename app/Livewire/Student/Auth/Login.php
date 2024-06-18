@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Livewire\Tutor\Auth;
+namespace App\Livewire\Student\Auth;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-
 
 class Login extends Component
 {
@@ -22,8 +21,8 @@ class Login extends Component
             'password' => $this->password,
         ];
         
-        if (Auth::guard('tutor')->attempt($credentials)) {
-            return redirect()->route('tutor-profile');
+        if (Auth::guard('web')->attempt($credentials)) {
+            return redirect()->route('student-profile');
         }
         return $this->message = "Authentication failed";
         
@@ -31,12 +30,12 @@ class Login extends Component
 
     public function logout()
     {
-        Auth::guard('tutor')->logout();
-        return redirect()->route('tutor-login');
+        Auth::guard('web')->logout();
+        return redirect()->route('student-login');
     }
 
     public function render()
     {
-        return view('livewire.tutor.auth.login')->layout('app');
+        return view('livewire.student.auth.login')->layout('app');
     }
 }

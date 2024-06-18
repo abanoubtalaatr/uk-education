@@ -7,6 +7,20 @@ use App\Models\CourseTutor;
 
 class BookingService
 {
+    public function store($data)
+    {
+        $booking = Booking::query()->create([
+            'tutor_id' => $data['tutor_id'],
+            'user_id' => $data['user_id'],
+            'date' => $data['date'],
+            'start_at' => $data['start_at'],
+            'end_at' => $data['end_at'],
+            'bookable_type' => $data['bookable_type'],
+            'bookable_id' => $data['bookable_id'],
+        ]);
+
+        return $booking;
+    }
     /**
      * Get the total number of students in a booking.
      *

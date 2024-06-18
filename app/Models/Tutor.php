@@ -59,4 +59,9 @@ class Tutor extends Authenticatable implements HasMedia
     {
         return $this->belongsToMany(Subscription::class);
     }
+
+    public function slots()
+    {
+        return $this->hasMany(Slot::class);
+    }
 }

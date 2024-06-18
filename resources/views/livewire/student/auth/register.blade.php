@@ -1,0 +1,134 @@
+<main>
+    <!-- start of section center-1 -->
+    <section class="center-1 user">
+      <div class="center-overlay">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-7">
+              <ul class="center-ul my-4">
+                <li>
+                  <div class="logo-container">
+                    <h2 class="text-white">LOGO</h2>
+                  </div>
+                </li>
+                <li>
+                  <div class="head-list-info">
+                    <h1>ARS MEDICA</h1>
+                    <p>
+                      Sed ut perspiciatis unde omnis istpoe natus error sit
+                      voluptatem accusantium doloremque eopsloi laudantium
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <div class="center-menu">
+                    <a href="/">Home</a>
+                    <a href="About.html">About</a>
+                    <a href="contact-us.html">Contact</a>
+                    <a href="privacy-policy.html">Privacy</a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="col-md-5 p-right-none">
+              <div class="center-form">
+                <h3>Create an Account</h3>
+                <p>
+                  Already have an account?
+                  <a href="signIn.html">Sign in</a>
+                </p>
+                <div class="center-form-input">
+                  <form>
+                    
+                    <div class="form-group">
+                      <input
+                      wire:model="form.name"
+                        type="text"
+                        class="form-control"
+                        id="name"
+                        placeholder="Name"
+                      />
+                      @error('form.name')
+                          <p class="text-danger">{{$message}}</p>
+                      @enderror
+                    </div>
+
+                    <div class="form-group">
+                      <input
+                      wire:model="form.email"
+                        type="email"
+                        class="form-control"
+                        id="userEmail"
+                        placeholder="Your Email"
+                      />
+                      @error('form.email')
+                          <p class="text-danger">{{$message}}</p>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <input
+                      wire:model="form.mobile"
+                        type="number"
+                        class="form-control"
+                        id="userphone"
+                        placeholder="phone number"
+                      />
+                      @error('form.mobile')
+                          <p class="text-danger">{{$message}}</p>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                      <input
+                      wire:model="form.whats_app_number"
+                        type="number"
+                        class="form-control"
+                        id="whatsappnumber"
+                        placeholder="whatsapp number"
+                      />
+                      @error('form.whats_app_number')
+                          <p class="text-danger">{{$message}}</p>
+                      @enderror
+                    </div>
+                    <div class="form-group">
+                        <input
+                        wire:model="form.password"
+                          type="password"
+                          class="form-control"
+                          id="userPassword"
+                          placeholder=" Password"
+                        />
+                        @error('form.password')
+                          <p class="text-danger">{{$message}}</p>
+                      @enderror
+                      </div>
+                      <div class="form-group">
+                        <input
+                        wire:model="form.password_confirmation"
+                          type="password"
+                          class="form-control"
+                          id="userRePassword"
+                          placeholder="Confirm Password"
+                        />
+                        @error('form.password_confirmation')
+                          <p class="text-danger">{{$message}}</p>
+                      @enderror
+                      </div>
+
+                    <button
+                    type="button"
+                    wire:click="register"
+                      class="btn btn-next float-right mt-4"
+                    
+                    >
+                      Create an account
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End of section center-1 -->
+  </main>

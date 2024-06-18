@@ -95,7 +95,7 @@
                   Profile</a
                 >
                 <hr />
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{route('tutor-logout')}}">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"

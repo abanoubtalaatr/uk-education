@@ -12,8 +12,12 @@ class CreateBookingsTable extends Migration
             $table->id();
             $table->foreignId('tutor_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->dateTime('date');
             $table->morphs('bookable');
+            $table->date('date');
+            $table->time('start_at')->nullable();
+            $table->time('end_at')->nullable();
+            $table->enum('status', ['pending', 'accepted', 'rejected', 'cancelled'])->default('pending');
+            $table->boolean('is_paid')->default(false);
             $table->timestamps();
         });
     }
