@@ -29,7 +29,7 @@
                             </h5>
                             <p>number of attendees <strong>{{\App\Services\BookingService::getAttendeesNumberInCrashCourse($course->id)}} people</strong></p>
                             {{-- <p>number of hours <strong>20h</strong></p> --}}
-                            <a href="course-details.html" class="btn btn-join float-right">Booking Now</a>
+                            <a href="{{route('crash-courses.show', $course->id)}}" class="btn btn-join float-right">Booking Now</a>
                             <span>{{ $course->price }} $    </span>
                         </div>
                     </div>

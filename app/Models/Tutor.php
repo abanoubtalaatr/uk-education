@@ -21,7 +21,7 @@ class Tutor extends Authenticatable implements HasMedia
     use HasRoles;
     use InteractsWithMedia;
 
-    protected $fillable = ['name', 'email', "whats_app_number", 'photo', 'password'];
+    protected $fillable = ['name', 'email', "whats_app_number", 'photo', 'password', 'otp','otp_token'];
 
     protected $hidden = [
         'password', 'remember_token',

@@ -35,7 +35,7 @@
                 <h3>Create an Account</h3>
                 <p>
                   Already have an account?
-                  <a href="signIn.html">Sign in</a>
+                  <a href="{{route("student-login")}}">Sign in</a>
                 </p>
                 <div class="center-form-input">
                   <form>

@@ -35,7 +35,7 @@
 
                   <div class="form-group">
                     <a
-                    href="forgot-password-1.html"
+                    href="{{route('auth.email', 'tutor')}}"
                     class="float-left top resend"
                   >
                     Forgot password?</a

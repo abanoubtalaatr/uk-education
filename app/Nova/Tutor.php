@@ -8,6 +8,7 @@ use Laravel\Nova\Fields\Image;
 use Illuminate\Validation\Rules;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
@@ -71,6 +72,8 @@ class Tutor extends Resource
                 ->rules('required', 'email', 'max:254')
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
+
+            Textarea::make('About', 'about'),
 
             Password::make(__('Password'), 'password')
                 ->onlyOnForms()

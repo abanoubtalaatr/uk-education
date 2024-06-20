@@ -16,7 +16,7 @@
             @foreach ($tutors as $tutor)
             <div class="coach-profile">
                 <img height="300" src="{{asset('storage/'. $tutor->photo)}}" alt="" class="img-fluid" />
-                <a href="{{route('tutor-profile')}}">
+                <a href="{{route('tutors.details', $tutor->id)}}">
                   <h5 class="c-name">{{$tutor->name}}</h5>
                 </a>
                 <h6 class="sub-name">{{$tutor->email}}</h6>

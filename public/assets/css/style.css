@@ -1293,6 +1293,9 @@ ul {
 .course-header .favorit img {
   width: 35px;
 }
+.course-header img{
+  height: 350px;
+}
 .course-header .share img {
   width: 35px;
 }
@@ -2407,8 +2410,8 @@ body {
   height: 250px;
 }
 .card-body {
-  min-height: 143px;
-  max-height: 143px;
+  /* min-height: 143px;
+  max-height: 143px; */
 }
 .profile .nav-link {
   padding: 0px;

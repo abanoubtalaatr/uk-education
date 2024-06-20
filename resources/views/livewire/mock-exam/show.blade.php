@@ -11,16 +11,16 @@
                   <ul class="path-menu">
                     <li><a href="#">Home ></a></li>
                     <li><a href="#">Mock ></a></li>
-                    <li><a href="#">Name of Mock </a></li>
+                    <li><a href="#">{{$mockExam->name}} </a></li>
                   </ul>
     
-                  <h3>Mock Name</h3>
+                  <h3>{{$mockExam->name}}</h3>
                 </div>
               </div>
               <div class="col-md-12">
                 <div class="course-header">
                   <img
-                    src="{{asset('assets/images/header-cours.png')}}"
+                    src="{{asset('storage/' . $mockExam->image)}}"
                     alt=""
                     class="img-fluid"
                   />
@@ -36,41 +36,19 @@
                           <ul class="Calendar">
                             <li>
                               <img
-                                src="assets/images/Calendar.png"
+                                src="{{asset('assets/images/Calendar.png')}}"
                                 alt=""
                                 class="img-fluid"
                               />
-                              <span>12 Mars 2020 </span>
+                              <span>{{$mockExam->date}} </span>
                             </li>
-                            <li>
-                              <img
-                                src="assets/images/Calendar.png"
-                                alt=""
-                                class="img-fluid"
-                              />
-                              <span>12 Mars 2020 </span>
-                            </li>
+                            
                           </ul>
     
                           <p>
-                            A long-established fact is that the readable content
-                            of a page will distract the reader from focusing on
-                            the text's outline or the form of paragraphs placed on
-                            the page it reads. "lorem ipsum" in any search engine,
-                            many recent sites will appear in the search results.
-                            Over the years, new and different versions of Lorem
-                            Ipsum's text have emerged, sometimes by chance,
-                            sometimes Intentionally as the introduction of some
-                            humorous phrases to it.
+                            {{$mockExam->description}}
                           </p>
-                          <p>
-                            If you enter "lorem ipsum" in any search engine, many
-                            recent sites will appear in the search results. Over
-                            the years, new and different versions of Lorem Ipsum's
-                            text have emerged, sometimes by chance, sometimes
-                            Intentionally as the introduction of some humorous
-                            phrases to it.
-                          </p>
+                          
                         </div>
                       </div>
                       <div class="col-md-12 top-med">
@@ -138,16 +116,6 @@
                         <h5 class="pt-3">{{$mockExam->name}}</h5>
                       </div>
                       <div class="col-md-12 top-sm-2">
-                        <div class="calender-info">
-                          <h4 class="float-right">Men only</h4>
-    
-                          <img
-                            src="{{asset('storage/'. $mockExam->image)}}"
-                            alt=""
-                            class="img-fluid float-left mr-2"
-                          />
-                          <h5>Course for</h5>
-                        </div>
                       </div>
                       <div class="col-md-12">
                         <div class="calender-info">
@@ -162,7 +130,7 @@
                         </div>
                       </div>
                       <div class="col-md-12">
-                        <div class="calender-info">
+                        {{-- <div class="calender-info">
                           <h4 class="float-right">3 days in week</h4>
     
                           <img
@@ -171,7 +139,7 @@
                             class="img-fluid float-left mr-2"
                           />
                           <h5>Number of lectures in week</h5>
-                        </div>
+                        </div> --}}
                       </div>
                       <div class="col-md-12">
                         <hr />

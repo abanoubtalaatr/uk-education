@@ -43,6 +43,8 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'gender',
         'mobile',
         'whats_app_number',
+        'otp',
+        'otp_token',
     ];
 
     /**
