@@ -2,29 +2,30 @@
 
 namespace App\Nova;
 
+use Froala\Nova\Froala;
+
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsToMany;
 
-class Slider extends Resource
+class BankScenario extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Slider>
+     * @var class-string<\App\Models\BankScenario>
      */
-    public static $model = \App\Models\Slider::class;
+    public static $model = \App\Models\BankScenario::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'number';
 
     /**
      * The columns that should be searched.
@@ -32,7 +33,7 @@ class Slider extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'number',
     ];
 
     /**
@@ -45,11 +46,10 @@ class Slider extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Title', 'title')->rules('required'),
-            Text::make('Button name', 'button_name')->rules('required'),
-            Text::make('Link', 'link')->rules('required'),
-            Textarea::make('Description', 'description')->rules('required'),
-            Image::make('Image', 'image')->rules('required'),
+            Text::make('number')->rules('required'),
+            Froala::make('Scenario','content')->rules('required'),
+           
+            // BelongsToMany::make('Mock Exams', 'mockExams'),
         ];
     }
 

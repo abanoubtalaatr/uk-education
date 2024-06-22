@@ -4,14 +4,19 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use Ramsey\Uuid\Rfc4122\VariantTrait;
+use Outl1ne\NovaSettings\NovaSettings;
 
 class Contact extends Component
 {
 
     public $form = [];
     public $message;
+    public $settings;
 
-
+    public function mount()
+    {
+        $this->settings = NovaSettings::getSettings();
+    }
     protected $rules = [
         'form.name' => ['required', 'string', 'min:2'],
         'form.email' => ['required', 'email'],

@@ -1,3 +1,6 @@
+@php
+    use Outl1ne\NovaSettings\NovaSettings;
+@endphp
 <main>
     <!-- start of section center-1 -->
     <section class="center-1 user">
@@ -8,7 +11,10 @@
               <ul class="center-ul my-4">
                 <li>
                   <div class="logo-container">
-                    <h2 class="text-white">LOGO</h2>
+                    <h2 class="text-white">
+                      <img height="60" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
+
+                    </h2>
                   </div>
                 </li>
                 <li>
@@ -22,10 +28,10 @@
                 </li>
                 <li>
                   <div class="center-menu">
-                    <a href="index.html">Home</a>
-                    <a href="About.html">About</a>
-                    <a href="contact-us.html">Contact</a>
-                    <a href="privacy-policy.html">Privacy</a>
+                    <a href="/">Home</a>
+                    <a href="{{route('pages', 'about-us')}}">About</a>
+                    <a href="{{route('contact-us')}}">Contact</a>
+                    <a href="{{route('pages','privacy-policy')}}">Privacy</a>
                   </div>
                 </li>
               </ul>

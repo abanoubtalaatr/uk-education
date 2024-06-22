@@ -62,7 +62,7 @@
         @include('partials.footer')
         
         <!-- start subscrib -->
-        @include('partials.footer')
+        
       </main>
       <script>
         document.addEventListener('DOMContentLoaded', (event) => {

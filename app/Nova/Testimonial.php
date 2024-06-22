@@ -5,19 +5,17 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 
-class Slider extends Resource
+class Testimonial extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
-     * @var class-string<\App\Models\Slider>
+     * @var class-string<\App\Models\Testimonial>
      */
-    public static $model = \App\Models\Slider::class;
+    public static $model = \App\Models\Testimonial::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -45,11 +43,8 @@ class Slider extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Title', 'title')->rules('required'),
-            Text::make('Button name', 'button_name')->rules('required'),
-            Text::make('Link', 'link')->rules('required'),
-            Textarea::make('Description', 'description')->rules('required'),
-            Image::make('Image', 'image')->rules('required'),
+            Text::make("Student name",'name')->rules('required'),
+            Textarea::make("What he said",'comment')->rules('required','max:255'),
         ];
     }
 

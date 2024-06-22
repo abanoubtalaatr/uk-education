@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light">
     <div class="container-fluid y-side">
-      <a href="/" class="small text-white logo">ARS MEDICA</a>
+      <a href="/" class="small text-white logo">
+       <img height="60" src=" {{asset('storage/'. $settings['logo'])}}" alt="Logo ">
+      </a>
 
       <button
         class="navbar-toggler"

@@ -362,7 +362,7 @@
                         <div class="result-confirm float-right mr-4">
                           <h4 class="pr-2 pb-2">{{$mock->price}} $</h4>
                           <a
-                            href="#"
+                            href="{{route('mock-exams.bank-scenarios', $mock->id)}}"
                             class="btn btn-join ser-btn float-right"
                             >More Detail's
                           </a>

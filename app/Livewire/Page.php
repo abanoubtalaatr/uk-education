@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use Outl1ne\NovaSettings\NovaSettings;
 use Livewire\Component;
 
 class Page extends Component

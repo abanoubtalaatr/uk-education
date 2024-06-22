@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\Tutor;
 use Livewire\Component;
+use Outl1ne\NovaSettings\NovaSettings;
 
 class Tutors extends Component
 {

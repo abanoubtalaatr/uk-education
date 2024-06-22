@@ -4,13 +4,15 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
+
 class Subscription extends Component
 {
-    public $subscriptions;
+    public $subscriptions, $settings;
 
     public function mount()
     {
         $this->subscriptions = \App\Models\Subscription::paginate(15)->items();
+        
     }
     public function render()
     {

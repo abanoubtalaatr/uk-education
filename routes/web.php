@@ -11,14 +11,15 @@ use App\Livewire\Auth\Verify;
 use App\Livewire\CrashCourse;
 use App\Livewire\Subscription;
 use App\Livewire\MockExam\Show;
+use App\Livewire\Tutor\Details;
 use App\Livewire\Tutor\Profile;
 use App\Livewire\Tutor\Auth\Login;
 use App\Livewire\Auth\ResetPassword;
 use App\Livewire\MockExam\MockExams;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\MockExam\BankScenario;
 use App\Livewire\Student\Auth\Register;
 use App\Livewire\Student\Profile as StudentProfile;
-use App\Livewire\Tutor\Details;
 
 Route::get('/', Welcome::class)->name('welcome');
 
@@ -45,6 +46,7 @@ Route::prefix('subscriptions')->as('subscriptions.')->group(function (){
     Route::get('/{subscription}', \App\Livewire\Subscription\Show::class)->name('show');
 });
 
+
 Route::prefix('auth')->as('auth.')->group(function () {
     Route::get('email/{type}', Email::class)->name('email');
     Route::get('verify/{email}/{type}', Verify::class)->name('verify');
@@ -54,6 +56,10 @@ Route::prefix('auth')->as('auth.')->group(function () {
 Route::middleware(['auth:tutor'])->group(function () {
     Route::get('tutor-profile', Profile::class)->name('tutor-profile');
     Route::get('tutor-logout', [Login::class, 'logout'])->name('tutor-logout');
+
+Route::prefix('mock-exams')->as('mock-exams.')->group(function(){
+    Route::get('/{mock}/bank-scenarios', BankScenario::class)->name('bank-scenarios');
+});
 });
 
 Route::get('student-register', Register::class)->name('student-register');
