@@ -22,6 +22,7 @@ use App\Nova\Interest;
 use App\Nova\MockExam;
 use App\Nova\Question;
 use Laravel\Nova\Nova;
+use App\Nova\NewsLetter;
 use App\Nova\CrashCourse;
 use App\Nova\Testimonial;
 use App\Nova\BankScenario;
@@ -105,6 +106,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         
                 MenuSection::make(__('Contact us & Subscribers'), [
                     MenuItem::resource(Contact::class)->canSee(fn () => true),
+                    MenuItem::resource(NewsLetter::class)->canSee(fn () => true),
                 ])->collapsable()->icon('cog')->collapsedByDefault(),
             ];
         });

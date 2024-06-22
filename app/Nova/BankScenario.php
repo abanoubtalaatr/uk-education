@@ -47,7 +47,9 @@ class BankScenario extends Resource
         return [
             ID::make()->sortable(),
             Text::make('number')->rules('required'),
-            Froala::make('Scenario','content')->rules('required'),
+            Froala::make('Questions','content')->rules('required'),
+            Froala::make('Answers','content')->rules('required'),
+            Froala::make('Notes','content')->rules('required'),
            
             // BelongsToMany::make('Mock Exams', 'mockExams'),
         ];

@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\MockExam\BankScenario;
 use App\Livewire\Student\Auth\Register;
 use App\Livewire\Student\Profile as StudentProfile;
+use App\Models\NewsLetter;
 
 Route::get('/', Welcome::class)->name('welcome');
 
@@ -84,3 +85,13 @@ Route::any('language/{language}', function (Request $request, $language) {
 
     return redirect()->back();
 })->name('language');
+
+Route::post('news-letter', function (Request $request){
+    $request->validate([
+        'email' => 'required|email|unique:news_letters,email',
+    ]);
+
+    NewsLetter::create(['email' => $request->email]);
+
+    return redirect()->back()->with('success', 'Subscribed successfully!');
+})->name('news_letter.store');
