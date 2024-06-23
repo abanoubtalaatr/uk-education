@@ -9,7 +9,7 @@
                         <li><a href="#">Home ></a></li>
                         <li><a href="#">Mock exams</a></li>
                     </ul>
-                    <h3>All Mock exams</h3>
+                    <h3>Book Your Mock</h3>
                 </div>
             </div>
             <div class="row mb-3">
@@ -29,8 +29,9 @@
                             </h5>
                             <p>number of attendees <strong>{{\App\Services\BookingService::getAttendeesNumberInMockExam($mockExam->id)}} people</strong></p>
                             {{-- <p>number of hours <strong>20h</strong></p> --}}
-                            <a href="{{route('mock-exams.show', $mockExam->id)}}" class="btn btn-join float-right">Booking Now</a>
+                            <a href="{{route('mock-exams.book-mock', $mockExam->id)}}" class="btn btn-join float-right">Find Your Tutors avaiable</a>
                             <span>{{ $mockExam->price }} $    </span>
+                            
                         </div>
                     </div>
                 </div>

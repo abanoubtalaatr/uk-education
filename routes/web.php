@@ -39,6 +39,10 @@ Route::prefix('courses')->as('courses.')->group(function(){
     Route::get('/{course}', App\Livewire\Course\Show::class)->name('show');
 });
 
+Route::prefix('mock-exams')->as('mock-exams.')->group(function(){
+    Route::get('book-mock/{mock}', App\Livewire\MockExam\BookMock::class)->name('book-mock');
+});
+
 Route::prefix('crash-courses')->as('crash-courses.')->group(function (){
     Route::get('/{crash_course}', \App\Livewire\CrashCourse\Show::class)->name('show');
 });

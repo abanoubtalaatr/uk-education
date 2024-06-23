@@ -23,9 +23,6 @@
               >Home <span class="sr-only">(current)</span></a
             >
           </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-2" href="{{route('all-tutors')}}">Tutors</a>
-          </li>
 
           <li class="nav-item">
             <a class="nav-link nav-link-2" href="{{route('all-courses')}}"
@@ -35,7 +32,7 @@
 
           <li class="nav-item">
             <a class="nav-link nav-link-2" href="{{route('all-mock-exams')}}"
-              >Mock Exam</a
+              >Exam Exam</a
             >
           </li>
 
@@ -49,6 +46,9 @@
             <a class="nav-link nav-link-2" href="{{route('all-subscriptions')}}"
               >Subscription</a
             >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link nav-link-2" href="{{route('pages', 'about-us')}}">About us</a>
           </li>
 
           <li class="nav-item">

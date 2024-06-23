@@ -415,7 +415,7 @@ ul {
 /* start index */
 .hero {
   padding: 20px 0;
-  background-image: url(../images/header.png);
+  background-image: url(../images/mask-group-s.png);
   background-position: bottom;
   background-size: cover;
   background-repeat: no-repeat;
@@ -533,7 +533,7 @@ ul {
 }
 /* start why us */
 .why-us {
-  padding: 30px 0;
+  padding: 60px 0;
   background-image: url(../images/logo-shape.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -697,7 +697,7 @@ ul {
 }
 /* start top coaches section */
 .top-coaches {
-  padding: 30px 0;
+  padding: 100px 0;
   background: url(../images/logo-footer.png) no-repeat left;
   position: relative;
   background-size: contain;
@@ -706,7 +706,6 @@ ul {
 
 .coach-profile {
   position: relative;
-  min-height: 250px;
 }
 .c-name {
   position: absolute;
@@ -752,7 +751,7 @@ ul {
 }
 
 .coach-layout {
-  background-color: rgba(0, 0, 0, 0.13);
+  background-color: rgba(0, 0, 0, 0.26);
   position: absolute;
   top: 26px;
   right: 33px;
@@ -776,7 +775,7 @@ ul {
 }
 /* start download section */
 .download {
-  padding: 30px 0;
+  padding: 50px 0;
 }
 .down-badg li {
   display: inline-block;
@@ -1292,9 +1291,6 @@ ul {
 }
 .course-header .favorit img {
   width: 35px;
-}
-.course-header img{
-  height: 350px;
 }
 .course-header .share img {
   width: 35px;
@@ -1934,8 +1930,53 @@ ul {
 .up-down i {
   padding-right: 10px;
 }
+
+.svg-carsoul-home {
+  /* margin: 0; */
+}
+.carousel-me-next {
+  position: absolute;
+  bottom: 28%;
+  left: 200px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.carousel-me-prev {
+  position: absolute;
+  bottom: 28%;
+  left: 120px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.btn-info {
+  background-color: #4d75b8 !important;
+}
+
 /* start my Media-Quary *************************************************** ********/
 @media only screen and (max-width: 600px) {
+  .form-control-3 {
+    height: 40px;
+  }
+  .find {
+    box-shadow: none !important;
+  }
+  .carousel-me-next {
+    position: absolute;
+    bottom: 10%;
+    left: 50px;
+    cursor: pointer;
+    color: #fff !important;
+  }
+
+  .carousel-me-prev {
+    position: absolute;
+    bottom: 10%;
+    left: 0px;
+    cursor: pointer;
+    color: #fff !important;
+  }
   .hero-image-responsive {
     display: none;
   }
@@ -2132,6 +2173,7 @@ ul {
   }
   .hero {
     background-image: linear-gradient(to right, #8bd1ef, #3a3c8e);
+    height: 60vh !important;
   }
   .hero-box-info {
     transform: unset;
@@ -2174,10 +2216,10 @@ ul {
 
   .slick-next {
     top: -20px !important;
-    right: 160px !important;
+    right: 20px !important;
   }
   .slick-prev {
-    right: 200px;
+    left: 20px;
     top: -20px;
   }
   .btn-Search {
@@ -2410,8 +2452,8 @@ body {
   height: 250px;
 }
 .card-body {
-  /* min-height: 143px;
-  max-height: 143px; */
+  min-height: 143px;
+  max-height: 143px;
 }
 .profile .nav-link {
   padding: 0px;
@@ -2531,7 +2573,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 20px;
 }
 
 .container-social {
@@ -2564,9 +2606,9 @@ body {
 
 .main-btn-social {
   padding: 10px;
-  width: 60px;
-  height: 60px;
-  font-size: 8px;
+  width:80px;
+  height: 80px;
+  font-size: 12px;
   display: block;
   color: #fff;
   border: none;
@@ -2617,4 +2659,107 @@ body {
 .modal-dialog-video .modal-content .modal-body iframe {
   width: 100% !important;
   height: 100% !important;
+}
+
+.float-image-play-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.small-heading-size {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+  max-height: 2.6em;
+}
+
+.custom-card {
+  width: 300px; /* Set your desired width */
+  height: 200px; /* Set your desired height */
+  overflow: hidden; /* Ensures content does not overflow */
+}
+
+.custom-card .card-body p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 8em;
+}
+
+.custom-card .card-body h5 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-changes {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.coach-profile .custom-changes {
+  font-size: inherit !important;
+}
+
+.navbar-collapse,
+.navbar-expand-lg {
+  z-index: 10000000000000;
+}
+
+/*  */
+
+.menu-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* semi-transparent background */
+  z-index: 1000;
+  overflow-y: auto;
+  color: white; /* text color */
+  text-align: center; /* center align content */
+}
+
+.menu-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-container ul li {
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Example border */
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 24px;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.new-menue li a {
+  color: #fff !important;
+}
+
+.component-logo-s {
+  width: 100%;
 }

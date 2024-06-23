@@ -36,9 +36,7 @@
                     <li class="nav-item active">
                         <a class="nav-link nav-link-2" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link nav-link-2" href="{{ route('all-tutors') }}">Tutors</a>
-                    </li>
+                    
 
                     <li class="nav-item">
                         <a class="nav-link nav-link-2" href="{{ route('all-courses') }}">Courses</a>
@@ -55,7 +53,9 @@
                     <li class="nav-item">
                         <a class="nav-link nav-link-2" href="{{ route('all-subscriptions') }}">Subscription</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-2" href="{{ route('pages', 'about-us') }}">About us</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link nav-link-2" href="{{ route('contact-us') }}">Contact us</a>
                     </li>

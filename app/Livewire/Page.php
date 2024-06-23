@@ -7,10 +7,12 @@ use Livewire\Component;
 
 class Page extends Component
 {
-    public $page = '';
+    public $page = '', $tutors;
+
     public function mount($slug)
     {
         $this->page = \App\Models\Page::where('slug', $slug)->first();
+        $this->tutors = \App\Models\Tutor::all();
     }
 
     public function render()
