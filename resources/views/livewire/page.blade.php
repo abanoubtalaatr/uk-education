@@ -72,6 +72,8 @@
                                           <p class="mt-3 pro-name">{{ $tutor->name }}</p>
                                           <p class="mt-3 pro-name tutor-about">{{ Str::limit($tutor->about, 100) }}</p>
                                       </a>
+
+                                      
                                   </div>
                               @endforeach
                           </div>
