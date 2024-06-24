@@ -68,7 +68,7 @@
                               @foreach ($tutors as $tutor)
                                   <div class="col-md-3 border-right border-bottom mb-3  tutor-card">
                                       <a href="{{ route('tutors.details', $tutor->id) }}" class="mx-2 text-decoration-none">
-                                          <img height="100" src="{{ asset('assets/images/Coach.png') }}" alt="Tutor Image" class="img-fluid pro-image" />
+                                          <img height="100" src="{{ asset('storage').'/'.$tutor->photo }}" alt="Tutor Image" class="img-fluid pro-image" />
                                           <p class="mt-3 pro-name">{{ $tutor->name }}</p>
                                           <p class="mt-3 pro-name tutor-about">{{ Str::limit($tutor->about, 100) }}</p>
                                       </a>
