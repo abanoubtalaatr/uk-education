@@ -4,7 +4,9 @@ use App\Livewire\Page;
 use App\Livewire\Tutors;
 use App\Livewire\Contact;
 use App\Livewire\Courses;
+use App\Livewire\Payment;
 use App\Livewire\Welcome;
+use App\Models\NewsLetter;
 use App\Livewire\Auth\Email;
 use Illuminate\Http\Request;
 use App\Livewire\Auth\Verify;
@@ -20,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\MockExam\BankScenario;
 use App\Livewire\Student\Auth\Register;
 use App\Livewire\Student\Profile as StudentProfile;
-use App\Models\NewsLetter;
 
 Route::get('/', Welcome::class)->name('welcome');
 
@@ -34,6 +35,7 @@ Route::get('mock-exams/{mock}',Show::class)->name('mock-exams.show');
 Route::get('all-crash-courses', CrashCourse::class)->name('all-crash-courses');
 Route::get('all-subscriptions', Subscription::class)->name('all-subscriptions');
 Route::get('tutors/{tutor}', Details::class)->name('tutors.details');
+Route::get('payment', Payment::class)->name('payment');
 
 Route::prefix('courses')->as('courses.')->group(function(){
     Route::get('/{course}', App\Livewire\Course\Show::class)->name('show');
