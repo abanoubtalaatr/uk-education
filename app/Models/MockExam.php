@@ -11,7 +11,15 @@ class MockExam extends Model
 
     protected $guarded = [];
 
-    protected $casts = ['date' => 'datetime'];
+ 
+    protected $casts = [
+        'mock_content' => 'array',
+        'who_is_the_course_for' => 'array',
+        'course_aims' => 'array',
+        'learning_objectives' => 'array',
+        'learning_outcomes' => 'array',
+        'date' => 'datetime'
+    ];
 
     public function bookings()
     {

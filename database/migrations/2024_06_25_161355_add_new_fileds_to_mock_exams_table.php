@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('mock_exams', function (Blueprint $table) {
+            $table->json('mock_content')->nullable();
+            $table->json('who_is_the_course_for')->nullable();
+            $table->json('course_aims')->nullable();
+            $table->json('learning_objectives')->nullable();
+            $table->json('learning_outcomes')->nullable();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::table('mock_exams', function (Blueprint $table) {
+            //
+        });
+    }
+};

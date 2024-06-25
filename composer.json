@@ -13,8 +13,10 @@
     "require": {
         "php": "^8.2",
         "armincms/json": "^0.5.2",
+        "czemu/nova-calendar-tool": "^1.3",
         "dive-be/nova-froala-field": "^1.1",
         "ebess/advanced-nova-media-library": "^4.2",
+        "eminiarts/nova-tabs": "^2.2",
         "inertiajs/inertia-laravel": "^1.0",
         "label84/laravel-hours-helper": "^1.3",
         "laravel/framework": "^11.0",
@@ -33,12 +35,14 @@
         "maatwebsite/laravel-nova-excel": "^1.3",
         "outl1ne/nova-settings": "^5.2",
         "sereny/nova-permissions": "^1.6",
+        "shuvroroy/nova-tabs": "^1.1",
         "spatie/calendar-links": "^1.11",
         "spatie/laravel-medialibrary": "^11.4",
         "spatie/laravel-translatable": "^6.6",
         "spatie/nova-translatable": "^4.0",
         "stepanenko3/nova-json": "^4.0",
         "tightenco/ziggy": "^2.0",
+        "whitecube/nova-flexible-content": "^1.1",
         "whitecube/nova-page": "^0.2.8"
     },
     "require-dev": {

@@ -26,6 +26,8 @@
     },
     "dependencies": {
         "@formkit/auto-animate": "^0.8.2",
+        "@fullcalendar/daygrid": "^6.1.14",
+        "@fullcalendar/vue": "^6.1.14",
         "@iconify-json/heroicons": "^1.1.21",
         "@iconify-json/radix-icons": "^1.1.14",
         "@radix-icons/vue": "^1.0.0",
@@ -38,6 +40,7 @@
         "laravel-vue-i18n": "^2.7.6",
         "lucide-vue-next": "^0.376.0",
         "notivue": "^2.4.4",
+        "or": "^0.2.0",
         "radix-vue": "^1.7.2",
         "swiper": "^11.1.1",
         "tailwind-merge": "^2.3.0",

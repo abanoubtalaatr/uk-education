@@ -12,8 +12,15 @@ class Course extends Model
 
     protected $guarded = [];
 
-    protected $casts = ['date' => 'datetime'];
-
+    
+    protected $casts = [
+        'course_content' => 'array',
+        'who_is_the_course_for' => 'array',
+        'course_aims' => 'array',
+        'learning_objectives' => 'array',
+        'learning_outcomes' => 'array',
+        'date' => 'datetime'
+    ];
     public function bookings()
     {
         return $this->morphMany(Booking::class, 'bookable');

@@ -25,7 +25,7 @@ const notivue = createNotivue({
     limit: 3,
 });
 
-const appName = import.meta.env.VITE_APP_NAME || "Bikerz";
+const appName = import.meta.env.VITE_APP_NAME || "ARS ";
 
 createInertiaApp({
     title: (title) => (title ? `${title} - ${appName}` : appName),

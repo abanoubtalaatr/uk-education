@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light">
     <div class="container-fluid y-side">
       <a href="/" class="small text-white logo">
-       <img height="60" src=" {{asset('storage/'. $settings['logo'])}}" alt="Logo ">
+       <img height="60" width="100" src=" {{asset('storage/'. $settings['logo'])}}" alt="Logo ">
       </a>
 
       <button
@@ -32,7 +32,7 @@
 
           <li class="nav-item">
             <a class="nav-link nav-link-2" href="{{route('all-mock-exams')}}"
-              >Exam Exam</a
+              >Mock Exam</a
             >
           </li>
 
@@ -107,14 +107,14 @@
             <a
               class="nav-link nav-link-2 join-us-now"
               href="{{route('student-register')}}"
-              >Create Account</a
+              >Student</a
             >
           </li>
           <li class="nav-item">
             <a
               class="nav-link nav-link-2 join-us-now"
               href="{{route('tutor-login')}}"
-              >Login as Tutor</a
+              >Tutor</a
             >
           </li>
           @endif
