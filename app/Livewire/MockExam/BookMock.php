@@ -13,7 +13,7 @@ use App\Mail\StudentBookingConfirmation;
 
 class BookMock extends Component
 {
-    public $mockExam, $tutors,$availableTimes = [], $selectedTutor, $message, $selectedDate, $selectedTime;
+    public $mockExam, $tutors, $availableTimes = [], $selectedTutor, $message, $selectedDate, $selectedTime;
 
     public function mount($mock)
     {
@@ -21,39 +21,35 @@ class BookMock extends Component
         $this->tutors = Tutor::whereHas('mockExams', function ($query) {
             $query->where('mock_exam_id', $this->mockExam->id);
         })->get();
-        
-        
     }
-    
+
     public function selectTutor($id)
     {
         $this->selectedTutor = $id;
         $this->message = null;
     }
+
     public function getAvailableTime($date)
     {
-        
-        if(!$this->selectedTutor){
+        if (!$this->selectedTutor) {
             $this->message = 'Please select a tutor';
-        }else{
+        } else {
             $this->selectedDate = $date;
-            $this->availableTimes = (new AvailableTimeService())->availableTime( $date,$this->selectedTutor);
+            $this->availableTimes = (new AvailableTimeService())->availableTime($date, $this->selectedTutor);
         }
     }
 
     public function chooseTime($time)
     {
-        
         $this->selectedTime = $time;
     }
 
-
     public function bookNow()
     {
-        if($this->selectedTime && $this->selectedTutor && $this->selectedDate){
+        if ($this->selectedTime && $this->selectedTutor && $this->selectedDate) {
             [$startTime, $endTime] = explode('-', $this->selectedTime);
             $data['tutor_id'] = $this->selectedTutor;
-            $data['user_id'] = auth('web')->user()->id; 
+            $data['user_id'] = auth('web')->user()->id;
             $data['date'] = $this->selectedDate;
             $data['start_at'] = $startTime;
             $data['end_at'] = $endTime;
@@ -69,20 +65,21 @@ class BookMock extends Component
                 'tutor_name' => $tutor->name,
                 'date' => $this->selectedDate,
                 'link' => $this->mockExam->link,
-                'user'=> $user,
+                'user' => $user,
                 'tutor' => $tutor,
                 'course_name' => $this->mockExam->name, // Assuming title is the course name
             ];
-    
+
             // Send emails
             Mail::to($user->email)->send(new StudentBookingConfirmation($user, $bookingDetails));
             Mail::to($tutor->email)->send(new TutorBookingNotification($tutor, $bookingDetails));
-    
+
             return redirect()->route('student-profile');
-        }else{
-            $this->message = 'Please select time, date and tutor';
+        } else {
+            $this->message = 'Please select time, date, and tutor';
         }
     }
+
     public function render()
     {
         return view('livewire.mock-exam.book-mock')->layout('app');

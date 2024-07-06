@@ -178,7 +178,7 @@
                             <div class="d-flex flex-wrap">
                                 @foreach ($tutors as $tutor)
                                     <button wire:click="selectTutor({{ $tutor->id }})"
-                                        class="mx-2  btn mb-2 tutor-button @if ($tutor->id == $selectedTutor) active @endif">
+                                        class="mx-2  btn mb-2 tutor-button @if ($tutor->id == $selectedTutor) active-tutor @endif">
                                         <img src="{{ asset('storage/' . $tutor->photo) }}" alt=""
                                             class="img-fluid pro-image rounded-circle " height="120" />
                                         <p class="mt-3 pro-name">{{ $tutor->name }}</p>
@@ -222,8 +222,8 @@
         @include('partials.footer')
     </main>
     <style>
-        .active {
-            background: #343a4;
+        .active-tutor {
+            background: lavender;;
         }
     </style>
 
