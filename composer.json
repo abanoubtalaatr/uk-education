@@ -54,6 +54,7 @@
         "whitecube/nova-page": "^0.2.8",
         "calender/booking-calendar": "@dev"
     },
+    
     "require-dev": {
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.15",
