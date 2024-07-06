@@ -4,15 +4,18 @@ namespace App\Nova;
 
 
 use Eminiarts\Tabs\Tab;
+use Laravel\Nova\Panel;
 use Eminiarts\Tabs\Tabs;
-use Laravel\Nova\Fields\DateTime ;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Textarea;
+use Laravel\Nova\Fields\DateTime ;
+use App\Nova\Fields\BookingsCalendar;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Whitecube\NovaFlexibleContent\Flexible;
-use Laravel\Nova\Fields\Textarea;
+use Calender\BookingCalendar\BookingCalendar;
 
 class Course extends Resource
 {
@@ -21,7 +24,8 @@ class Course extends Resource
     public function fields(NovaRequest $request)
     {
         return [
-            ID::make()->sortable(),
+            ID::make()->sortable(),        
+            
             Text::make('Name', 'name')->rules('required'),
             Textarea::make('Description','description')->rules('required'),
             Image::make('Image', 'image')->rules('required'),
@@ -68,7 +72,12 @@ class Course extends Resource
                         ])
                         ->button('Add New Outcome'),
                 ]),
+                
             ]),
+
+            BookingCalendar::make('Calender'),
         ];
     }
+
+   
 }

@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\BelongsToMany;
+use Laravel\Nova\Fields\Trix;
 
 class BankScenario extends Resource
 {
@@ -47,10 +48,9 @@ class BankScenario extends Resource
         return [
             ID::make()->sortable(),
             Text::make('number')->rules('required'),
-            Froala::make('Questions','content')->rules('required'),
-            Froala::make('Answers','content')->rules('required'),
-            Froala::make('Notes','content')->rules('required'),
-           
+            Trix::make('Questions','question')->rules('required'),
+            Trix::make('Answers','answer')->rules('required'),
+            Trix::make('Notes','notes')->rules('nullable'),
             // BelongsToMany::make('Mock Exams', 'mockExams'),
         ];
     }

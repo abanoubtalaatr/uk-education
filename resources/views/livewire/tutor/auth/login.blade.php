@@ -6,7 +6,9 @@
           <div class="row">
             <div class="col-md-7 p-none">
               <div class="card-login white">
-                <h3>LOGO</h3>
+                <a href="/">
+                  <img class="my-4" height="60" width="100" src=" {{asset('storage/'. $settings['logo'])}}" alt="Logo ">
+                </a>
                 <form>
                   <div class="form-group">
                     <input

@@ -11,14 +11,15 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Video extends Model implements HasMedia
 {
     use HasFactory;
+
     use InteractsWithMedia;
 
 
-    protected $guarded = [];
+        protected $fillable = ['topic_id', 'title', 'description', 'video'];
 
 
-    public function subscription()
-    {
-        return $this->belongsTo(Subscription::class);
-    }
+        public function topic()
+        {
+            return $this->belongsTo(Topic::class);
+        }
 }

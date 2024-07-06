@@ -47,14 +47,11 @@ class Video extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Subscription'),
+            BelongsTo::make('Topic'),
             Text::make('name')->rules('required'),
             Image::make('image') // second parameter is the media collection name
                 ->rules('required'),
             File::make('link')->rules('required')
-
-
-
         ];
     }
 

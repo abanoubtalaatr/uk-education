@@ -30,7 +30,7 @@
 
     <div id="content">
       
-      <div class="mt-5">
+      <div>
           {{ isset($slot)? $slot : ''}}
       </div>
   

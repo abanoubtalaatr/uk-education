@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Booking extends Model
 {
@@ -12,7 +13,7 @@ class Booking extends Model
     protected $guarded = [];
 
     protected $casts = [
-        'date' => 'datetime'
+        'date' => 'datetime',
     ];
 
     public function tutor()
@@ -27,5 +28,38 @@ class Booking extends Model
     public function bookable()
     {
         return $this->morphTo();
+    }
+
+    public function getTypeAttribute()
+    {
+        switch ($this->bookable_type) {
+            case 'App\Models\MockExam':
+                return 'Mock Exam';
+            case 'App\Models\Course':
+                return 'Course';
+            case 'App\Models\CrashCourse':
+                return 'Crash Course';
+            case 'App\Models\Subscription':
+                return 'Subscription';
+            default:
+                return 'Unknown';
+        }
+    }
+
+    // Define the accessor for 'details_route'
+    public function getDetailsRouteAttribute()
+    {
+        switch ($this->bookable_type) {
+            case 'App\Models\MockExam':
+                return route('mock-exams.book-mock', ['mock' => $this->bookable_id]);
+            case 'App\Models\Course':
+                return route('courses.show', ['course' => $this->bookable_id]);
+            case 'App\Models\CrashCourse':
+                return route('crash-courses.show', ['crashCourse' => $this->bookable_id]);
+            case 'App\Models\Subscription':
+                return route('subscriptions.show', ['subscription' => $this->bookable_id]);
+            default:
+                return '#';
+        }
     }
 }

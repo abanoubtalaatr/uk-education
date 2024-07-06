@@ -16,9 +16,9 @@ class Subscription extends Model
         return $this->morphMany(Booking::class, 'bookable');
     }
 
-    public function videos()
+    public function topics()
     {
-        return $this->hasMany(Video::class);
+        return $this->hasMany(Topic::class);
     }
 
     public function tutors()

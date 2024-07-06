@@ -27,7 +27,7 @@ class AvailableTimeService extends Controller
         $dayName = strtolower(Carbon::parse($day)->format('l'));
         $dayTime = $tutor->slots()->where('day', $dayName)->first();
 
-        if (!$dayTime->start_time && !$dayTime->end_time) {
+        if (is_null($dayTime)) {
             return [
                 'message' => "This day is off",
             ];

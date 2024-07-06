@@ -2,21 +2,21 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Date;
-
-use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\DateTime;
+use App\Nova\Tutor;
 use Eminiarts\Tabs\Tab;
 use Eminiarts\Tabs\Tabs;
+
+use Laravel\Nova\Fields\ID;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Http\Requests\NovaRequest;
-use Whitecube\NovaFlexibleContent\Flexible;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Textarea;
+use Outl1ne\MultiselectField\Multiselect;
+use Whitecube\NovaFlexibleContent\Flexible;
 
 class MockExam extends Resource
 {
@@ -37,22 +37,22 @@ class MockExam extends Resource
             Text::make('Name')->rules('required', 'max:255'),
             Number::make('Price')->rules('required'),
             Text::make('Link')->rules('required', 'max:255'),
-            Date::make('Date')->rules('required'),
+          
             Textarea::make('Description')->rules('required'),
             DateTime::make('Date', 'date')->rules('required'),
             new Tabs('Mock Details', [
                 Tab::make('Mock Content', [
                     Flexible::make('Mock Content')
                         ->addLayout('Content', 'content', [
-                            Text::make('Content')
+                            Textarea::make('Content')
                         ])
                         ->button('Add New Content'),
                 ]),
 
                 Tab::make('Who is the course for?', [
-                    Flexible::make('who_is_the_course_for')
+                    Flexible::make('Who Is The Course For')
                         ->addLayout('Audience', 'audience', [
-                            Text::make('Audience')
+                            Textarea::make('Audience')
                         ])
                         ->button('Add New Audience'),
                 ]),
@@ -60,7 +60,7 @@ class MockExam extends Resource
                 Tab::make('Course Aims', [
                     Flexible::make('Course Aims')
                         ->addLayout('Aims', 'aims', [
-                            Text::make('Aims')
+                            Textarea::make('Aims')
                         ])
                         ->button('Add New Aim'),
                 ]),
@@ -68,7 +68,7 @@ class MockExam extends Resource
                 Tab::make('Learning Objectives', [
                     Flexible::make('Learning Objectives')
                         ->addLayout('Objective', 'objective', [
-                            Text::make('Objective')
+                            Textarea::make('Objective')
                         ])
                         ->button('Add New Objective'),
                 ]),
@@ -76,13 +76,18 @@ class MockExam extends Resource
                 Tab::make('Learning Outcomes', [
                     Flexible::make('Learning Outcomes')
                         ->addLayout('Outcome', 'outcome', [
-                            Text::make('Outcome')
+                            Textarea::make('Outcome')
                         ])
                         ->button('Add New Outcome'),
                 ]),
             ]),
             HasMany::make('Bookings'),
-            BelongsToMany::make('Bank Scenario', 'bankScenarios')
+
+            Multiselect::make('Tutors', 'tutors')
+            ->belongsToMany(Tutor::class, false),
+
+            Multiselect::make('Bank Scenarios', 'bankScenarios')
+            ->belongsToMany(BankScenario::class, false),
         ];
     }
 

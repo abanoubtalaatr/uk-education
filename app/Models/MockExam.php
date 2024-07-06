@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class MockExam extends Model
 {
@@ -35,4 +36,11 @@ class MockExam extends Model
     {
         return $this->belongsToMany(BankScenario::class, 'bank_scenario_mock_exams');
     }
+
+    public function isBookedByAuthUser()
+    {
+        return $this->morphMany(Booking::class, 'bookable')
+                    ->where('user_id', Auth::id());
+    }
+
 }

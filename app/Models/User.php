@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
-use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
@@ -86,7 +84,6 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         ];
     }
 
-
     /**
      * Register the media conversions.
      */
@@ -112,7 +109,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function profilePhotoUrl(): Attribute
     {
         return Attribute::make(
-            get: fn ($value) => $this->getFirstMediaUrl('profile_picture')
+            get: fn($value) => $this->getFirstMediaUrl('profile_picture')
         );
     }
 
@@ -124,7 +121,32 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function isAdmin(): Attribute
     {
         return Attribute::make(
-            get: fn () => $this->hasRole('super-admin')
+            get: fn() => $this->hasRole('super-admin')
         );
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
+    public function courses()
+    {
+        return $this->bookings()->where('bookable_type', Course::class);
+    }
+
+    public function crashCourses()
+    {
+        return $this->bookings()->where('bookable_type', CrashCourse::class);
+    }
+
+    public function mockExams()
+    {
+        return $this->bookings()->where('bookable_type', MockExam::class);
+    }
+
+    public function subscriptions()
+    {
+        return $this->bookings()->where('bookable_type', Subscription::class);
     }
 }

@@ -8,7 +8,9 @@
               <ul class="center-ul my-4">
                 <li>
                   <div class="logo-container">
-                    <h2 class="text-white">LOGO</h2>
+                    <a href="/">
+                      <img class="my-4" height="60" width="100" src=" {{asset('storage/'. $settings['logo'])}}" alt="Logo ">
+                    </a>
                   </div>
                 </li>
                 <li>

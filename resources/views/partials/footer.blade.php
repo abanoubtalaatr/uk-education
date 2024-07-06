@@ -5,7 +5,7 @@
   @include('partials.subscribe')
   <footer class="footer">
     <div class="logo-footer">
-      <img src="{{asset('assets/images/logo-footer.png')}}" alt="" class="img-fluid" />
+      {{-- <img src="{{asset('assets/images/logo-footer.png')}}" alt="" class="img-fluid" /> --}}
     </div>
     
     <div class="container">

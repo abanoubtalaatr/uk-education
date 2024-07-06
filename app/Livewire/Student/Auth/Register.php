@@ -9,6 +9,7 @@ namespace App\Livewire\Student\Auth;
 use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
+use Outl1ne\NovaSettings\NovaSettings;
 use App\Livewire\Traits\ValidationTrait;
 
 
@@ -24,12 +25,15 @@ class Register extends Component
         'password' => '',
         'password_confirmation' => '',
     ];
+    public $settings;
 
     protected $rules;
 
     public function mount()
     {
         $this->rules = $this->getRules();
+        $this->settings = NovaSettings::getSettings();
+
     }
 
     public function register()
@@ -45,9 +49,10 @@ class Register extends Component
 
         // Create a new user record in the database
         User::create($this->form);
+        
 
         // Redirect to the student profile page upon successful registration
-        return redirect()->route('student-profile');
+        return redirect()->route('student-login');
     }
 
     public function getRules()

@@ -698,7 +698,7 @@ ul {
 /* start top coaches section */
 .top-coaches {
   padding: 100px 0;
-  background: url(../images/logo-footer.png) no-repeat left;
+  /* background: url(../images/logo-footer.png) no-repeat left; */
   position: relative;
   background-size: contain;
   background-position: -400px 100px;
@@ -1014,8 +1014,8 @@ ul {
   border: none;
 }
 .head-path {
-  margin-left: 35px;
-  margin-bottom: 50px;
+  margin-left: 15px;
+  margin-bottom: 20px;
 }
 .head-path h3 {
   font-size: 30px;
@@ -1270,6 +1270,7 @@ ul {
 /* start Hells details */
 .course-header {
   position: relative;
+  height: 300px;
 }
 .course-header .share {
   position: absolute;
@@ -1311,7 +1312,7 @@ ul {
   display: inline-block;
   margin-right: 20px;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .Calendar li span {
   font-size: 15px;
@@ -2453,7 +2454,7 @@ body {
 }
 .card-body {
   min-height: 143px;
-  max-height: 143px;
+  max-height: 190px;
 }
 .profile .nav-link {
   padding: 0px;
@@ -2763,3 +2764,95 @@ body {
 .component-logo-s {
   width: 100%;
 }
+
+.head-path {
+  margin-bottom: 20px;
+}
+.path-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.path-menu li {
+  display: inline;
+  font-size: 14px;
+}
+.path-menu li a {
+  color: #007bff;
+  text-decoration: none;
+}
+.path-menu li a:hover {
+  text-decoration: underline;
+}
+.course-header {
+  margin-bottom: 20px;
+}
+.teaching-box {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+}
+.Calendar {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+.Calendar li {
+  display: flex;
+  align-items: center;
+}
+.Calendar li img {
+  margin-right: 10px;
+}
+.price-float {
+  font-size: 24px;
+  font-weight: bold;
+  color: #28a745;
+}
+.price-float .fas {
+  margin-right: 5px;
+}
+.teaching-box p .fas {
+  margin-right: 5px;
+}
+
+
+
+.card-couch-new {
+  width: 100% !important;
+  border-radius: 5% !important;
+  height: 55vh !important;
+}
+
+/* Custom CSS */
+.card {
+  /* background: #f8f9fa; */
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  margin-bottom: 1rem;
+}
+
+.card p {
+  margin: 0;
+  padding: 0.5rem 0;
+}
+.content-heading {
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #343a40;
+}
+
+.tutor-button {
+  min-height: 100px; /* Adjust this value as needed */
+  max-height: 150px; /* Adjust this value as needed */
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+

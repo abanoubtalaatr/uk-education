@@ -9,7 +9,9 @@
                         <li><a href="#">Home ></a></li>
                         <li><a href="#">Subscriptions</a></li>
                     </ul>
-                    <h3>All Subscriptions</h3>
+                    {!! \Outl1ne\NovaSettings\NovaSettings::getSetting('subscription_description') !!}
+
+                    <h3 class="mt-4">All Subscriptions</h3>
                 </div>
             </div>
             <div class="row mb-3">

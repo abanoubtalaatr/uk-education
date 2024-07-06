@@ -29,7 +29,8 @@ class Subscription extends Resource
             Number::make('Price')->rules('required'),
             Textarea::make('Description')->rules('required'),
             Number::make('Number of Free Videos')->rules('required'),
-            HasMany::make('Videos'),
+            HasMany::make('Topics'),
+
             HasMany::make('Bookings')
         ];
     }

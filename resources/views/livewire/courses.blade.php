@@ -9,6 +9,9 @@
                         <li><a href="#">Home ></a></li>
                         <li><a href="#">Courses</a></li>
                     </ul>
+                    <p>
+                        {!! \Outl1ne\NovaSettings\NovaSettings::getSetting('course_description') !!}
+                    </p>
                     <h3>All Courses</h3>
                 </div>
             </div>

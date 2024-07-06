@@ -9,7 +9,10 @@
                         <li><a href="#">Home ></a></li>
                         <li><a href="#">Mock exams</a></li>
                     </ul>
-                    <h3>Book Your Mock</h3>
+                    <p>
+                        {!! \Outl1ne\NovaSettings\NovaSettings::getSetting('mock_description') !!}
+                    </p>
+                    <h3 class="mt-2">Book Your Mock</h3>
                 </div>
             </div>
             <div class="row mb-3">

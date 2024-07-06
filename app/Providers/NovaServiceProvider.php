@@ -10,7 +10,9 @@ use App\Nova\About;
 use App\Nova\Brand;
 use App\Nova\Event;
 use App\Nova\Model;
+use App\Nova\Topic;
 use App\Nova\Tutor;
+use App\Nova\Video;
 use App\Nova\Answer;
 use App\Nova\Course;
 use App\Nova\Region;
@@ -33,6 +35,7 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Menu\MenuItem;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Menu\MenuSection;
 use Illuminate\Support\Facades\Gate;
 use Whitecube\NovaPage\NovaPageTool;
@@ -40,6 +43,7 @@ use Sereny\NovaPermissions\Nova\Role;
 use App\Nova\Tools\CustomNovaPageTool;
 use Outl1ne\NovaSettings\NovaSettings;
 use Epigra\NovaSettings\NovaSettingsTool;
+use Laravel\Nova\Fields\Trix;
 use Spatie\NovaTranslatable\Translatable;
 use Sereny\NovaPermissions\Nova\Permission;
 use Sereny\NovaPermissions\NovaPermissions;
@@ -90,6 +94,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         
                 MenuSection::make(__('Subscriptions'), [
                     MenuItem::resource(Subscription::class),
+                    MenuItem::resource(Topic::class),
+                    MenuItem::resource(Video::class),
                 ])->icon('credit-card')->collapsable()->collapsedByDefault(),
         
                 MenuSection::make(__('Roles and Permissions'), [
@@ -152,8 +158,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             ->help('Enter a valid Mobile'),
 
 
-            Image::make(__("Logo"), 'logo')
-            ,
+            Image::make(__("Logo"), 'logo'),
+
+            Trix::make(__("What Is Mock Exam."), 'mock_description'),
+            Trix::make(__("What Is Course."), 'course_description'),
+            Trix::make(__("What Is Crash Course."), 'crash_description'),
+            Trix::make(__("What Is Subscription."), 'subscription_description'),
+
         ]);
     }
 
