@@ -21,7 +21,6 @@
         "php": "^8.2",
         "armincms/json": "^0.5.2",
         "czemu/nova-calendar-tool": "^1.3",
-        "dive-be/nova-froala-field": "^1.1",
         "ebess/advanced-nova-media-library": "^4.2",
         "eminiarts/nova-tabs": "^2.2",
         "epartment/nova-dependency-container": "^1.3",
