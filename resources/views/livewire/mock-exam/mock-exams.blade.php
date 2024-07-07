@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-12 my-3">
+                <div class="col-md-12 ">
                     <ul class="nav nav-tabs border-bottom-0" id="myTab" role="tablist">
                         <li class="m-1 mobile-taps-responsive mb-2" role="presentation">
                             <button class="p-2 btn border btn-info" id="home-tab" data-toggle="tab" data-target="#home"
