@@ -40,47 +40,47 @@ class MockExam extends Resource
           
             Textarea::make('Description')->rules('required'),
             DateTime::make('Date', 'date')->rules('required'),
-            new Tabs('Mock Details', [
-                Tab::make('Mock Content', [
-                    Flexible::make('Mock Content')
-                        ->addLayout('Content', 'content', [
-                            Textarea::make('Content')
-                        ])
-                        ->button('Add New Content'),
-                ]),
+            // new Tabs('Mock Details', [
+            //     Tab::make('Mock Content', [
+            //         Flexible::make('Mock Content')
+            //             ->addLayout('Content', 'content', [
+            //                 Textarea::make('Content')
+            //             ])
+            //             ->button('Add New Content'),
+            //     ]),
 
-                Tab::make('Who is the course for?', [
-                    Flexible::make('Who Is The Course For')
-                        ->addLayout('Audience', 'audience', [
-                            Textarea::make('Audience')
-                        ])
-                        ->button('Add New Audience'),
-                ]),
+            //     Tab::make('Who is the course for?', [
+            //         Flexible::make('Who Is The Course For')
+            //             ->addLayout('Audience', 'audience', [
+            //                 Textarea::make('Audience')
+            //             ])
+            //             ->button('Add New Audience'),
+            //     ]),
 
-                Tab::make('Course Aims', [
-                    Flexible::make('Course Aims')
-                        ->addLayout('Aims', 'aims', [
-                            Textarea::make('Aims')
-                        ])
-                        ->button('Add New Aim'),
-                ]),
+            //     Tab::make('Course Aims', [
+            //         Flexible::make('Course Aims')
+            //             ->addLayout('Aims', 'aims', [
+            //                 Textarea::make('Aims')
+            //             ])
+            //             ->button('Add New Aim'),
+            //     ]),
 
-                Tab::make('Learning Objectives', [
-                    Flexible::make('Learning Objectives')
-                        ->addLayout('Objective', 'objective', [
-                            Textarea::make('Objective')
-                        ])
-                        ->button('Add New Objective'),
-                ]),
+            //     Tab::make('Learning Objectives', [
+            //         Flexible::make('Learning Objectives')
+            //             ->addLayout('Objective', 'objective', [
+            //                 Textarea::make('Objective')
+            //             ])
+            //             ->button('Add New Objective'),
+            //     ]),
 
-                Tab::make('Learning Outcomes', [
-                    Flexible::make('Learning Outcomes')
-                        ->addLayout('Outcome', 'outcome', [
-                            Textarea::make('Outcome')
-                        ])
-                        ->button('Add New Outcome'),
-                ]),
-            ]),
+            //     Tab::make('Learning Outcomes', [
+            //         Flexible::make('Learning Outcomes')
+            //             ->addLayout('Outcome', 'outcome', [
+            //                 Textarea::make('Outcome')
+            //             ])
+            //             ->button('Add New Outcome'),
+            //     ]),
+            // ]),
             HasMany::make('Bookings'),
 
             Multiselect::make('Tutors', 'tutors')
