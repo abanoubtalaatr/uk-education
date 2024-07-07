@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="row">
+                {{-- <div class="row">
                     <div class="col-md-12 my-3">
                         <ul class="nav nav-tabs border-bottom-0" id="myTab" role="tablist">
                             <li class="m-1 mobile-taps-responsive mb-2" role="presentation">
@@ -147,7 +147,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- 
                 <div class="row">
 

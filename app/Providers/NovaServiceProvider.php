@@ -24,7 +24,9 @@ use App\Nova\Interest;
 use App\Nova\MockExam;
 use App\Nova\Question;
 use Laravel\Nova\Nova;
+use Eminiarts\Tabs\Tab;
 use App\Nova\NewsLetter;
+use Eminiarts\Tabs\Tabs;
 use App\Nova\CrashCourse;
 use App\Nova\Testimonial;
 use App\Nova\BankScenario;
@@ -32,6 +34,7 @@ use App\Nova\Subscription;
 use Illuminate\Http\Request;
 use App\Nova\Dashboards\Main;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Menu\MenuItem;
@@ -43,10 +46,10 @@ use Sereny\NovaPermissions\Nova\Role;
 use App\Nova\Tools\CustomNovaPageTool;
 use Outl1ne\NovaSettings\NovaSettings;
 use Epigra\NovaSettings\NovaSettingsTool;
-use Laravel\Nova\Fields\Trix;
 use Spatie\NovaTranslatable\Translatable;
 use Sereny\NovaPermissions\Nova\Permission;
 use Sereny\NovaPermissions\NovaPermissions;
+use Whitecube\NovaFlexibleContent\Flexible;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
@@ -161,6 +164,49 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Image::make(__("Logo"), 'logo'),
 
             Trix::make(__("What Is Mock Exam."), 'mock_description'),
+         
+            new Tabs('Mock Details', [
+                Tab::make('Mock Content', [
+                    Flexible::make('Mock Content')
+                        ->addLayout('Content', 'content', [
+                            Textarea::make('Content')
+                        ])
+                        ->button('Add New Content'),
+                ]),
+
+                Tab::make('Mock Who is the course for?', [
+                    Flexible::make('Mock Who Is The Course For')
+                        ->addLayout('Audience', 'audience', [
+                            Textarea::make('Audience')
+                        ])
+                        ->button('Add New Audience'),
+                ]),
+
+                Tab::make('Mock Course Aims', [
+                    Flexible::make('Mock Course Aims')
+                        ->addLayout('Aims', 'aims', [
+                            Textarea::make('Aims')
+                        ])
+                        ->button('Add New Aim'),
+                ]),
+
+                Tab::make('Mock Learning Objectives', [
+                    Flexible::make('Mock Learning Objectives')
+                        ->addLayout('Objective', 'objective', [
+                            Textarea::make('Objective')
+                        ])
+                        ->button('Add New Objective'),
+                ]),
+
+                Tab::make('Mock Learning Outcomes', [
+                    Flexible::make('Mock Learning Outcomes')
+                        ->addLayout('Outcome', 'outcome', [
+                            Textarea::make('Outcome')
+                        ])
+                        ->button('Add New Outcome'),
+                ]),
+            ]),
+            
             Trix::make(__("What Is Course."), 'course_description'),
             Trix::make(__("What Is Crash Course."), 'crash_description'),
             Trix::make(__("What Is Subscription."), 'subscription_description'),
