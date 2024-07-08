@@ -22,10 +22,12 @@ class Profile extends Component
     {
         $this->information = auth('web')->user()->toArray();
         $this->subscriptions = auth('web')->user()->subscriptions;
+        
         $this->courses = auth('web')->user()->courses;
         $this->mockExams = auth('web')->user()->mockExams;
         $this->crashCourses = auth('web')->user()->crashCourses;
         $this->settings = NovaSettings::getSettings();
+        $this->loadBookings();
     }
 
     public function loadBookings()

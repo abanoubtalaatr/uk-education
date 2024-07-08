@@ -2,15 +2,14 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\File;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\File;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
-use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 
 class Video extends Resource
 {
@@ -51,7 +50,10 @@ class Video extends Resource
             Text::make('name')->rules('required'),
             Image::make('image') // second parameter is the media collection name
                 ->rules('required'),
-            File::make('link')->rules('required')
+            File::make('File', 'file')->rules('required'),
+            Trix::make('Description','description')->rules('required'),
+            Trix::make('Notes','notes'),
+            File::make('Video', 'link')->rules('required'),
         ];
     }
 

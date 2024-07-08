@@ -1,47 +1,61 @@
-<main>
-    @include('partials.nav-header')
-    <!-- start add cours -->
-    <div class="add-2">
-        <div class="container">
-            <div class="row">
-                <div class="head-path">
-                    <ul class="path-menu">
-                        <li><a href="#">Home ></a></li>
-                        <li><a href="#">Subscriptions</a></li>
-                    </ul>
-                    {!! \Outl1ne\NovaSettings\NovaSettings::getSetting('subscription_description') !!}
 
-                    <h3 class="mt-4">All Subscriptions</h3>
-                </div>
-            </div>
-            <div class="row mb-3">
-                @foreach ($subscriptions as $subscription)
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <a href="{{ $subscription->id }}">
-                            <img src="{{ asset('storage/'. $subscription->image) }}" class="card-img-top card-top img-fluid" alt="{{ $subscription->name }}" />
-                        </a>
-                        <h4 class="card-info">{{ $subscription->name }}</h4>
-                        <a href="{{ $subscription->image }}" data-lightbox="roadtrip" data-title="{{ $subscription->name }}">
-                            <div class="layout">&nbsp;</div>
-                        </a>
-                        <div class="card-body border p-3 mb-2 rounded">
-                            <h5 class="card-title">
-                                {{ implode(', ', $subscription->tutors->pluck('name')->toArray()) }} 
-                            </h5>
-                            <p>number of attendees <strong>{{\App\Services\BookingService::getAttendeesNumberInSubscription($subscription->id)}} people</strong></p>
-                            {{-- <p>number of hours <strong>20h</strong></p> --}}
-                            <a href="{{route('subscriptions.show', $subscription->id)}}" class="btn btn-join float-right">Booking Now</a>
-                            <span>{{ $subscription->price }} $    </span>
-                        </div>
+
+<div>
+    @include('partials.nav-header')
+    
+    <main>
+        <div class="container">
+            <h4 class="mb-5">Subscriptions</h4>
+          <div
+            id="carouselExampleCaptions"
+            class="carousel slide"
+            data-ride="carousel"
+          >
+            <ol class="carousel-indicators">
+              <li
+                data-target="#carouselExampleCaptions"
+                data-slide-to="0"
+                class="active"
+              ></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                @foreach ($subscriptions as $key=> $subscription)
+                <div class="carousel-item carousel-item-new-sub @if ($key==0) active @endif ">
+                    <img
+                      src="{{asset('storage/'. $subscription->image)}}"
+                      height="300"
+                      class="d-block w-100"
+                      alt="image name"
+                    />
+                    <div class="layout-carsoul">&nbsp;</div>
+      
+                    <div class="carousel-caption d-none d-md-block">
+                      <div class="sub-info-new-su">
+                        <h6>{{$subscription->name}}</h6>
+                      </div>
+                      <p>
+                       {{$subscription->description}}
+                      </p>
+      
+                      <a href="{{route('subscriptions.show', $subscription->id)}}" class="btn btn-join-2"
+                        >Subscripe Now
+                      </a>
+                      <button class="btn btn-join fw-bolds">{{$subscription->price}} $</button>
                     </div>
-                </div>
+                  </div>
                 @endforeach
+              
+              
             </div>
-            <div class="d-flex justify-content-center mt-5">
-                {{-- {{ $subscriptions->links() }} --}}
-            </div>
+          </div>
         </div>
-    </div>
-    @include('partials.footer')
-</main>
+  
+        <br />
+        <br />
+        <!-- start subscrib -->
+        
+      </main>
+    
+</div>

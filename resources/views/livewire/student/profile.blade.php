@@ -182,11 +182,13 @@
                                                                         @foreach ($bookings[$day] as $booking)
                                                                             <div
                                                                                 class="booking pl-1 my-2 rounded border cursor-pointer">
+                                                                                @if($booking->tutor)
                                                                                 <p class="mb-1"
                                                                                     style="font-size: 12px"><strong
                                                                                         class="">Tutor:</strong>
-                                                                                    {{ $booking->tutor->name }}
+                                                                                    {{ $booking->tutor?->name }}
                                                                                 </p>
+                                                                                @endif
                                                                                 <p class="mb-0"
                                                                                     style="font-size: 12px">
                                                                                     <strong>Time:</strong>
