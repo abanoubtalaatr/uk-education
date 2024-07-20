@@ -8,7 +8,6 @@ use Eminiarts\Tabs\Tabs;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
@@ -16,7 +15,6 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\Textarea;
 use Outl1ne\MultiselectField\Multiselect;
-use Whitecube\NovaFlexibleContent\Flexible;
 
 class MockExam extends Resource
 {
@@ -86,8 +84,8 @@ class MockExam extends Resource
             Multiselect::make('Tutors', 'tutors')
             ->belongsToMany(Tutor::class, false),
 
-            Multiselect::make('Bank Scenarios', 'bankScenarios')
-            ->belongsToMany(BankScenario::class, false),
+            Multiselect::make('Scenarios', 'scenarios')
+            ->belongsToMany(Scenario::class, false),
         ];
     }
 
@@ -97,4 +95,5 @@ class MockExam extends Resource
             ? ['nullable', 'image']
             : ['required', 'image'];
     }
+
 }

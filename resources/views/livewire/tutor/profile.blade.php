@@ -23,7 +23,7 @@
                 aria-selected="true"
                 >Personal Data</a
               >
-              <a
+              {{-- <a
                 class="nav-item nav-link mx-2 mb-3 "
                 id="nav-profile-tab"
                 data-toggle="tab"
@@ -32,7 +32,7 @@
                 aria-controls="nav-profile"
                 aria-selected="false"
                 >Subscription</a
-              >
+              > --}}
               <a
                 class="nav-item nav-link mx-2 mb-3 "
                 id="nav-contact-tab"

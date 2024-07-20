@@ -4,11 +4,13 @@ namespace App\Nova;
 
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\HasMany;
-use Laravel\Nova\Fields\Textarea;
+use Outl1ne\MultiselectField\Multiselect;
 
 class Subscription extends Resource
 {
@@ -24,14 +26,28 @@ class Subscription extends Resource
     {
         return [
             ID::make()->sortable(),
-            Image::make('Image')->rules('required', ),
+            Image::make('Image'),
+            File::make('Video','video'),
             Text::make('Name')->rules('required', 'max:255'),
             Number::make('Price')->rules('required'),
-            Textarea::make('Description')->rules('required'),
-            Number::make('Number of Free Videos')->rules('required'),
+            Trix::make('Description')->rules('required'),
             HasMany::make('Topics'),
 
             HasMany::make('Bookings')
         ];
+    }
+
+    protected function imageRules(Request $request)
+    {
+        return $request->isUpdateOrUpdateAttachedRequest()
+            ? ['nullable', 'image']
+            : ['required', 'image'];
+    }
+
+    protected function videoRules(Request $request)
+    {
+        return $request->isUpdateOrUpdateAttachedRequest()
+            ? ['nullable', ]
+            : ['required'];
     }
 }

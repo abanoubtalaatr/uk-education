@@ -2,27 +2,15 @@
 
 namespace App\Providers;
 
-use App\Nova\City;
 use App\Nova\Page;
-use App\Nova\Type;
 use App\Nova\User;
-use App\Nova\About;
-use App\Nova\Brand;
-use App\Nova\Event;
-use App\Nova\Model;
 use App\Nova\Topic;
 use App\Nova\Tutor;
 use App\Nova\Video;
-use App\Nova\Answer;
 use App\Nova\Course;
-use App\Nova\Region;
 use App\Nova\Slider;
-use App\Nova\Survey;
 use App\Nova\Contact;
-use App\Nova\District;
-use App\Nova\Interest;
 use App\Nova\MockExam;
-use App\Nova\Question;
 use Laravel\Nova\Nova;
 use Eminiarts\Tabs\Tab;
 use App\Nova\NewsLetter;
@@ -33,19 +21,17 @@ use App\Nova\BankScenario;
 use App\Nova\Subscription;
 use Illuminate\Http\Request;
 use App\Nova\Dashboards\Main;
+use App\Nova\Scenario;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Menu\MenuItem;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Menu\MenuSection;
 use Illuminate\Support\Facades\Gate;
-use Whitecube\NovaPage\NovaPageTool;
 use Sereny\NovaPermissions\Nova\Role;
-use App\Nova\Tools\CustomNovaPageTool;
 use Outl1ne\NovaSettings\NovaSettings;
-use Epigra\NovaSettings\NovaSettingsTool;
+use DigitalSolutions\Calendar\Calendar;
 use Spatie\NovaTranslatable\Translatable;
 use Sereny\NovaPermissions\Nova\Permission;
 use Sereny\NovaPermissions\NovaPermissions;
@@ -88,7 +74,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ])->icon('clipboard-list')->collapsable()->collapsedByDefault(),
                
                 MenuSection::make(__('Bank Scenarios'), [
-                    MenuItem::resource(BankScenario::class),
+                    MenuItem::resource(  Scenario::class),
                 ])->icon('clipboard-list')->collapsable()->collapsedByDefault(),
         
                 MenuSection::make(__('Crash Course'), [
@@ -98,8 +84,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::make(__('Subscriptions'), [
                     MenuItem::resource(Subscription::class),
                     MenuItem::resource(Topic::class),
-                    MenuItem::resource(Video::class),
-                ])->icon('credit-card')->collapsable()->collapsedByDefault(),
+                    ])->icon('credit-card')->collapsable()->collapsedByDefault(),
         
                 MenuSection::make(__('Roles and Permissions'), [
                     MenuItem::resource(Role::class)->canSee(fn () => true),
@@ -117,6 +102,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(Contact::class)->canSee(fn () => true),
                     MenuItem::resource(NewsLetter::class)->canSee(fn () => true),
                 ])->collapsable()->icon('cog')->collapsedByDefault(),
+
+                (new Calendar())->menu($request)
             ];
         });
         
@@ -127,89 +114,185 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
             Text::make(__("Twitter account"), 'twitter')
                 ->rules('required', 'url')
-                ->help('Enter a valid Facebook URL'),
+                ->help('Enter a valid Twitter URL'),
 
             Text::make(__("Instagram account"), 'instagram')
-            ->rules('required', 'url')
-            ->help('Enter a valid instagram URL'),
+                ->rules('required', 'url')
+                ->help('Enter a valid Instagram URL'),
 
             Text::make(__("Youtube account"), 'youtube')
-            ->rules('required', 'url')
-            ->help('Enter a valid Youtube URL'),
+                ->rules('required', 'url')
+                ->help('Enter a valid Youtube URL'),
 
             Text::make(__("Linkedin account"), 'linkedin')
-            ->rules('required', 'url')
-            ->help('Enter a valid Linkedin URL'),
+                ->rules('required', 'url')
+                ->help('Enter a valid Linkedin URL'),
 
             Text::make(__("Email"), 'email')
-            ->rules('required', 'email')
-            ->help('Enter a valid Email'),
+                ->rules('required', 'email')
+                ->help('Enter a valid Email'),
 
 
             Text::make(__("Address"), 'address')
-            ->rules('required', 'max:255')
-            ->help('Enter a valid Address'),
+                ->rules('required', 'max:255')
+                ->help('Enter a valid Address'),
 
 
             Text::make(__("Whats App"), 'whats_app_number')
-            ->rules('required', 'numeric')
-            ->help('Enter a valid Whats app number'),
+                ->rules('required', 'numeric')
+                ->help('Enter a valid Whats app number'),
 
 
             Text::make(__("Mobile number"), 'mobile')
-            ->rules('required', 'numeric')
-            ->help('Enter a valid Mobile'),
+                ->rules('required', 'numeric')
+                ->help('Enter a valid Mobile'),
 
 
             Image::make(__("Logo"), 'logo'),
 
-            Trix::make(__("What Is Mock Exam."), 'mock_description'),
          
-            new Tabs('Mock Details', [
-                Tab::make('Mock Content', [
-                    Flexible::make('Mock Content')
-                        ->addLayout('Content', 'content', [
-                            Textarea::make('Content')
+            //Mock
+            new Tabs('Our Plab2 Mocks', [
+                Tab::make('Our Plab2 Mocks', [
+                    Flexible::make('Our Plab2 Mocks')
+                        ->addLayout('Plab2 Mocks', 'plab_mocks', [
+                            Textarea::make('Plab2 Mocks')
                         ])
-                        ->button('Add New Content'),
+                        ->button('Add New'),
                 ]),
 
-                Tab::make('Mock Who is the course for?', [
-                    Flexible::make('Mock Who Is The Course For')
-                        ->addLayout('Audience', 'audience', [
-                            Textarea::make('Audience')
+                Tab::make('Why is it important', [
+                    Flexible::make('Why is it important')
+                        ->addLayout('Why is it important', 'why_is_it_important', [
+                            Textarea::make('Important')
                         ])
-                        ->button('Add New Audience'),
+                        ->button('Add New'),
                 ]),
 
-                Tab::make('Mock Course Aims', [
-                    Flexible::make('Mock Course Aims')
-                        ->addLayout('Aims', 'aims', [
-                            Textarea::make('Aims')
+                Tab::make('When to take a mock', [
+                    Flexible::make('When to take a mock')
+                        ->addLayout('When', 'when_to_take_a_mock', [
+                            Textarea::make('When')
                         ])
-                        ->button('Add New Aim'),
+                        ->button('Add New'),
                 ]),
-
-                Tab::make('Mock Learning Objectives', [
-                    Flexible::make('Mock Learning Objectives')
-                        ->addLayout('Objective', 'objective', [
-                            Textarea::make('Objective')
+                
+                Tab::make('Mock results and feedback', [
+                    Flexible::make('Mock results and feedback')
+                        ->addLayout('Feedback', 'feedback', [
+                            Textarea::make('Feedback')
                         ])
-                        ->button('Add New Objective'),
+                        ->button('Add New'),
                 ]),
-
-                Tab::make('Mock Learning Outcomes', [
-                    Flexible::make('Mock Learning Outcomes')
-                        ->addLayout('Outcome', 'outcome', [
-                            Textarea::make('Outcome')
-                        ])
-                        ->button('Add New Outcome'),
-                ]),
+    
             ]),
             
-            Trix::make(__("What Is Course."), 'course_description'),
-            Trix::make(__("What Is Crash Course."), 'crash_description'),
-            Trix::make(__("What Is Subscription."), 'subscription_description'),
+
+            //Course
+            new Tabs('PLAB2/CPSA Course', [
+                Tab::make('PLAB2/CPSA Course', [
+                    Flexible::make('PLAB2/CPSA Course')
+                        ->addLayout('PLAB2/CPSA Course', 'plab_course', [
+                            Textarea::make('Plab2 Course')
+                        ])
+                        ->button('Add New'),
+                ]),
+
+                
+                Tab::make('Course content', [
+                    Flexible::make('Course content')
+                        ->addLayout('Course content', 'course_content', [
+                            Textarea::make('course_content')
+                        ])
+                        ->button('Add New'),
+                ]),
+
+                Tab::make('Who the course for', [
+                    Flexible::make('Who the course for')
+                        ->addLayout('Who the course for', 'who_the_course_for', [
+                            Textarea::make('Who the course for')
+                        ])
+                        ->button('Add New'),
+                ]),
+
+                Tab::make('Course aims', [
+                    Flexible::make('Course aims')
+                        ->addLayout('Course aims', 'course_aims', [
+                            Textarea::make('Course Aims')
+                        ])
+                        ->button('Add New'),
+                ]),
+                
+                Tab::make('Learning objectives', [
+                    Flexible::make('Learning objectives')
+                        ->addLayout('Learning objectives', 'course_learning_objectives', [
+                            Textarea::make('Learning objectives')
+                        ])
+                        ->button('Add New'),
+                ]),
+
+                Tab::make('Learning outcomes', [
+                    Flexible::make('Learning outcomes')
+                        ->addLayout('Learning outcomes', 'course_learning_outcomes', [
+                            Textarea::make('Learning outcomes')
+                        ])
+                        ->button('Add New'),
+                ]),
+    
+            ]),
+            
+            new Tabs('Plab2/CPSA crash course', [
+                Tab::make('Plab2/CPSA crash course', [
+                    Flexible::make('Plab2/CPSA crash course')
+                        ->addLayout('PLAB2/CPSA Crash Course', 'plab_crash_course', [
+                            Textarea::make('Plab2 Crash Course')
+                        ])
+                        ->button('Add New'),
+                ]),
+
+                
+                Tab::make('Crash course content', [
+                    Flexible::make('Crash course content')
+                        ->addLayout('Crash course content', 'crash_course_content', [
+                            Textarea::make('Crash Course Content')
+                        ])
+                        ->button('Add New'),
+                ]),
+
+                Tab::make('Who the crash course for', [
+                    Flexible::make('Who the crash course for')
+                        ->addLayout('Who the crash course for', 'who_the_crash_course_for', [
+                            Textarea::make('Who the crash course for')
+                        ])
+                        ->button('Add New'),
+                ]),
+
+                Tab::make('Crash Course aims', [
+                    Flexible::make('Crash Course aims')
+                        ->addLayout('Crash Course aims', 'crash_course_aims', [
+                            Textarea::make('Crash Course Aim')
+                        ])
+                        ->button('Add New'),
+                ]),
+                
+                Tab::make('Crash Course Learning objectives', [
+                    Flexible::make('Crash Course Learning objectives')
+                        ->addLayout('Crash Course Learning objectives', 'crash_course_learning_objectives', [
+                            Textarea::make('Crash Course Learning objectives')
+                        ])
+                        ->button('Add New'),
+                ]),
+
+                Tab::make('Crash Course Learning outcomes', [
+                    Flexible::make('Crash Course Learning outcomes')
+                        ->addLayout('Crash Course Learning outcomes', 'crash_course_learning_outcomes', [
+                            Textarea::make('Crash Course Learning outcomes')
+                        ])
+                        ->button('Add New'),
+                ]),
+    
+            ]),
+            
 
         ]);
     }
@@ -219,8 +302,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         return [
             new NovaPermissions(),
             new \Outl1ne\NovaSettings\NovaSettings,
+            new Calendar(),
             
-            // \Whitecube\NovaPage\NovaPageTool::make(),
         ];
     }
 

@@ -9,8 +9,11 @@ class Topic extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['subscription_id', 'name', 'description', 'image'];
+    protected $fillable = ['subscription_id', 'name', 'description', 'image','pdf','is_paid','video'];
 
+    protected $casts = [
+        'is_paid' => 'boolean'
+    ];
     public function subscription()
     {
         return $this->belongsTo(Subscription::class);

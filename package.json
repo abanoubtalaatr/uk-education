@@ -4,14 +4,14 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build && vite build --ssr",
-        "build-CalendarTool": "cd nova-components/CalendarTool && npm run dev",
-        "build-CalendarTool-prod": "cd nova-components/CalendarTool && npm run prod",
-        "build-BookingsCalendar": "cd nova-components/BookingsCalendar && npm run dev",
-        "build-BookingsCalendar-prod": "cd nova-components/BookingsCalendar && npm run prod",
-        "build-BookingsTool": "cd nova-components/BookingsTool && npm run dev",
-        "build-BookingsTool-prod": "cd nova-components/BookingsTool && npm run prod",
-        "build-booking-calendar": "cd nova-components/BookingCalendar && npm run dev",
-        "build-booking-calendar-prod": "cd nova-components/BookingCalendar && npm run prod"
+        "build-booking-calender": "cd nova-components/BookingCalender && npm run dev",
+        "build-booking-calender-prod": "cd nova-components/BookingCalender && npm run prod",
+        "build-booking": "cd nova-components/Booking && npm run dev",
+        "build-booking-prod": "cd nova-components/Booking && npm run prod",
+        "build-calender": "cd nova-components/Calender && npm run dev",
+        "build-calender-prod": "cd nova-components/Calender && npm run prod",
+        "build-calendar": "cd nova-components/Calendar && npm run dev",
+        "build-calendar-prod": "cd nova-components/Calendar && npm run prod"
     },
     "devDependencies": {
         "@egoist/tailwindcss-icons": "^1.7.4",

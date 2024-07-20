@@ -26,7 +26,7 @@ class BankScenario extends Resource
      *
      * @var string
      */
-    public static $title = 'number';
+    public static $title = 'name';
 
     /**
      * The columns that should be searched.
@@ -47,11 +47,11 @@ class BankScenario extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('number')->rules('required'),
-            Trix::make('Questions','question')->rules('required'),
-            Trix::make('Answers','answer')->rules('required'),
-            Trix::make('Notes','notes')->rules('nullable'),
-            // BelongsToMany::make('Mock Exams', 'mockExams'),
+            Text::make('Number', 'number')->rules('required'),
+            Text::make('Name','name')->rules('required'),
+
+            HasMany::make('Scenarios', 'scenarios'),
+            
         ];
     }
 

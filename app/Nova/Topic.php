@@ -2,13 +2,16 @@
 
 namespace App\Nova;
 
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Http\Requests\NovaRequest;
+use Illuminate\Http\Request;
+use Laravel\Nova\Fields\File;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Image;
-use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Trix;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 
 class Topic extends Resource
@@ -20,6 +23,20 @@ class Topic extends Resource
      */
     public static $model = \App\Models\Topic::class;
 
+    public static function label()
+    {
+        return __('Chapters');
+    }
+
+    /**
+     * Get the displayable singular label of the resource.
+     *
+     * @return string
+     */
+    public static function singularLabel()
+    {
+        return __('Chapter');
+    }
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
@@ -46,12 +63,30 @@ class Topic extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Subscription'),
-            Text::make('Name'),
-            Text::make('Description'),
+            BelongsTo::make('Subscription')->rules('required'),
+            Text::make('Name')->rules('required'),
+            Trix::make('Description')->rules('required'),
             Image::make('Image'),
+            File::make('PDF', 'pdf'),
+            File::make('Video', 'video'),
+            Boolean::make('Is Paid', 'is_paid')->rules('required'),
             HasMany::make('Videos')
         ];
+    }
+
+    protected function imageRules(Request $request)
+    {
+        return $request->isUpdateOrUpdateAttachedRequest()
+            ? ['nullable', 'image']
+            : ['required', 'image'];
+    }
+
+
+    protected function pdfRules(Request $request)
+    {
+        return $request->isUpdateOrUpdateAttachedRequest()
+            ? ['nullable', 'pdf']
+            : ['required', 'pdf'];
     }
 
     /**

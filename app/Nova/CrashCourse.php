@@ -25,8 +25,7 @@ class CrashCourse extends Resource
     {
         return [
             ID::make()->sortable(),
-            Image::make('Image')
-                ->rules('required', 'image'),
+            Image::make('Image'),
             Text::make('Name')->rules('required', 'max:255'),
             Number::make('Price')->rules('required'),
             Text::make('Link')->rules('required', 'max:255'),
@@ -34,5 +33,12 @@ class CrashCourse extends Resource
             Textarea::make('Description')->rules('required'),
             HasMany::make('Bookings')
         ];
+    }
+
+    protected function imageRules(Request $request)
+    {
+        return $request->isUpdateOrUpdateAttachedRequest()
+            ? ['nullable', 'image']
+            : ['required', 'image'];
     }
 }

@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BookingController;
+use App\Http\Controllers\Api\BookingController;
 
-Route::get('/bookings', [BookingController::class, 'index']);
+
 Route::get('/bookings/date', [BookingController::class, 'bookingsByDate']);
+Route::get('/bookings/monthly', [BookingController::class, 'getMonthlyBookings']);

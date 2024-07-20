@@ -15,4 +15,9 @@ class BankScenario extends Model
     {
         return $this->belongsToMany(MockExam::class, 'bank_scenario_mock_exams');
     }
+
+    public function scenarios()
+    {
+        return $this->hasMany(Scenario::class);
+    }
 }

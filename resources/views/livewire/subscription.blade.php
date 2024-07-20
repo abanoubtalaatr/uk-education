@@ -36,7 +36,7 @@
                         <h6>{{$subscription->name}}</h6>
                       </div>
                       <p>
-                       {{$subscription->description}}
+                       {{-- {!! $subscription->description !!} --}}
                       </p>
       
                       <a href="{{route('subscriptions.show', $subscription->id)}}" class="btn btn-join-2"

@@ -32,9 +32,9 @@ class MockExam extends Model
         return $this->belongsToMany(Tutor::class, 'mock_exam_tutor');
     }
 
-    public function bankScenarios()
+    public function scenarios()
     {
-        return $this->belongsToMany(BankScenario::class, 'bank_scenario_mock_exams');
+        return $this->belongsToMany(Scenario::class, 'scenario_mock_exams');
     }
 
     public function isBookedByAuthUser()

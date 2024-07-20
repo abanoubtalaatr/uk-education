@@ -7,16 +7,16 @@ use Outl1ne\NovaSettings\NovaSettings;
 
 class MockExams extends Component
 {
-    public $mockExams, $settings, $mockContent, $mockWhoIsTheCourseFor, $mockLearningObjectives, $mockLearningOutcomes, $mockCourseAims;
+    public $mockExams, $settings, $ourPlab2Mocks, $whenToTakeAMock, $whyIsItImportant, $mockResultsAndFeedback, $mockCourseAims;
 
     public function mount()
     {
         $this->settings = NovaSettings::getSettings();
-        $this->mockContent = json_decode($this->settings['mock_content'], true);
-        $this->mockWhoIsTheCourseFor = json_decode($this->settings['mock_who_is_the_course_for'], true);
-        $this->mockLearningObjectives = json_decode($this->settings['mock_learning_objectives'], true);
-        $this->mockLearningOutcomes = json_decode($this->settings['mock_learning_outcomes'], true);
-        $this->mockCourseAims = json_decode($this->settings['mock_course_aims'], true);
+        
+        $this->ourPlab2Mocks = json_decode($this->settings['our_plab2_mocks'], true);
+        $this->whenToTakeAMock = json_decode($this->settings['when_to_take_a_mock'], true);
+        $this->whyIsItImportant = json_decode($this->settings['why_is_it_important'], true);
+        $this->mockResultsAndFeedback = json_decode($this->settings['mock_results_and_feedback'], true);
         
         $this->mockExams = \App\Models\MockExam::paginate(15)->items();
     }
