@@ -11,11 +11,12 @@ class Courses extends Component
 {
     use WithPagination;
 
-    public $courses = [],  $settings, $plabCourse, $courseContent, $whoTheCourseFor, $courseAims, $courseLearningObjectives, $courseLearningOutcomes;
+    public $courses = [],$search, $settings, $plabCourse, $courseContent, $whoTheCourseFor, $courseAims, $courseLearningObjectives, $courseLearningOutcomes;
 
     public function mount()
     {
-        $this->courses = Course::paginate(15)->items();
+        $this->search = request()->query('search', '');
+        $this->courses = Course::where('name', 'like', '%' . $this->search . '%')->get();
         $this->settings = NovaSettings::getSettings();
 
         $this->plabCourse = json_decode($this->settings['plab2/cpsa_course'], true);

@@ -86,10 +86,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(Topic::class),
                     ])->icon('credit-card')->collapsable()->collapsedByDefault(),
         
-                MenuSection::make(__('Roles and Permissions'), [
-                    MenuItem::resource(Role::class)->canSee(fn () => true),
-                    MenuItem::resource(Permission::class)->canSee(fn () => true),
-                ])->icon('shield-check')->collapsable()->collapsedByDefault(),
+                // MenuSection::make(__('Roles and Permissions'), [
+                //     MenuItem::resource(Role::class)->canSee(fn () => true),
+                //     MenuItem::resource(Permission::class)->canSee(fn () => true),
+                // ])->icon('shield-check')->collapsable()->collapsedByDefault(),
         
                 MenuSection::make(__('Settings'), [
                     MenuItem::resource(Page::class)->canSee(fn () => true),

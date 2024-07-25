@@ -126,7 +126,7 @@
                     @else
                         <li class="nav-item">
                             <a class="nav-link nav-link-2 join-us-now" href="{{ route('student-register') }}">
-                                Account</a>
+                                Student</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link nav-link-2 join-us-now" href="{{ route('tutor-login') }}">

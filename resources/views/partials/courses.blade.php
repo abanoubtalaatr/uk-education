@@ -35,7 +35,7 @@
                 
                 
 
-                <a href="course-details.html" class="btn btn-join float-right"
+                <a href="{{route('courses.show', $course->id)}}" class="btn btn-join float-right"
                   >Booking Now
                 </a>
                 <span>{{$course->price}} $</span>

@@ -73,16 +73,8 @@
                 aria-selected="false"
                 >Available Time
               </a>
-              <a
-                class="nav-item nav-link mx-2 mb-3 last"
-                id="nav-contact-5-tab"
-                data-toggle="tab"
-                href="#nav-contact-5"
-                role="tab"
-                aria-controls="nav-contact-5"
-                aria-selected="false"
-                >Calender
-              </a>
+              <a class="nav-item nav-link mx-2 mb-3" href="{{ route('tutor-calendar') }}" role="tab" aria-controls="nav-calendar" aria-selected="false">Calendar</a>
+
             </div>
           </nav>
           <div class="tab-content" id="nav-tabContent">

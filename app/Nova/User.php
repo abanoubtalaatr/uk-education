@@ -72,7 +72,7 @@ class User extends Resource
 
             Images::make(__('Profile Picture'), 'profile_picture')
                 ->withResponsiveImages()
-                ->showOnPreview()
+                ->showOnPreview()   
                 ->nullable()
                 ->mustCrop(),
 
@@ -91,25 +91,11 @@ class User extends Resource
                 ->creationRules('required', Rules\Password::defaults())
                 ->updateRules('nullable', Rules\Password::defaults()),
 
-            Date::make(__('Birth Date'), 'birth_date')
-                ->sortable()
-                ->rules('required'),
-
-            Select::make(__('Gender'), 'gender')->options([
-                "male" => __("Male"),
-                "female" => __("Female"),
-            ])->sortable()
-                ->rules('required'),
 
             Text::make(__('Phone'), 'phone')
                 ->rules('required'),
 
-            Text::make(__('Phone Code'), 'phone_code')
-                ->rules('nullable')->hideWhenUpdating()->hideWhenUpdating()->readonly(),
 
-            DateTime::make(__('Phone Verified At'), 'phone_verified_at')
-                ->sortable()
-                ->rules('nullable'),
 
             MorphToMany::make('Roles', 'roles', \Sereny\NovaPermissions\Nova\Role::class),
         ];

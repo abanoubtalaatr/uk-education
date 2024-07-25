@@ -5,18 +5,25 @@ namespace App\Livewire\Student;
 use Carbon\Carbon;
 use App\Models\Booking;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Outl1ne\NovaSettings\NovaSettings;
+use Illuminate\Support\Facades\Storage;
 
 class Profile extends Component
 {
-    public $tutor, $information, $subscriptions, $courses, $mockExams, $crashCourses, $slots = [];
+    use WithFileUploads;
+
+    public $tutor, $information, $subscriptions, $courses, $mockExams, $crashCourses, $slots = [], $profileImage, $oldPassword, $password, $password_confirmation;
     public $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
     public $weekOffset = 0;
     public $bookings = [];
     public $currentWeek;
     public $settings;
+    protected $listeners = ['imageUploaded' => 'forceRender'];
+
 
     public function mount()
     {
@@ -64,6 +71,59 @@ class Profile extends Component
         $this->weekOffset++;
         $this->loadBookings();
     }
+
+    public function updateProfile()
+    {
+        $user = auth('web')->user();
+
+        $validatedData = $this->validate([
+            'information.name' => 'required|string|max:255',
+            'information.email' => 'required|email|max:255',
+            'information.mobile' => 'required|string|max:20',
+            'information.whats_app_number' => 'required|string|max:20',
+            'profileImage' => 'nullable|image|max:1024', // 1MB Max
+        ]);
+
+        if ($this->profileImage) {
+            $path = $this->profileImage->store('profile_images', 'public');
+            $validatedData['information']['profile_image_url'] = Storage::url($path);
+
+        
+            // // Delete the old image if it exists
+            if ($user->profile_image_url) {
+                Storage::disk('public')->delete(str_replace('/storage/', '', $user->profile_image_url));
+            }
+        }
+
+        $user->update($validatedData['information']);
+        
+
+        session()->flash('message', 'Profile updated successfully.');
+    }
+
+    public function updatePassword()
+    {
+        $this->validate([
+            'oldPassword' => 'required',
+            'password' => 'required|min:8',
+            'password_confirmation' => 'required|same:password',
+        ]);
+
+        $user = auth('web')->user();
+
+        if (!Hash::check($this->oldPassword, $user->password)) {
+            $this->addError('oldPassword', 'The provided password does not match your current password.');
+            return;
+        }
+
+        $user->update(['password' => bcrypt($this->password)]);
+        $this->oldPassword = '';
+        $this->password = '';
+        $this->password_confirmation = '';
+        
+        session()->flash('message', 'Password updated successfully.');
+    }
+   
     public function render()
     {
 

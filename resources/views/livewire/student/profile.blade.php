@@ -17,78 +17,77 @@
                                     href="#nav-home" role="tab" aria-controls="nav-home"
                                     aria-selected="true">Personal Data</a>
 
-                                <a class="nav-item nav-link mx-2 mb-3 last" id="nav-contact-5-tab" data-toggle="tab"
-                                    href="#nav-contact-5" role="tab" aria-controls="nav-contact-5"
-                                    aria-selected="false">Calender
-                                </a>
+                                    <a class="nav-item nav-link mx-2 mb-3" href="{{ route('student-calendar') }}" role="tab" aria-controls="nav-calendar" aria-selected="false">Calendar</a>
+
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
                             <!-- start first tab -->
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
-                                aria-labelledby="nav-home-tab">
-                                <div class="row top">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                @if(session()->has('message'))
+                                <div class="alert alert-info">
+                                        {{session()->get('message')}}
+                                </div>
+                            @endif
+                                <div class="row ">
+                                    
                                     <div class="col-md-6">
                                         <div class="info">
                                             <h3>Personal Data</h3>
                                             <div class="up-img top-med">
-                                                <input type="file" class="imgpo" onchange="readURLL(this);" />
+                                                <input type="file" class="imgpo" wire:model="profileImage" onchange="readURLL(this);" />
                                                 <span class="file-hover">Change </span>
-                                                <img id="blah" src="{{ asset('assets/images/avatar.jpg') }}"
-                                                    alt="" class="img-fluid" />
+                                                <img id="blah" src="{{ $information['profile_image_url'] ?? asset('assets/images/avatar.jpg') }}" alt="" class="img-fluid" />
                                             </div>
-
-                                            <form class="top-med">
+                            
+                                            <form class="top-med" wire:submit.prevent="updateProfile">
                                                 <div class="form-group">
-                                                    <input wire:model="information.name" type="name"
-                                                        class="form-control" id="userEmail" placeholder="name" />
+                                                    <input wire:model="information.name" type="text" class="form-control" placeholder="Name" />
                                                 </div>
-
+                            
                                                 <div class="form-group">
-                                                    <input wire:model="information.email" type="email"
-                                                        class="form-control" id="userEmail" placeholder="Your Email" />
+                                                    <input wire:model="information.email" type="email" class="form-control" placeholder="Your Email" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <input wire:model="information.mobile" type="number"
-                                                        class="form-control" id="userphone"
-                                                        placeholder="phone number" />
+                                                    <input wire:model="information.mobile" type="text" class="form-control" placeholder="Phone Number" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <input wire:model="information.whats_app_number" type="number"
-                                                        class="form-control" id="whatsappNumber"
-                                                        placeholder="whatsapp number" />
+                                                    <input wire:model="information.whats_app_number" type="text" class="form-control" placeholder="WhatsApp Number" />
                                                 </div>
-                                                <button wire:click="updateProfile" type="button"
-                                                    class="btn btn-next float-right my-4">
-                                                    Save Change
-                                                </button>
+                                                <button type="submit" class="btn btn-next float-right my-4">Save Change</button>
                                             </form>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                    
                                         <div class="info">
                                             <h3>Change Password</h3>
-                                            <form class="top-med">
+                                            <form class="top-med" wire:submit.prevent="updatePassword">
                                                 <div class="form-group mt-5">
-                                                    <input type="password" class="form-control" id="oldPassword"
-                                                        placeholder=" Old Password" />
+                                                    <input wire:model="oldPassword" type="password" class="form-control" placeholder="Old Password" />
+                                                    @error('oldPassword')
+                                                        <p class="text-danger">{{$message}}</p>
+                                                    @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" class="form-control" id="NewPassword"
-                                                        placeholder=" New Password" />
+                                                    <input wire:model="password" type="password" class="form-control" placeholder="New Password" />
+                                                    
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="password" class="form-control" id="rePassword"
-                                                        placeholder=" Retype Password" />
+                                                    <input wire:model="password_confirmation" type="password" class="form-control" placeholder="Retype Password" />
+                                                    
                                                 </div>
-                                                <button type="submit" class="btn btn-next float-right mt-4">
-                                                    Save Change
-                                                </button>
+                                                @error('password')
+                                                    <p class="text-danger">{{$message}}</p>
+                                                @enderror
+                                                <button type="submit" class="btn btn-next float-right mt-4">Save Change</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            
+                            
                             <!-- start 3 tab -->
 
                             <div class="tab-pane fade " id="nav-contact-3" role="tabpanel"
@@ -129,7 +128,7 @@
                                                             <p class="float-left mr-3 n-attend">
                                                                 Number of attendees:
                                                                 <span class="ateend-dark">
-                                                                    {{ \App\Services\CrashCourseService::getTotalStudentsInCrashCourseByTutor($subscription, auth('tutor')->id()) }}
+                                                                    {{ \App\Services\CrashCourseService::getTotalStudentsInCrashCourseByTutor($crash, auth('tutor')->id()) }}
                                                                     people
                                                                 </span>
                                                             </p>
@@ -269,6 +268,7 @@
         </style>
         <!-- start subscrib -->
         @include('partials.footer')
+        
     </main>
 
 </div>

@@ -40,7 +40,7 @@
                     <div class="row">
                         @foreach ($tutors as $tutor)
                             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                                <a href="{{ route('tutors.about', $tutor->id) }}" class="text-center border rounded tutor-card p-3 h-100 d-block">
+                                <a href="{{ route('tutors.about', ['tutor' => $tutor->id, 'mock_exam' => $mockExam->id]) }}" class="text-center border rounded tutor-card p-3 h-100 d-block">
                                     <img src="{{ asset('storage/' . $tutor->photo) }}" alt="" class="img-fluid pro-image rounded-circle mb-3" height="120" />
                                     <h5 class="pro-name font-weight-bold">{{ $tutor->name }}</h5>
                                     <hr>

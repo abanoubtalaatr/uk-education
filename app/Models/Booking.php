@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
 
 class Booking extends Model
 {
@@ -60,6 +59,22 @@ class Booking extends Model
                 return route('subscriptions.show', ['subscription' => $this->bookable_id]);
             default:
                 return '#';
+        }
+    }
+
+    public function getModelAttribute()
+    {
+        switch ($this->bookable_type) {
+            case 'App\Models\MockExam':
+                return MockExam::find($this->bookable_id);
+            case 'App\Models\Course':
+                return Course::find($this->bookable_id);
+            case 'App\Models\CrashCourse':
+                return CrashCourse::find($this->bookable_id);
+            case 'App\Models\Subscription':
+                return Subscription::find($this->bookable_id);
+            default:
+                return 'Unknown';
         }
     }
 }

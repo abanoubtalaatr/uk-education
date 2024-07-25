@@ -4,15 +4,19 @@
     <div class="add-2">
         <div class="container">
             <div class="row">
-                <div class="head-path">
-                    <ul class="path-menu">
-                        <li><a href="#">Home ></a></li>
-                        <li><a href="#">Crash Courses</a></li>
+                <div class="head-path mb-4">
+                    <ul class="path-menu d-flex align-items-center mb-3">
+                        <li class="d-flex align-items-center">
+                            <a href="#" class="text-decoration-none text-dark">
+                                <i class="fas fa-home"></i> Home
+                            </a>
+                        </li>
+                        <li class="mx-2"> <i class="fas fa-chevron-right"></i> </li>
+                        <li class="d-flex align-items-center">
+                            <a href="#" class="text-decoration-none text-dark">Crash Courses</a>
+                        </li>
                     </ul>
-                    <p>
-                        {{-- {!! \Outl1ne\NovaSettings\NovaSettings::getSetting('crash_description') !!} --}}
-                    </p>
-                    <h3>All Crash Courses</h3>
+                    <h3 class="mb-4">All Crash Courses</h3>
                 </div>
             </div>
             <div class="row">
@@ -123,22 +127,17 @@
             <div class="row mb-3">
                 @foreach ($crashCourses as $course)
                 <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <a href="{{ $course->id }}">
-                            <img src="{{ asset('storage/'. $course->image) }}" class="card-img-top card-top img-fluid" alt="{{ $course->name }}" />
+                    <div class="card border-0 shadow-sm rounded">
+                        <a href="{{ route('crash-courses.show', $course->id) }}">
+                            <img src="{{ asset('storage/' . $course->image) }}" class="card-img-top img-fluid rounded-top" alt="{{ $course->name }}" />
                         </a>
-                        <h4 class="card-info">{{ $course->name }}</h4>
-                        <a href="{{ $course->image }}" data-lightbox="roadtrip" data-title="{{ $course->name }}">
-                            <div class="layout">&nbsp;</div>
-                        </a>
-                        <div class="card-body border p-3 mb-2 rounded">
-                            <h5 class="card-title">
-                                {{ implode(', ', $course->tutors->pluck('name')->toArray()) }} 
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-2">{{ $course->name }}</h4>
+                            <h5 class="card-subtitle mb-3 text-muted">
+                                {{ implode(', ', $course->tutors->pluck('name')->toArray()) }}
                             </h5>
-                            <p>number of attendees <strong>{{\App\Services\BookingService::getAttendeesNumberInCrashCourse($course->id)}} people</strong></p>
-                            {{-- <p>number of hours <strong>20h</strong></p> --}}
-                            <a href="{{route('crash-courses.show', $course->id)}}" class="btn btn-join float-right">Booking Now</a>
-                            <span>{{ $course->price }} $    </span>
+                            <p class="card-text mb-3">Price: <strong>${{ $course->price }}</strong></p>
+                            <a href="{{ route('crash-courses.show', $course->id) }}" class="btn btn-primary btn-block">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -150,4 +149,38 @@
         </div>
     </div>
     @include('partials.footer')
+    <style>
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        .card-subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .card-text {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            font-weight: 600;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+    </style>
 </main>

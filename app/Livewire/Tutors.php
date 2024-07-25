@@ -8,10 +8,12 @@ use Outl1ne\NovaSettings\NovaSettings;
 
 class Tutors extends Component
 {
-    public $tutors; 
+    public $tutors, $search; 
     public function mount()
     {
-       $this->tutors = Tutor::all();
+        $this->search = request()->query('search', '');
+
+        $this->tutors = Tutor::where('name', 'like', '%' . $this->search . '%')->get();
     }
     public function render()
     {

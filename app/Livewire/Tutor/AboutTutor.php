@@ -4,6 +4,7 @@ namespace App\Livewire\Tutor;
 
 use App\Models\Tutor;
 use Livewire\Component;
+use App\Models\MockExam;
 use App\Services\BookingService;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TutorBookingNotification;
@@ -12,11 +13,13 @@ use App\Mail\StudentBookingConfirmation;
 
 class AboutTutor extends Component
 {
-    public $tutor, $availableTimes, $message, $selectedDate, $selectedTime, $selectedTutor;
+    public $tutor, $availableTimes,$mockExam, $message, $selectedDate, $selectedTime, $selectedTutor;
 
-    public function mount($tutor)
+    public function mount($tutor, $mock_exam)
     {
         $this->tutor = Tutor::find($tutor);
+        $this->mockExam = MockExam::find($mock_exam);
+
         $this->selectedTutor = $tutor;
     }
 
@@ -40,6 +43,7 @@ class AboutTutor extends Component
 
     public function bookNow()
     {
+        
         if ($this->selectedTime && $this->selectedTutor && $this->selectedDate) {
             [$startTime, $endTime] = explode('-', $this->selectedTime);
             $data['tutor_id'] = $this->selectedTutor;

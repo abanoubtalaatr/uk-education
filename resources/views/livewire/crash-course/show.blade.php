@@ -24,7 +24,7 @@
                         <hr>
                         <p><i class="fas fa-dollar-sign"></i> {{ $crashCourse->price }}</p>
                         <hr>
-                        <button class="btn btn-join"><i class="fas fa-ticket-alt"></i> Book now</button>
+                        @livewire('book-now-component', ['bookable_id' => $crashCourse->id, 'bookable_type' => "App\Models\CrashCourse"])
                     </div>
                 </div>
             </div>

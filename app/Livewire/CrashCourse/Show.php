@@ -11,7 +11,8 @@ class Show extends Component
 
     public function mount(CrashCourse $crash_course)
     {
-        $this->crashCourse = $crash_course;        
+        $this->crashCourse = $crash_course;  
+              
     }
     public function render()
     {

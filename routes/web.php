@@ -15,6 +15,7 @@ use App\Livewire\Subscription;
 use App\Livewire\MockExam\Show;
 use App\Livewire\Tutor\Details;
 use App\Livewire\Tutor\Profile;
+use App\Livewire\Student\Calendar;
 use App\Livewire\Tutor\AboutTutor;
 use App\Livewire\Tutor\Auth\Login;
 use App\Livewire\Auth\ResetPassword;
@@ -24,6 +25,7 @@ use App\Livewire\MockExam\BankScenario;
 use App\Livewire\Student\Auth\Register;
 use App\Livewire\BankScenario\Scenarios;
 use App\Livewire\Student\Profile as StudentProfile;
+use App\Livewire\Tutor\Calendar as TutorCalendar;
 
 Route::get('/', Welcome::class)->name('welcome');
 
@@ -37,7 +39,7 @@ Route::get('mock-exams/{mock}', Show::class)->name('mock-exams.show');
 Route::get('all-crash-courses', CrashCourse::class)->name('all-crash-courses');
 Route::get('all-subscriptions', Subscription::class)->name('all-subscriptions');
 Route::get('tutors/{tutor}', Details::class)->name('tutors.details');
-Route::get('tutors/{tutor}/about', AboutTutor::class)->name('tutors.about');
+Route::get('tutors/about/{tutor}/mock_exam/{mock_exam}', AboutTutor::class)->name('tutors.about');
 Route::get('payment', Payment::class)->name('payment');
 Route::get('scenarios/{scenario}', Scenarios::class)->name('bank-scenario.scenarios');
 
@@ -66,7 +68,7 @@ Route::prefix('auth')->as('auth.')->group(function () {
 Route::middleware(['auth:tutor'])->group(function () {
     Route::get('tutor-profile', Profile::class)->name('tutor-profile');
     Route::get('tutor-logout', [Login::class, 'logout'])->name('tutor-logout');
-
+    Route::get('tutor-calendar', TutorCalendar::class)->name('tutor-calendar');
     Route::prefix('mock-exams')->as('mock-exams.')->group(function () {
         Route::get('/{mock}/bank-scenarios', BankScenario::class)->name('bank-scenarios');
     });
@@ -78,6 +80,7 @@ Route::get('student-login', \App\Livewire\Student\Auth\Login::class)->name('stud
 Route::middleware(['auth:web'])->group(function () {
     Route::get('student-profile', StudentProfile::class)->name('student-profile');
     Route::get('student-logout', [\App\Livewire\Student\Auth\Login::class, 'logout'])->name('student-logout');
+    Route::get('student-calendar', Calendar::class)->name('student-calendar');
 });
 
 Route::any('nova/language/{language}', function (Illuminate\Http\Request $request, $language) {

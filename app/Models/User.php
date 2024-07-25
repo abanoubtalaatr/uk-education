@@ -43,6 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'whats_app_number',
         'otp',
         'otp_token',
+        'profile_image_url'
     ];
 
     /**

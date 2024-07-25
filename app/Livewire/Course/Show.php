@@ -4,16 +4,16 @@ namespace App\Livewire\Course;
 
 use App\Models\Course;
 use Livewire\Component;
-use Outl1ne\NovaSettings\NovaSettings;
 
 class Show extends Component
 {
-    public $course, $settings, $plabCourse, $courseContent, $whoTheCourseFor, $courseAims, $courseLearningObjectives, $courseLearningOutcomes;
+    public $course, $settings, $bookable_id, $bookable_type;
 
     public function mount(Course $course)
     {
         $this->course = $course;
-     
+        $this->bookable_id = $course->id;
+        $this->bookable_type = "App\Models\Course";
     }
     
     public function render()

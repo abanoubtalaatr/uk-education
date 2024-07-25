@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="head-path">
                         <ul class="path-menu">
-                            <li><a href="#">Home ></a></li>
+                            <li><a href="/">Home ></a></li>
                             <li><a href="#">Courses</a></li>
                         </ul>
                         <p>

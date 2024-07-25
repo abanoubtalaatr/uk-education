@@ -12,9 +12,9 @@ class BookingService
         $booking = Booking::query()->create([
             'tutor_id' => $data['tutor_id']??null,
             'user_id' => $data['user_id'],
-            'date' => $data['date']??now(),
-            'start_at' => $data['start_at']??now(),
-            'end_at' => $data['end_at']??now(),
+            'date' => $data['date']??null,
+            'start_at' => $data['start_at']??null,
+            'end_at' => $data['end_at']??null,
             'bookable_type' => $data['bookable_type'],
             'bookable_id' => $data['bookable_id'],
         ]);
