@@ -21,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('attend-event', [AttendPolicy::class, 'attend']);
+        // Gate::define('attend-event', [AttendPolicy::class, 'attend']);
     }
 }

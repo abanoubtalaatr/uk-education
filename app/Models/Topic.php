@@ -23,4 +23,9 @@ class Topic extends Model
     {
         return $this->hasMany(Video::class);
     }
+
+    public function progress()
+    {
+        return $this->hasMany(StudentProgress::class);
+    }
 }

@@ -42,4 +42,6 @@ class Course extends Resource
             ? ['nullable', 'image']
             : ['required', 'image'];
     }
+
+   
 }

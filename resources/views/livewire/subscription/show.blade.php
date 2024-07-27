@@ -1,7 +1,7 @@
+<!-- resources/views/subscription.blade.php -->
 <div>
     @include('partials.nav-header')
     <main>
-        <!-- Start add course -->
         <div class="add-2">
             <div class="container">
                 <div class="row">
@@ -12,8 +12,24 @@
                             <li><a href="#">{{ $subscription->name }}</a></li>
                         </ul>
                         <h3 class="mt-5">All Chapters</h3>
+
+                        <!-- Progress Section -->
+                        @if (App\Services\SubscriptionService::isSubscribe($subscription->id))
+                            <div class="progress-section mb-4">
+                                <div class="progress-bar-container">
+                                    <div class="progress-bar-title">
+                                        <span>Progress:</span>
+                                        <span class="progress-percentage">{{ round($progress, 2) }}%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: {{ round($progress, 2) }}%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
                         <hr>
-                        @livewire('book-now-component', ['bookable_id' => $subscription->id, 'bookable_type' => "App\Models\Subscription"])
+                        @livewire('book-now-component', ['bookable_id' => $subscription->id, 'bookable_type' => 'App\Models\Subscription'])
                         <hr>
                     </div>
                 </div>
@@ -35,13 +51,25 @@
                     <div class="col-md-3 col-sm-12">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
+                            <!-- Introductory Tab -->
+                            <button class="nav-link mb-2 btn btn-join active" id="v-pills-intro-tab" data-toggle="pill"
+                                data-target="#v-pills-intro" type="button" role="tab" aria-controls="v-pills-intro"
+                                aria-selected="true">
+                                Introduction
+                            </button>
+
+                            <!-- Existing Topic Tabs -->
                             @foreach ($subscription->topics()->latest()->get() as $index => $topic)
-                                <button
-                                    class="nav-link mb-2 btn btn-join {{ $index == 0 ? 'active' : '' }} {{ $topic->is_paid ? 'locked' : '' }}"
-                                    id="v-pills-{{ $topic->id }}-tab" data-toggle="pill"
-                                    data-target="#v-pills-{{ $topic->id }}" type="button" role="tab"
-                                    aria-controls="v-pills-{{ $topic->id }}"
-                                    aria-selected="{{ $index == 0 ? 'true' : 'false' }}">
+                                @php
+                                    $isAccessible = !(
+                                        $topic->is_paid &&
+                                        !App\Services\SubscriptionService::isSubscribe($subscription->id)
+                                    );
+                                @endphp
+                                <button class="nav-link mb-2 btn btn-join" id="v-pills-{{ $topic->id }}-tab"
+                                    data-toggle="pill" data-target="#v-pills-{{ $topic->id }}" type="button"
+                                    role="tab" aria-controls="v-pills-{{ $topic->id }}"
+                                    aria-selected="{{ $index == 0 ? 'false' : 'false' }}">
                                     {{ $topic->name }}
                                 </button>
                             @endforeach
@@ -49,30 +77,95 @@
                     </div>
                     <div class="col-md-9 col-sm-12">
                         <div class="tab-content" id="v-pills-tabContent">
+                            <!-- Introductory Content -->
+                            <div class="tab-pane show active" id="v-pills-intro" role="tabpanel"
+                                aria-labelledby="v-pills-intro-tab">
+                                <h5>Welcome to the Subscription</h5>
+                                <hr>
+                                <h5><strong>To accurately track progress, you must watch the video in its
+                                        entirety.</strong></h5>
+                                <hr>
+                                <p>Here you will find all the topics covered in this subscription. Please use the tabs
+                                    to navigate through the content.</p>
+                            </div>
+
+                            <!-- Existing Topic Content -->
                             @foreach ($subscription->topics as $index => $topic)
-                                <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}"
+                                @php
+                                    $progress = $topic->progress()->where('user_id', Auth::id())->first();
+                                    $videoCompleted = $progress ? $progress->video_completed : false;
+                                    $isAccessible = !(
+                                        $topic->is_paid &&
+                                        !App\Services\SubscriptionService::isSubscribe($subscription->id)
+                                    );
+                                @endphp
+
+                                <div class="tab-pane {{ !$isAccessible ? 'locked' : '' }}"
                                     id="v-pills-{{ $topic->id }}" role="tabpanel"
                                     aria-labelledby="v-pills-{{ $topic->id }}-tab">
-                                    <div class="row row-cols-1 row-cols-md-2">
-                                        <div class="col-md-6 mb-4">
-                                            <div class="card border shadow-sm rounded card-equal-height">
-                                                <a target="_blank" href="{{ asset('storage/' . $topic->pdf) }}">
-                                                    <img src="{{ asset('storage/' . $topic->image) }}" alt=""
-                                                        class="img-fluid">
-                                                    <h5 class="my-2 mx-1">{{ $topic->name }}</h5>
-                                                </a>
+                                    @if ($isAccessible || $topic->is_paid === 0)
+                                        <div class="row row-cols-1 row-cols-md-2">
+                                            <div class="col-md-6 mb-4">
+                                                <div class="card border shadow-sm rounded p-1 card-equal-height">
+                                                    <div class="card-video">
+                                                        <label>Video Course</label>
+                                                        <video src="{{ asset('storage/' . $topic->video) }}" controls
+                                                            data-topic-id="{{ $topic->id }}" preload="auto"
+                                                            class="w-100 h-100 rounded shadow"></video>
+                                                        @if ($videoCompleted)
+                                                            <span class="badge badge-success">Completed</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6 mb-4">
-                                            <div class="card border shadow-sm rounded p-1 card-equal-height">
-                                                <div class="card-video">
-                                                    <label>Video Course</label>
-                                                    <video src="{{ asset('storage/' . $topic->video) }}"
-                                                        controls></video>
+                                            <div class="col-md-6 mb-4">
+                                                <div class="card border shadow-sm rounded p-1 card-equal-height"
+                                                    style="background-image: url('{{ asset('storage/' . $topic->image) }}'); background-size: cover; background-position: center;">
+                                                    <div class="card-pdf">
+                                                        <label>PDF Document</label>
+                                                        <a href="{{ asset('storage/' . $topic->pdf) }}" target="_blank"
+                                                            class="btn btn-outline-primary w-100">
+                                                            <i class="fas fa-file-pdf"></i> View PDF
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @else
+                                        <div class="row row-cols-1 row-cols-md-2">
+                                            <div class="col-md-6 mb-4">
+                                                <div class="card border shadow-sm rounded p-1 card-equal-height">
+                                                    <div class="card-video">
+                                                        <label>Video Course</label>
+                                                        <video disabled src="{{ asset('storage/' . $topic->video) }}"
+                                                            controls data-topic-id="{{ $topic->id }}" preload="auto"
+                                                            class="w-100 h-100 rounded shadow"></video>
+                                                        @if ($videoCompleted)
+                                                            <span class="badge badge-success">Completed</span>
+                                                        @endif
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 mb-4">
+                                                <div class="card border shadow-sm rounded p-1 card-equal-height"
+                                                    style="background-image: url('{{ asset('storage/' . $topic->image) }}'); background-size: cover; background-position: center;">
+                                                    <div class="card-pdf">
+                                                        <label>PDF Document</label>
+                                                        <a disabled href="{{ asset('storage/' . $topic->pdf) }}"
+                                                            target="_blank" class="btn btn-outline-primary w-100">
+                                                            <i class="fas fa-file-pdf"></i> View PDF
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Overlay and Message for Locked Topics -->
+                                        <div class="overlay">
+                                            <div class="alert alert-warning locked-message">
+                                                This topic is locked. Please subscribe to access this content.
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             @endforeach
                         </div>
@@ -80,38 +173,63 @@
                 </div>
             </div>
         </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body text-center p-3">
-                        <video id="modal-video" width="100%" controls>
-                            <source src="" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
+        <div id="notification-card" class="notification-card d-none">
+            <div class="notification-content">
+                <span id="notification-message"></span>
+                <button id="notification-close" class="close-btn">&times;</button>
             </div>
         </div>
 
-        @include('partials.footer')
     </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', (event) => {
-            $('#exampleModal').on('show.bs.modal', function(event) {
-                var button = $(event.relatedTarget); // Button that triggered the modal
-                var videoUrl = button.data('video-url'); // Extract info from data-* attributes
-                var modal = $(this);
-                var video = modal.find('#modal-video');
-                video.attr('src', videoUrl);
-            });
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://js.pusher.com/8.2.0/pusher.min.js"></script>
 
-            $('#exampleModal').on('hidden.bs.modal', function(event) {
-                var modal = $(this);
-                var video = modal.find('#modal-video');
-                video.attr('src', '');
+    <script>
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('163895057bb1afaae453', {
+            cluster: 'eu'
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('MockExamCreated', function(data) {
+            // Show notification card
+            var notificationCard = document.getElementById('notification-card');
+            var notificationMessage = document.getElementById('notification-message');
+
+            // Create clickable link
+            var link = '{{ route("mock-exams.book-mock", ":id") }}';
+            link = link.replace(':id', data.mockExam.id);
+
+            notificationMessage.innerHTML = 'New Mock Exam Created: <a href="' + link + '" target="_blank">' + data.mockExam.name + '</a>';
+
+            notificationCard.classList.remove('d-none');
+        });
+
+
+        // Close button event listener
+        document.getElementById('notification-close').addEventListener('click', function() {
+            var notificationCard = document.getElementById('notification-card');
+            notificationCard.classList.add('d-none');
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('video').forEach(function(videoElement) {
+                videoElement.addEventListener('ended', function() {
+                    let topicId = videoElement.getAttribute('data-topic-id');
+                    axios.post('{{ route('complete.video') }}', {
+                            topic_id: topicId
+                        })
+                        .then(response => {
+                            window.location.reload();
+                        })
+                        .catch(error => {
+                            console.error(error);
+                        });
+                });
             });
         });
     </script>
@@ -123,71 +241,148 @@
             height: 100%;
         }
 
-        .card-equal-height .card-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card-equal-height .card-video {
+        .card-equal-height .card-video,
+        .card-equal-height .card-pdf {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
-        .card-equal-height .card-video video {
+        .card-equal-height .card-video video,
+        .card-equal-height .card-pdf a {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 0.25rem 0.25rem 0 0;
         }
 
-        .pdf-container {
+        .card-pdf {
             position: relative;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
+            color: white;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            /* Semi-transparent overlay */
+        }
+
+        .card-pdf a {
             display: flex;
+            align-items: center;
             justify-content: center;
+            height: 100%;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .card-pdf a:hover {
+            background-color: #e9ecef;
+            color: #0056b3;
+        }
+
+        .progress-section {
+            padding: 1rem;
+            border-radius: 0.25rem;
+            background: #f8f9fa;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .progress-bar-container {
+            display: flex;
+            flex-direction: column;
             align-items: center;
         }
 
-        .pdf-container .pdf-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
+        .progress-bar-title {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
         }
 
-        .pdf-container .pdf-content a {
-            color: #fff;
-            font-size: 1.25rem;
-            text-decoration: none;
+        .progress-percentage {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 1.5rem;
+            background: #e9ecef;
+            border-radius: 0.25rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #28a745;
+            transition: width 0.3s ease;
+        }
+
+        .badge-success {
+            background-color: #28a745;
+            color: white;
+            padding: 0.25em 0.5em;
+            font-size: 0.875em;
+            border-radius: 0.25rem;
         }
 
         .locked {
             pointer-events: none;
             opacity: 0.5;
-            cursor: not-allowed;
+            position: relative;
         }
 
-        .disabled-link {
-            pointer-events: none;
-            color: #6c757d;
-            /* Bootstrap's muted color */
-            cursor: not-allowed;
+        .locked .card-video,
+        .locked .card-pdf {
+            position: relative;
+            z-index: 1;
         }
 
-        .btn-outline-primary .fas.fa-file-pdf {
-            color: #007bff;
-            /* Bootstrap primary color */
+        .locked .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            z-index: 2;
         }
 
-        .btn-outline-primary {
-            border-color: #007bff;
+        .locked-message {
+            margin: 0;
+        }
+
+        .notification-card {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: #721c24;
+            cursor: pointer;
         }
     </style>
 </div>

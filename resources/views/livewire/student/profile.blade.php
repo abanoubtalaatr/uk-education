@@ -1,13 +1,12 @@
 <div>
     @include('partials.nav-header')
     <main>
-        <!-- start add cours -->
         <div class="add-2">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="head-path ml-none">
-                            <h3>Your Account information</h3>
+                            <h3>Your Account Information</h3>
                         </div>
                     </div>
                     <div class="col-md-12 top">
@@ -16,259 +15,170 @@
                                 <a class="nav-item nav-link mx-2 mb-3 active" id="nav-home-tab" data-toggle="tab"
                                     href="#nav-home" role="tab" aria-controls="nav-home"
                                     aria-selected="true">Personal Data</a>
-
-                                    <a class="nav-item nav-link mx-2 mb-3" href="{{ route('student-calendar') }}" role="tab" aria-controls="nav-calendar" aria-selected="false">Calendar</a>
-
+                                <a class="nav-item nav-link mx-2 mb-3" href="{{ route('student-calendar') }}"
+                                    role="tab" aria-controls="nav-calendar" aria-selected="false">Calendar</a>
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
-                            <!-- start first tab -->
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                @if(session()->has('message'))
-                                <div class="alert alert-info">
-                                        {{session()->get('message')}}
-                                </div>
-                            @endif
-                                <div class="row ">
-                                    
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel"
+                                aria-labelledby="nav-home-tab">
+                                @if (session()->has('message'))
+                                    <div class="alert alert-info">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+                                <div class="row mt-5">
                                     <div class="col-md-6">
-                                        <div class="info">
-                                            <h3>Personal Data</h3>
-                                            <div class="up-img top-med">
-                                                <input type="file" class="imgpo" wire:model="profileImage" onchange="readURLL(this);" />
-                                                <span class="file-hover">Change </span>
-                                                <img id="blah" src="{{ $information['profile_image_url'] ?? asset('assets/images/avatar.jpg') }}" alt="" class="img-fluid" />
+
+                                        <div class="info ">
+                                            <label>Profile Image</label>
+                                            <div class="up-img border">
+
+                                                <input type="file" class="imgpo" wire:model="profileImage" />
+                                                @if ($profileImageUrl)
+                                                    <img height="90" width="100" src="{{ $profileImageUrl }}"
+                                                        alt="Profile Image" class="img-fluid" />
+                                                @endif
                                             </div>
-                            
-                                            <form class="top-med" wire:submit.prevent="updateProfile">
-                                                <div class="form-group">
-                                                    <input wire:model="information.name" type="text" class="form-control" placeholder="Name" />
+                                            <hr>
+
+                                            <div>
+                                                <label>Screenshot of Exam Confirmation Email</label>
+                                                <div class="up-img border">
+                                                    <input type="file" class="imgpo"
+                                                        wire:model="examConfirmationEmail" />
+                                                    <div class="d-flex">
+
+                                                        @if ($examConfirmationEmailUrl)
+                                                            <img height="90" width="100"
+                                                                src="{{ $examConfirmationEmailUrl }}"
+                                                                alt="Exam Confirmation Email" class="img-fluid" />
+                                                        @endif
+
+                                                    </div>
                                                 </div>
-                            
-                                                <div class="form-group">
-                                                    <input wire:model="information.email" type="email" class="form-control" placeholder="Your Email" />
+                                            </div>
+                                            <hr>
+                                            <div>
+                                                <label>First Upload Exam Confirmation Images</label>
+
+                                                <div class="up-img border">
+                                                    <input type="file" class="imgpo"
+                                                        wire:model="examConfirmationOne" />
+                                                    <div class="d-flex">
+
+                                                        @if ($examConfirmationOneUrl)
+                                                            <img height="90" width="100"
+                                                                src="{{ $examConfirmationOneUrl }}"
+                                                                alt="Exam Confirmation Email" class="img-fluid" />
+                                                        @endif
+
+                                                    </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input wire:model="information.mobile" type="text" class="form-control" placeholder="Phone Number" />
+
+                                                <div>
+                                                    <label>Second Upload Exam Confirmation Images</label>
+                                                    <hr>
+                                                    <div class="up-img border">
+                                                        <input type="file" class="imgpo"
+                                                            wire:model="examConfirmationTwo" />
+                                                        <div class="d-flex">
+
+                                                            @if ($examConfirmationTwoUrl)
+                                                                <img height="90" width="100"
+                                                                    src="{{ $examConfirmationTwoUrl }}"
+                                                                    alt="Exam Confirmation Email" class="img-fluid" />
+                                                            @endif
+
+                                                        </div>
+                                                    </div>
+
+                                                    <form class="top-med" wire:submit.prevent="updateProfile">
+                                                        <div class="form-group">
+                                                            <input wire:model.defer="information.name" type="text"
+                                                                class="form-control" placeholder="Name" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input wire:model.defer="information.email" type="email"
+                                                                class="form-control" placeholder="Your Email" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input wire:model.defer="information.mobile" type="text"
+                                                                class="form-control" placeholder="Phone Number" />
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <input wire:model.defer="information.whats_app_number"
+                                                                type="text" class="form-control"
+                                                                placeholder="WhatsApp Number" />
+                                                        </div>
+                                                        <button type="submit"
+                                                            class="btn btn-next float-right my-4">Save
+                                                            Changes</button>
+                                                    </form>
                                                 </div>
-                                                <div class="form-group">
-                                                    <input wire:model="information.whats_app_number" type="text" class="form-control" placeholder="WhatsApp Number" />
-                                                </div>
-                                                <button type="submit" class="btn btn-next float-right my-4">Save Change</button>
-                                            </form>
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="col-md-6">
-                                    
                                         <div class="info">
                                             <h3>Change Password</h3>
                                             <form class="top-med" wire:submit.prevent="updatePassword">
                                                 <div class="form-group mt-5">
-                                                    <input wire:model="oldPassword" type="password" class="form-control" placeholder="Old Password" />
+                                                    <input wire:model.defer="oldPassword" type="password"
+                                                        class="form-control" placeholder="Old Password" />
                                                     @error('oldPassword')
-                                                        <p class="text-danger">{{$message}}</p>
+                                                        <p class="text-danger">{{ $message }}</p>
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <input wire:model="password" type="password" class="form-control" placeholder="New Password" />
-                                                    
+                                                    <input wire:model.defer="password" type="password"
+                                                        class="form-control" placeholder="New Password" />
                                                 </div>
                                                 <div class="form-group">
-                                                    <input wire:model="password_confirmation" type="password" class="form-control" placeholder="Retype Password" />
-                                                    
+                                                    <input wire:model.defer="password_confirmation" type="password"
+                                                        class="form-control" placeholder="Retype Password" />
                                                 </div>
                                                 @error('password')
-                                                    <p class="text-danger">{{$message}}</p>
+                                                    <p class="text-danger">{{ $message }}</p>
                                                 @enderror
-                                                <button type="submit" class="btn btn-next float-right mt-4">Save Change</button>
+                                                <button type="submit" class="btn btn-next float-right mt-4">Save
+                                                    Changes</button>
                                             </form>
                                         </div>
                                     </div>
+                                    <!-- start other tabs (if any) -->
                                 </div>
                             </div>
-                            
-                            
-                            <!-- start 3 tab -->
-
-                            <div class="tab-pane fade " id="nav-contact-3" role="tabpanel"
-                                aria-labelledby="nav-contact-3-tab">
-                                <div class="row">
-                                    <div class="col-md-12 top-sm-2">
-                                        <div class="package-head ml-none">
-                                            <div class="list float-right">
-                                                <span>({{ $crashCourses->count() }}) in the list</span>
-                                            </div>
-                                            <h3>Crash Courses</h3>
-                                        </div>
-                                    </div>
-                                    @foreach ($crashCourses as $crash)
-                                        <div class="col-md-12  border-attend">
-                                            <div class="row search-top">
-                                                <div class="col-md-4">
-                                                    <div class="result-image">
-                                                        <img src="{{ asset('storage/' . $crash->image) }}"
-                                                            alt="" class="img-fluid" />
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <div class="result">
-                                                        <div class="result-confirm float-right mr-4">
-                                                            <h4 class="pr-2 pb-2">{{ $crash->price }} $</h4>
-                                                            <a href="#"
-                                                                class="btn btn-join ser-btn float-right">More Detail's
-                                                            </a>
-                                                        </div>
-                                                        <div class="result-info">
-                                                            <h3>{{ $crash->name }}</h3>
-                                                            <h3>{{ $crash->date }}</h3>
-
-                                                            <p>
-                                                                {{ $crash->description }}
-                                                            </p>
-                                                            <p class="float-left mr-3 n-attend">
-                                                                Number of attendees:
-                                                                <span class="ateend-dark">
-                                                                    {{ \App\Services\CrashCourseService::getTotalStudentsInCrashCourseByTutor($crash, auth('tutor')->id()) }}
-                                                                    people
-                                                                </span>
-                                                            </p>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            </div>
-                            <!-- start 4 tab -->
-
-                            <!-- start last one -->
-                            <div class="tab-pane fade" id="nav-contact-5" role="tabpanel"
-                                aria-labelledby="nav-contact-5-tab">
-                                <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="d-flex align-items-center mt-2">
-                                                <button class="btn btn-join mr-2"
-                                                    wire:click.prevent="previousWeek">Previous Week</button>
-                                                <button class="btn btn-join mr-2" wire:click.prevent="nextWeek">Next
-                                                    Week</button>
-                                            </div>
-                                            <p class="mb-0 mr-2 border">{{ $currentWeek }}</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="table-responsive">
-                                            <table class="table table-bordered">
-                                                <thead class="thead-light">
-                                                    <tr>
-                                                        <th class="text-center">Sunday</th>
-                                                        <th class="text-center">Monday</th>
-                                                        <th class="text-center">Tuesday</th>
-                                                        <th class="text-center">Wednesday</th>
-                                                        <th class="text-center">Thursday</th>
-                                                        <th class="text-center">Friday</th>
-                                                        <th class="text-center">Saturday</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        @foreach (['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] as $day)
-                                                            <td class="">
-                                                                <div class="day">
-                                                                    @if (isset($bookings[$day]) && count($bookings[$day]) > 0)
-                                                                        @foreach ($bookings[$day] as $booking)
-                                                                            <div
-                                                                                class="booking pl-1 my-2 rounded border cursor-pointer">
-                                                                                @if($booking->tutor)
-                                                                                <p class="mb-1"
-                                                                                    style="font-size: 12px"><strong
-                                                                                        class="">Tutor:</strong>
-                                                                                    {{ $booking->tutor?->name }}
-                                                                                </p>
-                                                                                @endif
-                                                                                <p class="mb-0"
-                                                                                    style="font-size: 12px">
-                                                                                    <strong>Time:</strong>
-                                                                                    {{ \Carbon\Carbon::parse($booking->start_at)->format('H:i') }}
-                                                                                    -
-                                                                                    {{ \Carbon\Carbon::parse($booking->end_at)->format('H:i') }}
-                                                                                </p>
-                                                                                <p class="mb-1"
-                                                                                    style="font-size: 12px"><strong
-                                                                                        class="">Type :</strong>
-                                                                                    {{ $booking->type }}
-                                                                                </p>
-                                                                                <p class="mb-1" style="font-size: 12px">
-                                                                                    <strong class="">Details :</strong>
-                                                                                    <a target="_blank" href="{{ $booking->details_route}}">Show</a>
-                                                                                </p>
-                                                                            </div>
-                                                                        @endforeach
-                                                                    @else
-                                                                        <p class="mb-0">No bookings</p>
-                                                                    @endif
-                                                                </div>
-                                                            </td>
-                                                        @endforeach
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- End calendar section -->
-
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <style>
-            .package-head {
-                margin-bottom: 20px;
-                padding-bottom: 10px;
-                border-bottom: 1px solid white;
-            }
+                <style>
+                    .package-head {
+                        margin-bottom: 20px;
+                        padding-bottom: 10px;
+                        border-bottom: 1px solid white;
+                    }
 
-            .navigation-buttons button {
-                margin-right: 10px;
-            }
+                    .navigation-buttons button {
+                        margin-right: 10px;
+                    }
 
-            .calendar-table {
-                margin-top: 20px;
-            }
+                    .calendar-table {
+                        margin-top: 20px;
+                    }
 
-            .calendar-table table {
-                width: 100%;
-                border: 1px solid white;
-            }
+                    .calendar-table table {
+                        width: 100%;
+                        border: 1px solid white;
+                    }
 
-            .calendar-table th,
-            .calendar-table td {
-                text-align: center;
-                padding: 10px;
-            }
-
-            .booking p {
-                margin: 5px 0;
-            }
-
-            .booking {
-                transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            }
-
-            .booking:hover {
-                transform: translateY(-5px);
-                box-shadow: 0 4px 8px white;
-            }
-        </style>
-        <!-- start subscrib -->
-        @include('partials.footer')
-        
+                    .calendar-table th,
+                    .calendar-table td {
+                        padding: 10px;
+                        text-align: center;
+                        border: 1px solid white;
+                    }
+                </style>
     </main>
-
 </div>

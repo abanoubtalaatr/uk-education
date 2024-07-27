@@ -20,6 +20,7 @@
     "require": {
         "php": "^8.2",
         "armincms/json": "^0.5.2",
+        "digital-solutions/calendar": "@dev",
         "ebess/advanced-nova-media-library": "^4.2",
         "eminiarts/nova-tabs": "^2.2",
         "epartment/nova-dependency-container": "^1.3",
@@ -41,6 +42,7 @@
         "maatwebsite/laravel-nova-excel": "^1.3",
         "outl1ne/nova-multiselect-field": "^4.5",
         "outl1ne/nova-settings": "^5.2",
+        "pusher/pusher-php-server": "^7.2",
         "sereny/nova-permissions": "^1.6",
         "shuvroroy/nova-tabs": "^1.1",
         "spatie/calendar-links": "^1.11",
@@ -50,8 +52,7 @@
         "stepanenko3/nova-json": "^4.0",
         "tightenco/ziggy": "^2.0",
         "whitecube/nova-flexible-content": "^1.1",
-        "whitecube/nova-page": "^0.2.8",
-        "digital-solutions/calendar": "@dev"
+        "whitecube/nova-page": "^0.2.8"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

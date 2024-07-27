@@ -2,10 +2,15 @@
 
 namespace App\Services;
 
+use App\Models\Booking;
 use App\Models\SubscriptionTutor;
 
 class SubscriptionService
 {
+    public static function isSubscribe($subscriptionId)
+    {
+        return Booking::where('bookable_type', "App\Models\Subscription")->where('bookable_id', $subscriptionId)->where('user_id', auth('web')->id())->exists();
+    }
     /**
      * Get the total number of students in a subscription.
      *

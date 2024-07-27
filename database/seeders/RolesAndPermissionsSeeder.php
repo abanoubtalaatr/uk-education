@@ -24,23 +24,39 @@ class RolesAndPermissionsSeeder extends Seeder
             'Permission',
             'User',
             "Tutor",
+            "Calendar",
+            "MockExam",
+            "Subscription",
+            "Course",
+            "CrashCourse",
+            "BankScenario",
+            "Testimonial",
+            "Scenario",
+            "NewsLetter",
+            "Page",
+            "Contact",
+            "Topic",
+            "Setting",
+            "Slider",
+            "Testimonial",
+            "Calendar"
         ]);
 
         $collection->each(function ($item, $key) {
             // create permissions for each collection item
-            Permission::create(['group' => $item, 'name' => 'viewAny' . $item, 'guard_name' => 'web']);
-            Permission::create(['group' => $item, 'name' => 'view' . $item, 'guard_name' => 'web']);
-            Permission::create(['group' => $item, 'name' => 'update' . $item, 'guard_name' => 'web']);
-            Permission::create(['group' => $item, 'name' => 'create' . $item, 'guard_name' => 'web']);
-            Permission::create(['group' => $item, 'name' => 'delete' . $item, 'guard_name' => 'web']);
-            Permission::create(['group' => $item, 'name' => 'destroy' . $item, 'guard_name' => 'web']);
+            Permission::updateOrCreate(['group' => $item, 'name' => 'viewAny' . $item, 'guard_name' => 'web'], ['name' => 'viewAny' . $item]);
+            Permission::updateOrCreate(['group' => $item, 'name' => 'view' . $item, 'guard_name' => 'web'], ['name' => 'view' . $item]);
+            Permission::updateOrCreate(['group' => $item, 'name' => 'update' . $item, 'guard_name' => 'web'], ['name' => 'update' . $item]);
+            Permission::updateOrCreate(['group' => $item, 'name' => 'create' . $item, 'guard_name' => 'web'], ['name' => 'create' . $item]);
+            Permission::updateOrCreate(['group' => $item, 'name' => 'delete' . $item, 'guard_name' => 'web'], ['name' => 'delete' . $item]);
+            Permission::updateOrCreate(['group' => $item, 'name' => 'destroy' . $item, 'guard_name' => 'web'], ['name' => 'destroy' . $item]);
         });
 
         // Create a Super-Admin Role and assign all Permissions
-        $role = Role::create([
+        $role = Role::updateOrCreate([
             'name' => 'super-admin',
             'guard_name' => 'web',
-        ]);
+        ], ['name' => 'super-admin']);
 
         $role->givePermissionTo(Permission::all());
 

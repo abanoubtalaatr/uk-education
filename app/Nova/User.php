@@ -76,6 +76,24 @@ class User extends Resource
                 ->nullable()
                 ->mustCrop(),
 
+                Images::make(__('Exam Confirmation Email'), 'exam_confirmation_email')
+                ->withResponsiveImages()
+                ->showOnPreview()   
+                ->nullable()
+                ->mustCrop(),
+
+                Images::make(__('First Image Exam Confirmation'), 'exam_confirmation_one')
+                ->withResponsiveImages()
+                ->showOnPreview()   
+                ->nullable()
+                ->mustCrop(),
+
+                Images::make(__('Second Image Exam Confirmation'), 'exam_confirmation_two')
+                ->withResponsiveImages()
+                ->showOnPreview()   
+                ->nullable()
+                ->mustCrop(),
+
             Text::make(__('Name'), 'name')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -92,7 +110,17 @@ class User extends Resource
                 ->updateRules('nullable', Rules\Password::defaults()),
 
 
-            Text::make(__('Phone'), 'phone')
+            Text::make(__('Phone'), 'mobile')
+                ->rules('required'),
+
+                Text::make(__("Whats app Number"), 'whats_app_number')
+                ->rules('required'),
+
+
+                Text::make(__("GMC Number"), 'gmc_number')
+                ->rules('required'),
+
+                DateTime::make(__("Exam Date"), 'exam_date')
                 ->rules('required'),
 
 

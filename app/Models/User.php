@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
@@ -43,7 +42,9 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
         'whats_app_number',
         'otp',
         'otp_token',
-        'profile_image_url'
+        'profile_image_url',
+        'gmc_number',
+        'exam_date',
     ];
 
     /**
@@ -67,6 +68,9 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     protected $appends = [
         'profile_photo_url',
         'is_admin',
+        'exam_confirmation_email',
+        'exam_confirmation_one',
+        'exam_confirmation_two',
     ];
 
     /**
@@ -82,6 +86,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
             'birth_date' => 'date',
             'password' => 'hashed',
             'completed_onboarding' => 'boolean',
+            'exam_date' => 'datetime'
         ];
     }
 
@@ -100,6 +105,14 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('profile_picture')->singleFile();
+
+        $this->addMediaCollection('exam_confirmation_email');
+
+        $this->addMediaCollection('exam_confirmation_one')
+            ->singleFile();
+
+        $this->addMediaCollection('exam_confirmation_two')
+            ->singleFile();
     }
 
     /**
@@ -111,6 +124,27 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         return Attribute::make(
             get: fn($value) => $this->getFirstMediaUrl('profile_picture')
+        );
+    }
+
+    public function examConfirmationEmail(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $this->getFirstMediaUrl('exam_confirmation_email')
+        );
+    }
+
+    public function examConfirmationOne(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $this->getFirstMediaUrl('exam_confirmation_one')
+        );
+    }
+
+    public function examConfirmationTwo(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => $this->getFirstMediaUrl('exam_confirmation_two')
         );
     }
 

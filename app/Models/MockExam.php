@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+
+use App\Events\MyEvent;
+use App\Events\MockExamCreated;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,6 +25,15 @@ class MockExam extends Model
         'date' => 'datetime'
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($mockExam) {
+            event(new MockExamCreated($mockExam));
+        });
+
+    }
     public function bookings()
     {
         return $this->morphMany(Booking::class, 'bookable');

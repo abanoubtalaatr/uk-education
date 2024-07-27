@@ -20,6 +20,8 @@
     <link href="{{ asset('assets/css/lightbox.css') }}" rel="stylesheet">
     
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
     <!-- Styles -->
 

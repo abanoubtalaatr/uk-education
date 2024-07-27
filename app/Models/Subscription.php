@@ -25,4 +25,9 @@ class Subscription extends Model
     {
         return $this->belongsToMany(Tutor::class,'subscription_tutor');
     }
+
+    public function progress()
+    {
+        return $this->hasManyThrough(StudentProgress::class, Topic::class);
+    }
 }

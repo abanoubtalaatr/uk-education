@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\Page;
+use App\Events\MyEvent;
 use App\Livewire\Tutors;
 use App\Livewire\Contact;
 use App\Livewire\Courses;
@@ -12,9 +13,11 @@ use Illuminate\Http\Request;
 use App\Livewire\Auth\Verify;
 use App\Livewire\CrashCourse;
 use App\Livewire\Subscription;
+use App\Events\MockExamCreated;
 use App\Livewire\MockExam\Show;
 use App\Livewire\Tutor\Details;
 use App\Livewire\Tutor\Profile;
+use App\Models\StudentProgress;
 use App\Livewire\Student\Calendar;
 use App\Livewire\Tutor\AboutTutor;
 use App\Livewire\Tutor\Auth\Login;
@@ -24,8 +27,9 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\MockExam\BankScenario;
 use App\Livewire\Student\Auth\Register;
 use App\Livewire\BankScenario\Scenarios;
-use App\Livewire\Student\Profile as StudentProfile;
 use App\Livewire\Tutor\Calendar as TutorCalendar;
+use App\Http\Controllers\StudentProgressController;
+use App\Livewire\Student\Profile as StudentProfile;
 
 Route::get('/', Welcome::class)->name('welcome');
 
@@ -81,6 +85,9 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('student-profile', StudentProfile::class)->name('student-profile');
     Route::get('student-logout', [\App\Livewire\Student\Auth\Login::class, 'logout'])->name('student-logout');
     Route::get('student-calendar', Calendar::class)->name('student-calendar');
+    
+    Route::post('/complete-video', [StudentProgressController::class,'store'])->name('complete.video');
+
 });
 
 Route::any('nova/language/{language}', function (Illuminate\Http\Request $request, $language) {
@@ -106,3 +113,8 @@ Route::post('news-letter', function (Request $request) {
 
     return redirect()->back()->with('success', 'Subscribed successfully!');
 })->name('news_letter.store');
+
+Route::get('events', function(){
+    $mock = \App\Models\MockExam::first();
+    event(new MockExamCreated($mock));
+});

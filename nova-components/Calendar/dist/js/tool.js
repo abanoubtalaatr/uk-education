@@ -20,6 +20,7 @@ __webpack_require__.r(__webpack_exports__);
       year: new Date().getFullYear(),
       bookings: {},
       loading: true,
+      selectedMonth: null,
       months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
       monthNames: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     };
@@ -33,19 +34,23 @@ __webpack_require__.r(__webpack_exports__);
       this.loading = true;
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/api/bookings/monthly?year=".concat(this.year)).then(function (response) {
         _this.bookings = response.data;
+        console.log(_this.bookings);
         _this.loading = false;
       })["catch"](function (error) {
         console.error(error);
         _this.loading = false;
       });
     },
+    prevYear: function prevYear() {
+      this.year--;
+      this.fetchBookings();
+    },
     nextYear: function nextYear() {
       this.year++;
       this.fetchBookings();
     },
-    prevYear: function prevYear() {
-      this.year--;
-      this.fetchBookings();
+    showDetails: function showDetails(month) {
+      this.selectedMonth = month;
     }
   }
 });
@@ -78,13 +83,13 @@ var _hoisted_2 = {
 };
 var _hoisted_3 = /*#__PURE__*/_withScopeId(function () {
   return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-    "class": "animate-spin fill-80 mb-6",
+    "class": "animate-spin fill-current text-blue-500 mb-6",
     width: "69",
     height: "72",
     viewBox: "0 0 23 24",
     xmlns: "http://www.w3.org/2000/svg"
   }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-    d: "M20.12 20.455A12.184 12.184 0 0 1 11.5 24a12.18 12.18 0 0 1-9.333-4.319c4.772 3.933 11.88 3.687 16.36-.738a7.571 7.571 0 0 0 0-10.8c-3.018-2.982-7.912-2.982-10.931 0a3.245 3.245 0 0 0 0 4.628 3.342 3.342 0 0 0 4.685 0 1.114 1.114 0 0 1 1.561 0 1.082 1.082 0 0 1 0 1.543 5.57 5.57 0 0 1-7.808 0 5.408 5.408 0 0 1 0-7.714c3.881-3.834 10.174-3.834 14.055 0a9.734 9.734 0 0 1 .03 13.855zM4.472 5.057a7.571 7.571 0 0 0 0 10.8c3.018 2.982 7.912 2.982 10.931 0a3.245 3.245 0 0 0 0-4.628 3.342 3.342 0 0 0-4.685 0 1.114 1.114 0 0 1-1.561 0 1.082 1.082 0 0 1 0-1.543 5.57 5.57 0 0 1 7.808 0 5.408 5.408 0 0 1 0 7.714c-3.881 3.834-10.174 3.834-14.055 0a9.734 9.734 0 0 1-.015-13.87C5.096 1.35 8.138 0 11.5 0c3.75 0 7.105 1.68 9.333 4.319C16.06.386 8.953.632 4.473 5.057z",
+    d: "M20.12 20.455A12.184 12.184 0 0 1 11.5 24a12.18 12.18 0 0 1-9.333-4.319c4.772 3.933 11.88 3.687 16.36-.738a7.571 7.571 0 0 0 0-10.8c-3.018-2.982-7.912-2.982-10.931 0a3.245 3.245 0 0 0 0 4.628 3.342 3.342 0 0 0 4.685 0 1.114 1.114 0 0 1 1.561 0 1.082 1.082 0 0 1 0 1.543 5.57 5.57 0 0 1-7.808 0 5.408 5.408 0 0 1 0-7.714c-3.881 3.834-10.174 3.834-14.055 0a9.734 9.734 0 0 1 .03 13.855zM4.472 5.057a7.571 7.571 0 0 0 0 10.8c3.018 2.982 7.912 2.982 10.931 0a3.245 3.245 0 0 0 0-4.628 3.342 3.342 0 0 0-4.685 0 1.114 1.114 0 0 1-1.561 0 1.082 1.082 0 0 1 0-1.543 5.57 5.57 0 0 1 7.808 0 5.408 5.408 0 0 1 0 7.714c-3.881 3.834-10.174 3.834-14.055 0a9.734 9.734 0 0 1-.015-13.87C5.096 1.35 8.138 0 11.5 0c3.75 0 7.105 1.68 9.333 4.319C16.06.386 8.953.632 4.473 5.057z",
     "fill-rule": "evenodd"
   })], -1 /* HOISTED */);
 });
@@ -100,14 +105,75 @@ var _hoisted_7 = {
   "class": "text-xl font-bold"
 };
 var _hoisted_8 = {
-  "class": "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+  "class": "overflow-x-auto pb-4"
 };
 var _hoisted_9 = {
-  "class": "text-lg font-bold mb-2"
+  "class": "flex grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
 };
 var _hoisted_10 = {
+  "class": "text-lg font-bold mb-2"
+};
+var _hoisted_11 = {
   "class": "text-xl"
 };
+var _hoisted_12 = ["onClick"];
+var _hoisted_13 = {
+  key: 0,
+  "class": "mt-8 w-full"
+};
+var _hoisted_14 = {
+  "class": "text-2xl font-semibold mb-4"
+};
+var _hoisted_15 = {
+  key: 0,
+  "class": "bg-white p-6 rounded-lg shadow-md"
+};
+var _hoisted_16 = {
+  "class": "min-w-full bg-white border-collapse border"
+};
+var _hoisted_17 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+    "class": "px-4 py-2 border"
+  }, "Date"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+    "class": "px-4 py-2 border"
+  }, "Start At"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+    "class": "px-4 py-2 border"
+  }, "End At"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+    "class": "px-4 py-2 border"
+  }, "Type"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+    "class": "px-4 py-2 border"
+  }, "Tutor"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+    "class": "px-4 py-2 border"
+  }, "User")])], -1 /* HOISTED */);
+});
+var _hoisted_18 = {
+  "class": "px-4 py-2 border"
+};
+var _hoisted_19 = {
+  "class": "px-4 py-2 border"
+};
+var _hoisted_20 = {
+  "class": "px-4 py-2 border"
+};
+var _hoisted_21 = {
+  "class": "px-4 py-2 border"
+};
+var _hoisted_22 = {
+  "class": "px-4 py-2 border"
+};
+var _hoisted_23 = ["href"];
+var _hoisted_24 = {
+  "class": "px-4 py-2 border"
+};
+var _hoisted_25 = ["href"];
+var _hoisted_26 = {
+  key: 1,
+  "class": "bg-white p-6 rounded-lg shadow-md"
+};
+var _hoisted_27 = /*#__PURE__*/_withScopeId(function () {
+  return /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "No bookings available for this month.", -1 /* HOISTED */);
+});
+var _hoisted_28 = [_hoisted_27];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
   var _component_Heading = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Heading");
@@ -122,25 +188,49 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }),
     _: 1 /* STABLE */
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Card, {
-    "class": "flex flex-col items-center justify-center min-h-screen bg-gray-100 rounded-lg shadow-md"
+    "class": "flex flex-col items-center justify-center min-h-screen bg-gray-100 rounded-lg shadow-md p-8"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      var _$data$bookings$$data;
       return [$data.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_2, [].concat(_hoisted_4))) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         onClick: _cache[0] || (_cache[0] = function () {
           return $options.prevYear && $options.prevYear.apply($options, arguments);
         }),
-        "class": "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+        "class": "px-4 py-2 border rounded hover:bg-blue-600 transition duration-300"
       }, " Previous Year "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.year), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
         onClick: _cache[1] || (_cache[1] = function () {
           return $options.nextYear && $options.nextYear.apply($options, arguments);
         }),
-        "class": "px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
-      }, " Next Year ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.months, function (month) {
+        "class": "px-4 py-2 border rounded hover:bg-blue-600 transition duration-300"
+      }, " Next Year ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.months, function (month) {
+        var _$data$bookings$month;
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
           key: month,
           "class": "p-6 bg-white border rounded-lg shadow-md text-center flex flex-col items-center justify-center"
-        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.monthNames[month - 1]), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.bookings[month] || 0) + " bookings", 1 /* TEXT */)]);
-      }), 128 /* KEYED_FRAGMENT */))])]))];
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.monthNames[month - 1]), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(((_$data$bookings$month = $data.bookings[month]) === null || _$data$bookings$month === void 0 ? void 0 : _$data$bookings$month.total) || 0) + " bookings", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+          onClick: function onClick($event) {
+            return $options.showDetails(month);
+          },
+          "class": "mt-4 px-4 py-2 bg-blue-500 bg-dark rounded hover:bg-blue-600 transition duration-300"
+        }, " View Details ", 8 /* PROPS */, _hoisted_12)]);
+      }), 128 /* KEYED_FRAGMENT */))])]), $data.selectedMonth ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_14, " Bookings for " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.monthNames[$data.selectedMonth - 1]) + ": ", 1 /* TEXT */), (_$data$bookings$$data = $data.bookings[$data.selectedMonth]) !== null && _$data$bookings$$data !== void 0 && _$data$bookings$$data.list.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.bookings[$data.selectedMonth].list, function (booking) {
+        return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+          key: booking.id,
+          "class": "border-t"
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(booking.date), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(booking.start_at), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(booking.end_at), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(booking.type), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_22, [booking.tutor ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+          key: 0,
+          href: "/nova/resources/tutors/".concat(booking.tutor.id),
+          "class": "text-blue-600 hover:underline"
+        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(booking.tutor.name), 9 /* TEXT, PROPS */, _hoisted_23)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          key: 1
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No Tutor ")], 64 /* STABLE_FRAGMENT */))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, [booking.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("a", {
+          key: 0,
+          href: "/nova/resources/tutors/".concat(booking.user.id),
+          "class": "text-blue-600 hover:underline"
+        }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(booking.user.name), 9 /* TEXT, PROPS */, _hoisted_25)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+          key: 1
+        }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" No Student ")], 64 /* STABLE_FRAGMENT */))])]);
+      }), 128 /* KEYED_FRAGMENT */))])])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, [].concat(_hoisted_28)))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]))];
     }),
     _: 1 /* STABLE */
   })]);
@@ -2142,7 +2232,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.container[data-v-ef10eebe] {\n  max-width: 1200px;\n}\n.Card[data-v-ef10eebe] {\n  padding: 2rem;\n}\n.button[data-v-ef10eebe] {\n  transition: background-color 0.3s;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.container[data-v-ef10eebe] {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 1rem;\n}\n.overflow-x-auto[data-v-ef10eebe] {\n  overflow-x: auto;\n}\n.flex[data-v-ef10eebe] {\n  display: flex;\n}\n.grid-cols-1[data-v-ef10eebe] {\n  grid-template-columns: repeat(1, minmax(0, 1fr));\n}\n.sm\\:grid-cols-2[data-v-ef10eebe] {\n@media (min-width: 640px) {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n}\n}\n.lg\\:grid-cols-3[data-v-ef10eebe] {\n@media (min-width: 1024px) {\n    grid-template-columns: repeat(3, minmax(0, 1fr));\n}\n}\n.gap-6[data-v-ef10eebe] {\n  gap: 1.5rem;\n}\n.text-blue-600[data-v-ef10eebe] {\n  color: #2563eb;\n}\n.hover\\:underline[data-v-ef10eebe]:hover {\n  text-decoration: underline;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
