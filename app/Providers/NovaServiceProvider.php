@@ -106,7 +106,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 (new Calendar())->menu($request)
             ];
         });
-        if (auth()->check() && auth()->user()->can('viewAnySetting')) {
+        // if (auth()->check() && auth()->user()->can('viewAnySetting')) {
             NovaSettings::addSettingsFields([
             Text::make(__("Facebook account"), 'facebook')
                 ->rules('required', 'url')
@@ -295,7 +295,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             
 
         ]);
-    }
+    // }
     }
 
     public function tools(): array
