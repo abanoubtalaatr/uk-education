@@ -104,13 +104,13 @@
           </li>
           @else
           <li class="nav-item">
-            <a class="nav-link nav-link-2 join-us-now" href="{{ route('student-register') }}">
-                Student</a>
+            <a class="nav-link nav-link-2 join-us-now" href="{{ route('shared-login-and-register') }}">
+                Login</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link nav-link-2 join-us-now" href="{{ route('tutor-login') }}">
                 Tutor</a>
-        </li>
+        </li> --}}
          
           @endif
         </ul>
