@@ -136,7 +136,7 @@
                             <h5 class="card-subtitle mb-3 text-muted">
                                 {{ implode(', ', $course->tutors->pluck('name')->toArray()) }}
                             </h5>
-                            <p class="card-text mb-3">Price: <strong>${{ $course->price }}</strong></p>
+                            <p class="card-text mb-3">Price: <strong>${{ $course->price }} £</strong></p>
                             <a href="{{ route('crash-courses.show', $course->id) }}" class="btn btn-primary btn-block">Book Now</a>
                         </div>
                     </div>

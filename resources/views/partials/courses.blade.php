@@ -27,18 +27,11 @@
                 ><div class="layout">&nbsp;</div>
               </a>
               <div class="card-body border p-3 mb-2 rounded">
-                {{-- <h5 class="card-title">
-                   <i class="far fa-star float-right"></i>
-                </h5> --}}
-                
-                  <p class="custom-changes">number of attendees <strong>{{\App\Services\BookingService::getAttendeesNumberInCourse($course->id)}} people</strong></p>
-                
-                
 
                 <a href="{{route('courses.show', $course->id)}}" class="btn btn-join float-right"
                   >Booking Now
                 </a>
-                <span>{{$course->price}} $</span>
+                <span>{{$course->price}} £</span>
               </div>
             </div>
           </div>

@@ -42,7 +42,7 @@
                       <a href="{{route('subscriptions.show', $subscription->id)}}" class="btn btn-join-2"
                         >Subscripe Now
                       </a>
-                      <button class="btn btn-join fw-bolds">{{$subscription->price}} $</button>
+                      <button class="btn btn-join fw-bolds">{{$subscription->price}} £</button>
                     </div>
                   </div>
                 @endforeach
