@@ -32,6 +32,8 @@ use App\Livewire\Tutor\Calendar as TutorCalendar;
 use App\Http\Controllers\StudentProgressController;
 use App\Livewire\Student\Profile as StudentProfile;
 
+Route::get('shared-login', SharedLoginPage::class)->name('shared-login');
+
 Route::get('/', Welcome::class)->name('welcome');
 
 Route::get('/pages/{slug}', Page::class)->name('pages');
@@ -64,7 +66,6 @@ Route::prefix('subscriptions')->as('subscriptions.')->group(function () {
     Route::get('/{subscription}', \App\Livewire\Subscription\Show::class)->name('show');
 });
 
-Route::get('shared-login', SharedLoginPage::class)->name('shared-login');
 
 Route::prefix('auth')->as('auth.')->group(function () {
     Route::get('email/{type}', Email::class)->name('email');
@@ -120,3 +121,4 @@ Route::get('events', function(){
     $mock = \App\Models\MockExam::first();
     event(new MockExamCreated($mock));
 });
+
