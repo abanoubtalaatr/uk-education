@@ -144,7 +144,7 @@
                                     @foreach ($results as  $result)
                                         <div class="col-12 border my-2 p-2 rounded">
                                             <p>Mock Exam : <strong>{{$result->mockExam->name}}</strong></p>
-                                            <a target="_blank" href="storage/{{$result->pdf}}">
+                                            <a  href="storage/{{$result->pdf}}">
                                                 <i class="fas fa-file-pdf"></i> Result
                                             </a>
                                             
