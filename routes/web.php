@@ -32,7 +32,7 @@ use App\Livewire\Tutor\Calendar as TutorCalendar;
 use App\Http\Controllers\StudentProgressController;
 use App\Livewire\Student\Profile as StudentProfile;
 
-Route::get('shared-login', SharedLoginPage::class)->name('shared-login');
+Route::get('shared-login-and-register', SharedLoginPage::class)->name('shared-login-and-register');
 
 Route::get('/', Welcome::class)->name('welcome');
 

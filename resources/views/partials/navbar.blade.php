@@ -106,7 +106,7 @@
           <li class="nav-item">
             <a
               class="nav-link nav-link-2 join-us-now"
-              href="/shared-login"
+              href="/shared-login-and-register"
               >Login</a
             >
           </li>
