@@ -75,12 +75,7 @@
                     <div class="col-md-12">
                         <div class="section-head text-center">
                             <h3>Why Choose Us</h3>
-                            <p>
-                                Over 700+ Scenario Examples
-                                Benefit from over 700 scenario examples that follow the latest UKMLA content map and
-                                guidelines, ensuring you are up-to-date with current standards.
-                                Expert Tutors
-                            </p>
+                           
                         </div>
                     </div>
                     <div class="col-md-12">
