@@ -23,7 +23,7 @@ class MockExam extends Resource
     public static $title = 'name';
 
     public static $search = [
-        'id', 'name', 'price', 'link', 'date', 'description'
+        'id', 'name', 'price', 'link', 'date', 'description',
     ];
 
     public function fields(Request $request)
@@ -35,6 +35,7 @@ class MockExam extends Resource
             Text::make('Name')->rules('required', 'max:255'),
             Number::make('Price')->rules('required'),
             Text::make('Link')->rules('required', 'max:255'),
+            Text::make('Mark Sheet Link For Tutor', 'mark_sheet_link')->rules('required', 'max:255'),
           
             Textarea::make('Description')->rules('required'),
             DateTime::make('Date', 'date')->rules('required'),

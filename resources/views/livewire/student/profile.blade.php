@@ -17,6 +17,9 @@
                                     aria-selected="true">Personal Data</a>
                                 <a class="nav-item nav-link mx-2 mb-3" href="{{ route('student-calendar') }}"
                                     role="tab" aria-controls="nav-calendar" aria-selected="false">Calendar</a>
+                                <a class="nav-item nav-link mx-2 mb-3" id="nav-result-tab" data-toggle="tab"
+                                    href="#nav-result" role="tab" aria-controls="nav-result"
+                                    aria-selected="false">Results</a>
                             </div>
                         </nav>
                         <div class="tab-content" id="nav-tabContent">
@@ -29,11 +32,9 @@
                                 @endif
                                 <div class="row mt-5">
                                     <div class="col-md-6">
-
-                                        <div class="info ">
+                                        <div class="info">
                                             <label>Profile Image</label>
                                             <div class="up-img border">
-
                                                 <input type="file" class="imgpo" wire:model="profileImage" />
                                                 @if ($profileImageUrl)
                                                     <img height="90" width="100" src="{{ $profileImageUrl }}"
@@ -41,41 +42,34 @@
                                                 @endif
                                             </div>
                                             <hr>
-
                                             <div>
                                                 <label>Screenshot of Exam Confirmation Email</label>
                                                 <div class="up-img border">
                                                     <input type="file" class="imgpo"
                                                         wire:model="examConfirmationEmail" />
                                                     <div class="d-flex">
-
                                                         @if ($examConfirmationEmailUrl)
                                                             <img height="90" width="100"
                                                                 src="{{ $examConfirmationEmailUrl }}"
                                                                 alt="Exam Confirmation Email" class="img-fluid" />
                                                         @endif
-
                                                     </div>
                                                 </div>
                                             </div>
                                             <hr>
                                             <div>
                                                 <label>First Upload Exam Confirmation Images</label>
-
                                                 <div class="up-img border">
                                                     <input type="file" class="imgpo"
                                                         wire:model="examConfirmationOne" />
                                                     <div class="d-flex">
-
                                                         @if ($examConfirmationOneUrl)
                                                             <img height="90" width="100"
                                                                 src="{{ $examConfirmationOneUrl }}"
                                                                 alt="Exam Confirmation Email" class="img-fluid" />
                                                         @endif
-
                                                     </div>
                                                 </div>
-
                                                 <div>
                                                     <label>Second Upload Exam Confirmation Images</label>
                                                     <hr>
@@ -83,16 +77,13 @@
                                                         <input type="file" class="imgpo"
                                                             wire:model="examConfirmationTwo" />
                                                         <div class="d-flex">
-
                                                             @if ($examConfirmationTwoUrl)
                                                                 <img height="90" width="100"
                                                                     src="{{ $examConfirmationTwoUrl }}"
                                                                     alt="Exam Confirmation Email" class="img-fluid" />
                                                             @endif
-
                                                         </div>
                                                     </div>
-
                                                     <form class="top-med" wire:submit.prevent="updateProfile">
                                                         <div class="form-group">
                                                             <input wire:model.defer="information.name" type="text"
@@ -112,12 +103,10 @@
                                                                 placeholder="WhatsApp Number" />
                                                         </div>
                                                         <button type="submit"
-                                                            class="btn btn-next float-right my-4">Save
-                                                            Changes</button>
+                                                            class="btn btn-next float-right my-4">Save Changes</button>
                                                     </form>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -147,7 +136,20 @@
                                             </form>
                                         </div>
                                     </div>
-                                    <!-- start other tabs (if any) -->
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-result" role="tabpanel"
+                                aria-labelledby="nav-result-tab">
+                                <div class="row mt-5">
+                                    @foreach ($results as  $result)
+                                        <div class="col-12 border my-2 p-2 rounded">
+                                            <p>Mock Exam : <strong>{{$result->mockExam->name}}</strong></p>
+                                            <a target="_blank" href="{{$result->pdf}}">
+                                                <i class="fas fa-file-pdf"></i> Result
+                                            </a>
+                                            
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>

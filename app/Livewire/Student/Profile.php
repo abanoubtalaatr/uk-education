@@ -22,6 +22,7 @@ class Profile extends Component
     public $examConfirmationOne;
     public $examConfirmationTwoUrl;
     public $examConfirmationTwo;
+    public $results = [];
 
     protected $rules = [
         'information.name' => 'required|string|max:255',
@@ -44,6 +45,7 @@ class Profile extends Component
         $this->examConfirmationOneUrl = $user->exam_confirmation_one??null;
         $this->examConfirmationTwoUrl = $user->exam_confirmation_two??null;
         $this->settings = NovaSettings::getSettings();
+        $this->results = $user->results;
     }
 
     public function updatedProfileImage()

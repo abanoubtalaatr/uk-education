@@ -8,9 +8,11 @@ use App\Nova\Topic;
 use App\Nova\Tutor;
 use App\Nova\Video;
 use App\Nova\Course;
+use App\Nova\Result;
 use App\Nova\Slider;
 use App\Nova\Contact;
 use App\Nova\MockExam;
+use App\Nova\Scenario;
 use Laravel\Nova\Nova;
 use Eminiarts\Tabs\Tab;
 use App\Nova\NewsLetter;
@@ -21,7 +23,6 @@ use App\Nova\BankScenario;
 use App\Nova\Subscription;
 use Illuminate\Http\Request;
 use App\Nova\Dashboards\Main;
-use App\Nova\Scenario;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Trix;
 use Laravel\Nova\Fields\Image;
@@ -63,6 +64,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::make(__('Student & Tutors'), [
                     MenuItem::resource(User::class),
                     MenuItem::resource(Tutor::class),
+                    MenuItem::resource(Result::class),
                 ])->icon('users')->collapsable()->collapsedByDefault(),
         
                 MenuSection::make(__('Courses'), [

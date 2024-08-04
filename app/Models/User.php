@@ -184,4 +184,9 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         return $this->bookings()->where('bookable_type', Subscription::class);
     }
+
+    public function results()
+    {
+        return $this->hasMany(Result::class);
+    }
 }
