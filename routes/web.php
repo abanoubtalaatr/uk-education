@@ -18,6 +18,7 @@ use App\Livewire\MockExam\Show;
 use App\Livewire\Tutor\Details;
 use App\Livewire\Tutor\Profile;
 use App\Models\StudentProgress;
+use App\Livewire\SharedLoginPage;
 use App\Livewire\Student\Calendar;
 use App\Livewire\Tutor\AboutTutor;
 use App\Livewire\Tutor\Auth\Login;
@@ -63,6 +64,8 @@ Route::prefix('subscriptions')->as('subscriptions.')->group(function () {
     Route::get('/{subscription}', \App\Livewire\Subscription\Show::class)->name('show');
 });
 
+Route::get('shared-login', SharedLoginPage::class)->name('shared-login');
+
 Route::prefix('auth')->as('auth.')->group(function () {
     Route::get('email/{type}', Email::class)->name('email');
     Route::get('verify/{email}/{type}', Verify::class)->name('verify');
@@ -87,7 +90,6 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('student-calendar', Calendar::class)->name('student-calendar');
     
     Route::post('/complete-video', [StudentProgressController::class,'store'])->name('complete.video');
-
 });
 
 Route::any('nova/language/{language}', function (Illuminate\Http\Request $request, $language) {

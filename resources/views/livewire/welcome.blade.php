@@ -109,7 +109,7 @@
 
                             <div class="col-md-4">
                                 <div class="skill text-center">
-                                    <img src="assets/images/teacher.png" alt="" class="img-fluid" />
+                                    <img src="assets/images/hours.webp" alt="" class="img-fluid" />
                                     <h3>Flexible Learning</h3>
                                     <p>
                                         Enjoy the convenience of flexible study times and cost-effective options tailored to fit your schedule and budget. Whether you have demanding hospital shifts, are busy with motherhood, or both, our flexible learning ensures you get the highest preparation standards. Even if you can't afford expensive academies, you can access top-quality preparation without paying an arm and a leg.
@@ -133,7 +133,7 @@
 
                             <div class="col-md-6">
                                 <div class="skill text-center">
-                                    <img src="assets/images/shopping-center.png" alt="" class="img-fluid" />
+                                    <img src="assets/images/doctor.png" alt="" class="img-fluid" />
                                     <h3>Proven Success</h3>
                                     <p>
                                         Join the ranks of our successful candidates who have aced their PLAB/UKMLA exam with our comprehensive and targeted preparation strategies. We proudly maintain a 100% track record of candidates who successfully cleared their PLAB 2 exam on the first attempt so far.

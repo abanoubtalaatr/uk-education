@@ -1,4 +1,5 @@
-<div class="container mt-3">
+<div class="container mt-5">
+  <hr>
   <div class="row">
     <div class="col-md-12">
       <div class="find">
@@ -24,8 +25,8 @@
       </div>
     </div>
   </div>
-<hr>
-  <div class="row">
+
+  {{-- <div class="row">
     <div class="col-md-12">
       <div class="find">
         <div class="row">
@@ -49,5 +50,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 </div>
