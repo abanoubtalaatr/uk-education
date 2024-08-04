@@ -18,6 +18,7 @@ use App\Livewire\MockExam\Show;
 use App\Livewire\Tutor\Details;
 use App\Livewire\Tutor\Profile;
 use App\Models\StudentProgress;
+use App\Livewire\CustomLoginPage;
 use App\Livewire\SharedLoginPage;
 use App\Livewire\Student\Calendar;
 use App\Livewire\Tutor\AboutTutor;
@@ -32,7 +33,7 @@ use App\Livewire\Tutor\Calendar as TutorCalendar;
 use App\Http\Controllers\StudentProgressController;
 use App\Livewire\Student\Profile as StudentProfile;
 
-Route::get('shared-login-and-register', SharedLoginPage::class)->name('shared-login-and-register');
+
 
 Route::get('/', Welcome::class)->name('welcome');
 
@@ -121,4 +122,6 @@ Route::get('events', function(){
     $mock = \App\Models\MockExam::first();
     event(new MockExamCreated($mock));
 });
+
+Route::get('shared-login-and-register', CustomLoginPage::class)->name('shared-login-and-register');
 

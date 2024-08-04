@@ -5,7 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Outl1ne\NovaSettings\NovaSettings;
 
-class SharedLoginPage extends Component
+class CustomLoginPage extends Component
 {
     public $settings;
 
