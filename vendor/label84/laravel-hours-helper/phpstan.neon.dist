@@ -1,0 +1,16 @@
+includes:
+    - ./vendor/larastan/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - src
+
+    level: 8
+
+    ignoreErrors:
+
+    excludes_analyse:
+
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
