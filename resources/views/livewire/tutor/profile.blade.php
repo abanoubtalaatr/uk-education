@@ -238,12 +238,7 @@
                           <p>
                             {{$subscription->description}}
                           </p>
-                          <p class="float-left mr-3 n-attend">
-                            Number of attendees:
-                            <span class="ateend-dark">
-                              {{ \App\Services\SubscriptionService::getTotalStudentsInSubscriptionByTutor($subscription, auth('tutor')->id())}} people
-                            </span>
-                          </p>
+                          
                           
                         </div>
                       </div>
@@ -289,7 +284,7 @@
                     <div class="col-md-8">
                       <div class="result">
                         <div class="result-confirm float-right mr-4">
-                          <h4 class="pr-2 pb-2">{{$course->price}} $</h4>
+                          <h4 class="pr-2 pb-2">{{$course->price}} £</h4>
                           <a
                             href="#"
                             class="btn btn-join ser-btn float-right"
@@ -304,10 +299,7 @@
                             {{$course->description}}
                           </p>
                           <p class="float-left mr-3 n-attend">
-                            Number of attendees:
-                            <span class="ateend-dark">
-                              {{ \App\Services\CourseService::getTotalStudentsInCourseByTutor($subscription, auth('tutor')->id())}} people
-                            </span>
+                            
                           </p>
                           
                         </div>
@@ -352,7 +344,7 @@
                     <div class="col-md-8">
                       <div class="result">
                         <div class="result-confirm float-right mr-4">
-                          <h4 class="pr-2 pb-2">{{$mock->price}} $</h4>
+                          <h4 class="pr-2 pb-2">{{$mock->price}} £</h4>
                           <a
                             href="{{route('mock-exams.bank-scenarios', $mock->id)}}"
                             class="btn btn-join ser-btn float-right"
@@ -366,12 +358,7 @@
                           <p>
                             {{$mock->description}}
                           </p>
-                          <p class="float-left mr-3 n-attend">
-                            Number of attendees:
-                            <span class="ateend-dark">
-                              {{ \App\Services\MockExamService::getTotalStudentsInMockExamByTutor($subscription, auth('tutor')->id())}} people
-                            </span>
-                          </p>
+                          
                           
                         </div>
                       </div>
@@ -413,7 +400,7 @@
                     <div class="col-md-8">
                       <div class="result">
                         <div class="result-confirm float-right mr-4">
-                          <h4 class="pr-2 pb-2">{{$crash->price}} $</h4>
+                          <h4 class="pr-2 pb-2">{{$crash->price}} £</h4>
                           <a
                             href="#"
                             class="btn btn-join ser-btn float-right"
@@ -427,12 +414,7 @@
                           <p>
                             {{$crash->description}}
                           </p>
-                          <p class="float-left mr-3 n-attend">
-                            Number of attendees:
-                            <span class="ateend-dark">
-                              {{ \App\Services\CrashCourseService::getTotalStudentsInCrashCourseByTutor($subscription, auth('tutor')->id())}} people
-                            </span>
-                          </p>
+                          
                           
                         </div>
                       </div>

@@ -33,7 +33,7 @@ class Scenario extends Resource
      * @var array
      */
     public static $search = [
-        'id',
+        'name','number', 'question', 'approach','answer'
     ];
 
     /**
@@ -51,7 +51,7 @@ class Scenario extends Resource
 
             Text::make('Name', 'name'),
 
-            Text::make('Student Instructions','question')->rules('required')->showOnIndex(),
+            Trix::make('Student Instructions','question')->rules('required'),
 
             Trix::make('Patient Information','answer')->rules('required'),
 
