@@ -84,21 +84,21 @@
                                 <div class="skill text-center">
                                     <img src="assets/images/school.png" alt="" class="img-fluid" />
                                     <h3>Extensive Study material  </h3>
-                                    <p>
+                                    <div class="small-font">
                                         Over 700+ Scenario Examples that covers different aspects of the exam.
                                         Benefit from over 700 scenario examples that follow the latest UKMLA content map
                                         and guidelines, ensuring you are up-to-date with current standards.
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="skill text-center">
                                     <img src="assets/images/teacher.png" alt="" class="img-fluid" />
                                     <h3>Learn from the BEST </h3>
-                                    <p>
+                                    <div class="small-font">
                                         Dr. Radwan and a team of experienced medical professionals will provide expert guidance and insights into the PLAB and UKMLA exam and starting your NHS career.
-                                    </p>
-                                    <p>Dr. Radwan has proudly helped many current NHS doctors to successfully ACE their PLAB/UKMLA exam ensuring you get the best possible preparation.</p>
+                                    </div>
+                                    <div >Dr. Radwan has proudly helped many current NHS doctors to successfully ACE their PLAB/UKMLA exam ensuring you get the best possible preparation.</div>
                                 </div>
                             </div>
 
@@ -106,9 +106,9 @@
                                 <div class="skill text-center">
                                     <img src="assets/images/hours.webp" alt="" class="img-fluid" />
                                     <h3>Flexible Learning</h3>
-                                    <p>
+                                    <div class="small-font">
                                         Enjoy the convenience of flexible study times and cost-effective options tailored to fit your schedule and budget. Whether you have demanding hospital shifts, are busy with motherhood, or both, our flexible learning ensures you get the highest preparation standards. Even if you can't afford expensive academies, you can access top-quality preparation without paying an arm and a leg.
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -120,9 +120,9 @@
                                 <div class="skill text-center">
                                     <img src="assets/images/shopping-center.png" alt="" class="img-fluid" />
                                     <h3>Free Support After PLAB 2</h3>
-                                    <p>
+                                    <div class="small-font">
                                         Get the advice you need to secure your GMC registration, Clinical Attachment, and First NHS job. Our support continues even after you've passed the PLAB/UKMLA exam, at no extra cost.
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
 
@@ -130,9 +130,9 @@
                                 <div class="skill text-center">
                                     <img src="assets/images/doctor.png" alt="" class="img-fluid" />
                                     <h3>Proven Success</h3>
-                                    <p>
+                                    <div class="small-font small-font">
                                         Join the ranks of our successful candidates who have aced their PLAB/UKMLA exam with our comprehensive and targeted preparation strategies. We proudly maintain a 100% track record of candidates who successfully cleared their PLAB 2 exam on the first attempt so far.
-                                    </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -144,35 +144,6 @@
 
         @include('partials.tutors')
 
-        <!-- start download section -->
-        <div class="download">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="down-info">
-                            <h4>Free Download Now</h4>
-                            <p>
-                                Sed ut perspiciatis unde omnis istpoe natus error sit
-                                voluptatem accusantium doloremque eopsloi laudantium Sed ut
-                                perspiciatis unde omnis istpoe natus error sit voluptatem
-                                accusantium doloremque eopsloi laudantium
-                            </p>
-                            <ul class="down-badg">
-                                <li>
-                                    <img src="assets/images/badge-play.png" alt="" />
-                                </li>
-                                <li><img src="assets/images/badge-store.png" alt="" /></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="project">
-                            <img src="assets/images/download.png" alt="" class="img-fluid" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
         @include('partials.footer')
         <script>
             document.querySelectorAll(".star-icon").forEach(function(star) {
@@ -195,5 +166,10 @@
                 });
         </script>
     </main>
+    <style>
+        .small-font{
+            font-size: 15px;
+        }
+    </style>
 
 </div>

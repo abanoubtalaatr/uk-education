@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 
 class Profile extends Component
 {
-    public $tutor, $information, $subscriptions, $courses, $mockExams, $crashCourses, $slots = [];
+    public $tutor, $information, $subscriptions = [], $courses= [], $mockExams=[], $crashCourses=[], $slots = [];
     public $daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
     public $weekOffset = 0;

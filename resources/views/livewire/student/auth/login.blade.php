@@ -36,13 +36,9 @@
                   </div>
 
                   <div class="form-group">
-                    <a
-                    href="{{route('auth.email', 'student')}}"
-                    class="float-left top resend"
-                  >
-                    Forgot password?</a
-                  >
+                    <a href="{{route('auth.email', 'student')}}" class="float-left top resend">Forgot password?</a>
                   </div>
+                  
                   <button
                   wire:click="login"
                     type="button"
@@ -50,6 +46,7 @@
                   >
                     Login
                   </button>
+                  
                   @if (isset($message))
                   <div class=" form-group alert alert-danger text-end">{{$message}}</div>
 
@@ -63,14 +60,20 @@
             <div class="col-md-5 p-none">
               <div class="margin-contain">
                 <div class="card-login blue">
-                  <h3>Login into your account as Student</h3>
+                  <h3>Login into account as Student</h3>
                   <p>
                     Sed ut perspiciatis unde omnis istpoe natus error sit
                     voluptatem accusantium doloremque eopsloi laudantium
                   </p>
                   <ul class="sign-as">
                     
-                    
+                    <a href="{{ route('student-register') }}"
+                  
+                    type="button"
+                    class="btn btn-primary float-right top mright-small"
+                  >
+                    Register a new account
+                  </a>
                   </ul>
                   
                 </div>

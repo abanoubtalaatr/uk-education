@@ -49,10 +49,16 @@ class Slider extends Resource
             Text::make('Button name', 'button_name')->rules('required'),
             Text::make('Link', 'link')->rules('required'),
             Textarea::make('Description', 'description')->rules('required'),
-            Image::make('Image', 'image')->rules('required'),
+            Image::make('Image', 'image')->rules($this->imageRules($request)),
         ];
     }
 
+    protected function imageRules(Request $request)
+    {
+        return $request->isUpdateOrUpdateAttachedRequest()
+            ? ['nullable', 'image']
+            : ['required', 'image'];
+    }
     /**
      * Get the cards available for the request.
      *

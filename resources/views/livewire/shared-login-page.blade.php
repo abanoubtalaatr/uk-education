@@ -2,13 +2,16 @@
     <!-- Start of section center-1 -->
     <section class="center-1 forgot-password">
       <div class="center-overlay">
+        
         <div class="container">
           <div class="row d-flex justify-content-center align-items-center">
             <!-- Student Login -->
             <div class="col-md-5 p-none">
+              
               <div class="margin-contain">
+                
                 <div class="card-login blue">
-                  <h3>Login into your account as Student</h3>
+                  <h3>Login into account as Student</h3>
                   <p>
                     Sed ut perspiciatis unde omnis iste natus error sit
                     voluptatem accusantium doloremque laudantium.
@@ -26,7 +29,7 @@
             <div class="col-md-5 p-none mx-1">
               <div class="margin-contain">
                 <div class="card-login blue">
-                  <h3>Login into your account as Tutor</h3>
+                  <h3>Login into account as Tutor</h3>
                   <p>
                     Sed ut perspiciatis unde omnis iste natus error sit
                     voluptatem accusantium doloremque laudantium.

@@ -133,13 +133,10 @@
                                     <h5 class="card-title">
                                         {{ implode(', ', $course->tutors->pluck('name')->toArray()) }}
                                     </h5>
-                                    <p>Number of attendees
-                                        <strong>{{ \App\Services\BookingService::getAttendeesNumberInCourse($course->id) }}
-                                            people</strong>
-                                    </p>
+                                    
                                     <a href="{{ route('courses.show', $course->id) }}"
                                         class="btn btn-join float-right">Booking Now</a>
-                                    <span class="float-right mr-2">{{ $course->price }} $</span>
+                                    <span class="float-right mr-2">{{ $course->price }} £</span>
                                 </div>
                             </div>
                         </div>

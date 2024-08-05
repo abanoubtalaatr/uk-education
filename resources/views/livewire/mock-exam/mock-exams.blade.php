@@ -84,8 +84,7 @@
                             </a>
                             <div class="card-body border p-3 rounded">
                                 <h4 class="card-title">{{ $mockExam->name }}</h4>
-                                {{-- <h5 class="card-subtitle mb-2 text-muted">{{ implode(', ', $mockExam->tutors->pluck('name')->toArray()) }}</h5> --}}
-                                {{-- <p class="card-text">Number of attendees: <strong>{{ \App\Services\BookingService::getAttendeesNumberInMockExam($mockExam->id) }} people</strong></p> --}}
+                                
                                 <a href="{{ route('mock-exams.book-mock', $mockExam->id) }}" class="btn btn-primary">Find Your Tutors Available</a>
                                 <span class="d-block mt-2">{{ $mockExam->price }} £</span>
                             </div>
