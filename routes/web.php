@@ -26,6 +26,7 @@ use App\Livewire\Tutor\Auth\Login;
 use App\Livewire\Auth\ResetPassword;
 use App\Livewire\MockExam\MockExams;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\CrashCourse\GroupFive;
 use App\Livewire\MockExam\BankScenario;
 use App\Livewire\Student\Auth\Register;
 use App\Livewire\BankScenario\Scenarios;
@@ -61,6 +62,7 @@ Route::prefix('mock-exams')->as('mock-exams.')->group(function () {
 
 Route::prefix('crash-courses')->as('crash-courses.')->group(function () {
     Route::get('/{crash_course}', \App\Livewire\CrashCourse\Show::class)->name('show');
+    Route::get('/{crash_course}/group-five', GroupFive::class)->name('group-five');
 });
 
 Route::prefix('subscriptions')->as('subscriptions.')->group(function () {
