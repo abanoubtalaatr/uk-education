@@ -4,16 +4,16 @@
 
       <div
         id="carouselExampleControls"
-        class="carousel slide"
+        class="carousel slide "
         data-ride="carousel"
       >
-        <div class="carousel-inner" style="height: 350px">
+        <div class="carousel-inner mt-2" style="height: 380px">
             @foreach ($sliders as $key=> $slider)
             <div class="carousel-item @if($key == 0) active @endif">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="hero-box-info">
-                      <h1>{{$slider->title}}</h1>
+                      <h4>{{$slider->title}}</h4>
                       <p class="w-100">
                         {{$slider->description}}
                       </p>
