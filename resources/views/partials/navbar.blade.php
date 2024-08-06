@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-light">
     <div class="container-fluid y-side">
       <a href="/" class="small text-white logo">
-       <img height="60" width="100" src=" {{asset('storage/'. $settings['logo'])}}" alt="Logo ">
+       <img height="80" width="120" src=" {{asset('storage/'. $settings['logo'])}}" alt="Logo ">
       </a>
 
       <button

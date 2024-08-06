@@ -12,7 +12,7 @@
                 <li>
                   <div class="logo-container">
                     <h2 class="text-white">
-                      <img height="60" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
+                      <img height="80" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
 
                     </h2>
                   </div>

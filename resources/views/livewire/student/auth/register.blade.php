@@ -9,7 +9,7 @@
                             <li>
                                 <div class="logo-container">
                                     <a href="/">
-                                        <img class="my-4" height="60" width="100"
+                                        <img class="my-4" height="80" width="120"
                                             src=" {{ asset('storage/' . $settings['logo']) }}" alt="Logo ">
                                     </a>
                                 </div>
@@ -108,7 +108,7 @@
                                             <div class="d-flex">
 
                                                 @if ($examConfirmationEmailUrl)
-                                                    <img height="90" width="100"
+                                                    <img height="90" width="120"
                                                         src="{{ $examConfirmationEmailUrl }}"
                                                         alt="Exam Confirmation Email" class="img-fluid" />
                                                 @endif
@@ -128,7 +128,7 @@
                                             <div class="d-flex">
 
                                                 @if ($examConfirmationOneUrl)
-                                                    <img height="90" width="100"
+                                                    <img height="90" width="120"
                                                         src="{{ $examConfirmationOneUrl }}"
                                                         alt="Exam Confirmation Email" class="img-fluid" />
                                                 @endif
@@ -149,7 +149,7 @@
                                             <div class="d-flex">
 
                                                 @if ($examConfirmationTwoUrl)
-                                                    <img height="90" width="100"
+                                                    <img height="90" width="120"
                                                         src="{{ $examConfirmationTwoUrl }}"
                                                         alt="Exam Confirmation Email" class="img-fluid" />
                                                 @endif

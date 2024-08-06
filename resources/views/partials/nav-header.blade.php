@@ -23,7 +23,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-light">
         <div class="container-fluid y-side">
             <a href="/" class="small text-white logo">
-                <img height="60" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
+                <img height="80" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
