@@ -25,7 +25,7 @@
     
                   <div class="col-md-6">
                     <div class="hero-box-image " style="height: 240px;
-                    width: 360px;">
+                    width: 340px;">
                       <img
                         src="{{asset('storage/'. $slider->image)}}"
                         alt=""
