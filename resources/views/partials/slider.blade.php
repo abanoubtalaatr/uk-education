@@ -24,11 +24,11 @@
                   </div>
     
                   <div class="col-md-6">
-                    <div class="hero-box-image">
+                    <div class="hero-box-image " >
                       <img
                         src="{{asset('storage/'. $slider->image)}}"
                         alt=""
-                        class="img-fluid hero-image-responsive"
+                        class="img-fluid hero-image-responsive w-100 h-100"
                       />
                     </div>
                   </div>
