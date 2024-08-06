@@ -7,7 +7,7 @@
         class="carousel slide"
         data-ride="carousel"
       >
-        <div class="carousel-inner">
+        <div class="carousel-inner" style="height: 400px">
             @foreach ($sliders as $key=> $slider)
             <div class="carousel-item @if($key == 0) active @endif">
                 <div class="row">
