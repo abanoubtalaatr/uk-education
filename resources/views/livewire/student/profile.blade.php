@@ -37,7 +37,7 @@
                                             <div class="up-img border">
                                                 <input type="file" class="imgpo" wire:model="profileImage" />
                                                 @if ($profileImageUrl)
-                                                    <img height="90" width="100" src="{{ $profileImageUrl }}"
+                                                    <img height="90" width="120" src="{{ $profileImageUrl }}"
                                                         alt="Profile Image" class="img-fluid" />
                                                 @endif
                                             </div>
@@ -49,7 +49,7 @@
                                                         wire:model="examConfirmationEmail" />
                                                     <div class="d-flex">
                                                         @if ($examConfirmationEmailUrl)
-                                                            <img height="90" width="100"
+                                                            <img height="90" width="120"
                                                                 src="{{ $examConfirmationEmailUrl }}"
                                                                 alt="Exam Confirmation Email" class="img-fluid" />
                                                         @endif
@@ -64,7 +64,7 @@
                                                         wire:model="examConfirmationOne" />
                                                     <div class="d-flex">
                                                         @if ($examConfirmationOneUrl)
-                                                            <img height="90" width="100"
+                                                            <img height="90" width="120"
                                                                 src="{{ $examConfirmationOneUrl }}"
                                                                 alt="Exam Confirmation Email" class="img-fluid" />
                                                         @endif
@@ -78,7 +78,7 @@
                                                             wire:model="examConfirmationTwo" />
                                                         <div class="d-flex">
                                                             @if ($examConfirmationTwoUrl)
-                                                                <img height="90" width="100"
+                                                                <img height="90" width="120"
                                                                     src="{{ $examConfirmationTwoUrl }}"
                                                                     alt="Exam Confirmation Email" class="img-fluid" />
                                                             @endif
