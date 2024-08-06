@@ -3015,3 +3015,7 @@ body {
   max-height: 2.6em;
 }
 
+.hero-box-image{
+  height: 240px;
+  width: 360px
+}
