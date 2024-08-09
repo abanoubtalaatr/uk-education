@@ -11,7 +11,7 @@ body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
 }
-
+form-control-4
 .dropleft .dropdown-toggle::before {
   display: none;
 }
@@ -72,7 +72,6 @@ select {
   border-radius: 5px;
   margin-bottom: 0 !important;
   height: 50px !important;
-  width: 380px !important;
 }
 
 .form-control-4:focus {
@@ -413,14 +412,14 @@ ul {
 
 } */
 /* start index */
-.hero {
-  padding: 20px 0;
-  background-image: url(../images/mask-group-s.png);
-  background-position: bottom;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 120vh;
-}
+/*.hero {*/
+/*  padding: 20px 0;*/
+/*  background-image: url(../images/mask-group-s.png);*/
+/*  background-position: bottom;*/
+/*  background-size: cover;*/
+/*  background-repeat: no-repeat;*/
+/*  height: 170vh !important;*/
+/*}*/
 .header-1-list li {
   display: inline-block;
   margin-right: 22px;
@@ -443,11 +442,11 @@ ul {
   width: 100px;
 }
 .y-side {
-  padding-left: 5rem;
-  padding-right: 5rem;
+  padding-left: 10rem;
+  padding-right: 10rem;
 }
 .y-side-big {
-  padding: 0 7rem;
+  padding: 0 10rem;
 }
 .list-1 {
   float: right;
@@ -476,7 +475,7 @@ ul {
 }
 .hero-box-info h1 {
   color: #fff;
-  font-size: 70px;
+  font-size: 50px;
 }
 .hero-box-info p {
   color: #fff;
@@ -533,11 +532,11 @@ ul {
 }
 /* start why us */
 .why-us {
-  padding: 60px 0;
-  background-image: url(../images/logo-shape.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: 250px 0px;
+  padding: 30px 0;
+  /*background-image: url(../images/logo-shape.png);*/
+  /*background-size: contain;*/
+  /*background-repeat: no-repeat;*/
+  /*background-position: 250px 0px;*/
 }
 .section-head {
   margin-bottom: 70px;
@@ -606,6 +605,7 @@ ul {
 }
 .card .card-img-top {
   height: 200px;
+      object-fit: cover;
 }
 .card-body h5 {
   color: #25252a;
@@ -697,11 +697,12 @@ ul {
 }
 /* start top coaches section */
 .top-coaches {
-  padding: 100px 0;
+  padding: 30px 0;
   /* background: url(../images/logo-footer.png) no-repeat left; */
   position: relative;
   background-size: contain;
   background-position: -400px 100px;
+      padding-top: 50px;
 }
 
 .coach-profile {
@@ -710,7 +711,7 @@ ul {
 .c-name {
   position: absolute;
   bottom: 80px;
-  left: 40px;
+  left: 20px;
   z-index: 2;
   font-weight: bold;
   font-size: 22px;
@@ -719,7 +720,7 @@ ul {
 .sub-name {
   position: absolute;
   bottom: 60px;
-  left: 40px;
+  left: 20px;
   z-index: 2;
   color: #fff;
   font-size: 14px;
@@ -1937,7 +1938,7 @@ ul {
 }
 .carousel-me-next {
   position: absolute;
-  bottom: 28%;
+  bottom: 75%;
   left: 200px;
   cursor: pointer;
   color: #fff;
@@ -1945,14 +1946,14 @@ ul {
 
 .carousel-me-prev {
   position: absolute;
-  bottom: 28%;
-  left: 120px;
+  bottom: 75%;
+  left: 160px;
   cursor: pointer;
   color: #fff;
 }
 
 .btn-info {
-  background-color: #4d75b8 !important;
+  background-color: #3A3C8E !important;
 }
 
 /* start my Media-Quary *************************************************** ********/
@@ -2182,7 +2183,7 @@ ul {
     text-align: center;
   }
   .hero-box-info h1 {
-    font-size: 40px;
+    font-size: 25px;
   }
   .hero-box-info p {
     width: 100%;
@@ -2562,19 +2563,48 @@ body {
 }
 
 .new-bg-reviews {
-  background: #0079e9;
+  background: #3a3c8e;
   margin: 10px;
   gap: 5px;
   border-radius: 10px !important;
+      position: relative;
+}
+.new-bg-reviews::after {
+     content: "";
+    position: absolute;
+    bottom: -19px;
+    right: 7px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 40px solid #3a3c8e;
+    transform: rotate(87deg);
+    z-index: -1;
+}
+.fa-quote-left{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color:#3a3c8e;
+}
+.fa-quote-right{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color:#3a3c8e;
 }
 .new-style-reviews {
   width: 100%;
   text-align: center;
-  height: 40vh;
+  /*height: 40vh;*/
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  /*padding: 20px;*/
+}
+.new-style-reviews .card{
+    margin-bottom:0 !important;
 }
 
 .container-social {
@@ -2823,10 +2853,21 @@ body {
 
 .card-couch-new {
   width: 100% !important;
-  border-radius: 5% !important;
-  height: 55vh !important;
+    border-radius: 15px !important;
+  height: 300px !important;
 }
-
+.layer {
+    width: 100%;
+  height: 300px !important;
+    position: absolute;
+    border-radius: 15px !important;
+}
+.card-couch-new .img-fluid {
+    width: 100%;
+    border-radius: 15px !important;
+    height: 100% !important;
+    object-fit: cover;
+}
 /* Custom CSS */
 .card {
   /* background: #f8f9fa; */
@@ -3013,4 +3054,61 @@ body {
   text-overflow: ellipsis;
   line-height: 1.3;
   max-height: 2.6em;
+}
+
+
+.hero {
+    padding: 20px 0;
+    background-image: url(../images/mask-group-s.png);
+    background-position: top;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 100vh !important;
+}
+.minus-mar{
+        margin-top: -240px;
+    margin-bottom:50px;
+}
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.main-btn-social {
+
+    transition: transform 0.3s, opacity 0.3s;
+    animation: pulse 1.5s infinite;
+
+}
+.social-media-index a{
+        width: 30px;
+    height: 30px;
+    display: block;
+    margin: auto;
+    background: #3a3c8e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+.custom-card {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden;
+}
+.new-style-reviews .card-body {
+    /*min-height: unset !important;*/
+    max-height: unset !important;
+        min-height: 150px !important;
 }

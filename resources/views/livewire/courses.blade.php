@@ -21,7 +21,7 @@
                             <li class="m-1 mobile-taps-responsive mb-1" role="presentation">
                                 <button class="p-2 btn border btn-info" id="home-tab" data-toggle="tab" data-target="#home"
                                     type="button" role="tab" aria-controls="home" aria-selected="true">
-                                    <span>PLAB2/CPSA Course </span>
+                                    <span>PLAB2/CPSA Course</span>
                                 </button>
                             </li>
                             <li class="m-1 mobile-taps-responsive mb-1" role="presentation">
@@ -125,18 +125,18 @@
                         <div class="col-md-4 mb-4">
                             <div class="card">
                                 <a href="{{ route('courses.show', $course->id) }}">
-                                    <img src="{{ asset('storage/' . $course->image) }}" class="card-img-top img-fluid"
+                                    <img src="{{ asset('storage/' . $course->image) }}" class="card-img-top card-top img-fluid"
                                         alt="{{ $course->name }}" />
                                 </a>
-                                <div class="card-info">{{ $course->name }}</div>
-                                <div class="card-body p-3 mb-1 rounded">
+                                <div class="card-body p-3 mb-2 rounded">
+                                <h5 class="card-title">{{ $course->name }}</h5>
                                     <h5 class="card-title">
                                         {{ implode(', ', $course->tutors->pluck('name')->toArray()) }}
                                     </h5>
                                     
                                     <a href="{{ route('courses.show', $course->id) }}"
                                         class="btn btn-join float-right">Booking Now</a>
-                                    <span class="float-right mr-2">{{ $course->price }} £</span>
+                                    <span class="">{{ $course->price }} £</span>
                                 </div>
                             </div>
                         </div>
@@ -214,16 +214,16 @@
             transition: transform 0.3s;
         }
 
-        .card-img-top:hover {
-            transform: scale(1.05);
-        }
+        /*.card-img-top:hover {*/
+        /*    transform: scale(1.05);*/
+        /*}*/
 
         .card-info {
             font-size: 1.25rem;
             color: #333;
-            padding: 15px;
-            background-color: #f8f9fa;
-            text-align: center;
+            padding: 10px;
+            /*background-color: #f8f9fa;*/
+            text-align: left;
         }
 
         .card-body {
@@ -289,6 +289,14 @@
 
         .btn-book-now:hover {
             background-color: #218838;
+        }
+        
+        .card-top {
+          width: 100%;
+        }
+        .card-body {
+          min-height: 95px;
+          max-height: 95px;
         }
     </style>
 </div>

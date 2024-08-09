@@ -12,7 +12,7 @@
                             <li class="sperator">|</li>
 
                             <li>
-                                <a href="#">{{ $settings['email'] }}</a>
+                                <a href="#">{{ $settings['email'] }} 000</a>
                             </li>
                         </ul>
                     </div>
@@ -22,8 +22,8 @@
         @include('partials.navbar')
         @include('partials.slider')
 
-        @include('partials.search')
     </section>
+        @include('partials.search')
 
     <!--  -->
 
@@ -69,17 +69,15 @@
     <!--  -->
 
     <main>
-        <div class="why-us">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="section-head text-center">
+        <div class="why-us pt-0">
+            <div class="container-fluid y-side">
+                   <div class="row">
+                             <div class="col-md-12">
+                                    <div class="head-coach text-center">
                             <h3>Why Choose Us</h3>
                            
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <div class="row">
                             <div class="col-md-4">
                                 <div class="skill text-center">
                                     <img src="assets/images/school.png" alt="" class="img-fluid" />
@@ -113,10 +111,9 @@
                             </div>
 
                         </div>
-                    </div>
-                    <div class="col-md-12 mt-5">
-                        <div class="row">
-                            <div class="col-md-6">
+                                  <div class="row mt-5">
+
+      <div class="col-md-6">
                                 <div class="skill text-center">
                                     <img src="assets/images/shopping-center.png" alt="" class="img-fluid" />
                                     <h3>Free Support After PLAB 2</h3>
@@ -136,8 +133,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+          
             </div>
         </div>
         @include('partials.testimonials')
@@ -169,6 +165,9 @@
     <style>
         .small-font{
             font-size: 15px;
+        }
+        .text-class{
+            font-size:10px;
         }
     </style>
 

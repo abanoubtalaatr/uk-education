@@ -8,7 +8,7 @@
       {{-- <img src="{{asset('assets/images/logo-footer.png')}}" alt="" class="img-fluid" /> --}}
     </div>
     
-    <div class="container">
+    <div class="container-fluid y-side-big">
       <div class="row">
         <div class="col-md-12">
           <div class="logo-dark float-left">
