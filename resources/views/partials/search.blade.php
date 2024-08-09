@@ -1,13 +1,11 @@
 <div class="container-fluid y-side minus-mar">
   
-  <div class="row">
-    <div class="col-md-12">
-      <div class="find">
+    <div class="find">
         <div class="row">
           <div class="col-md-2 input-mobile-width">
             <div class="find-info">
-              <h5>Find Your</h5>
-              <p>Courses or Tutors</p>
+              <h5 class='mb-0'>Find Your</h5>
+              <p class='mb-0'>Courses or Tutors</p>
             </div>
           </div>
           <div class="col-md-10">
@@ -25,26 +23,24 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
   {{-- <div class="row">
     <div class="col-md-12">
-      <div class="find">
+      <div class="find p-0 p-3">
         <div class="row">
           <div class="col-md-5 ">
             <div class="find-info">
-              <h5>Find Your Tutor</h5>
+              <h5 class='mb-0'>Find Your Tutor</h5>
             
             </div>
           </div>
           <div class="col-md-7  ">
             <form class="d-flex" action="{{route('all-tutors', ['search' => request()->input('search')])}}">
-              <div class="w-75 mb-2">
+              <div class="w-75 mb-0">
                 <input type="text" name="search" class="form-control w-75 form-control-3" id="Tutor" placeholder="Tutor name">
               </div>
               <div class="w-25">
-                <button type="submit"  class="btn btn-info p-2"> Search </button>
+                <button type="submit"  class="btn btn-info px-4"> Search </button>
               </div>
               
             </form>
@@ -78,11 +74,14 @@
     
     
     /* start my Media-Quary *************************************************** ********/
-@media only screen and (max-width: 600px) {
+@media(max-width: 600px) {
 
   .form-control-3 {
     height: 40px;
   }
+  .form-group-new-width {
+    width: 100% !important;
+}
 }    
     
 </style>

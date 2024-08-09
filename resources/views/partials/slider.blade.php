@@ -138,9 +138,9 @@
     width: 100%;
   }
 
-  .hero-image-responsive {
-    display: none;
-  }
+  /*.hero-image-responsive {*/
+  /*  display: none;*/
+  /*}*/
 
 }
 

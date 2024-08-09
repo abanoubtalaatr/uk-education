@@ -5,9 +5,9 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-light">
         <div class="container-fluid y-side">
-            <a href="/" class="small text-white logo">
-                <img height="80" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
-            </a>
+            <!--<a href="/" class="small text-white logo">-->
+            <!--    <img width="150" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">-->
+            <!--</a>-->
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto navbar-nav-2">
+                <ul class="navbar-nav  navbar-nav-2">
                     <li class="nav-item active">
                         <a class="nav-link nav-link-2" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
@@ -48,7 +48,7 @@
                     @if (auth('web')->check() || auth('tutor')->check())
                         <li class="nav-item">
                             <div class="dropdown">
-                                <button class="btn join-us-now text-white dropdown-toggle" type="button"
+                                <button class="btn  text-white dropdown-toggle" type="button"
                                     data-toggle="dropdown" aria-expanded="false">
                                     <img src="{{ asset('assets/images/avatar.jpg') }}"
                                         style="border-radius: 50%; width: 30px" alt="">
