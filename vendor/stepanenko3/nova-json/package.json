@@ -24,7 +24,7 @@
     "mime": "^3.0.0",
     "object-to-formdata": "^4.4.2",
     "sortablejs": "^1.15.0",
-    "toastedjs": "^0.0.2",
+    "toastedjs": "^0.0.16",
     "uniqid": "^5.4.0"
   }
 }
