@@ -25,3 +25,4 @@ jobs:
           git pull origin master
           # Add other deployment steps if needed
         EOF
+        
