@@ -20,6 +20,8 @@ jobs:
 
     - name: Deploy code via SSH
       run: |
-        ssh -o StrictHostKeyChecking=no digital07@${{ secrets.SERVER_IP }} "
-          cd /home/digital07/education.digital-vision-solutions.com &&
-          git pull origin master &&
+        ssh -o StrictHostKeyChecking=no digital07@${{ secrets.SERVER_IP }} << 'EOF'
+          cd /home/digital07/education.digital-vision-solutions.com
+          git pull origin master
+          # Add other deployment steps if needed
+        EOF
