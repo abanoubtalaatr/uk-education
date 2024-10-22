@@ -23,3 +23,4 @@ auto-imports.d.ts
 resources/js/ziggy.d.ts
 resources/js/ziggy.js
 public/qrcode.png
+node_modules
