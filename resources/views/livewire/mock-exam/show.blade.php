@@ -4,7 +4,7 @@
 
         <!-- start add cours -->
         <div class="add-2">
-          <div class="container">
+          <div class="container-fluid y-side">
             <div class="row">
               <div class="col-md-12">
                 <div class="head-path ml-none">

@@ -4,8 +4,13 @@
 <section class="nav-header">
     <div class="header-1">
         <div class="container-fluid y-side">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row mb-3" style='    align-items: center;'>
+                       <div class="col-md-6">
+                                        <a href="/" class="small text-white logo">
+                <img width="200" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
+            </a>
+                </div>
+                <div class="col-md-6">
                     <ul class="header-1-list list-1">
                         <li>
                             <a href="#">{{NovaSettings::getSetting('mobile') }}</a>
@@ -17,14 +22,16 @@
                         </li>
                     </ul>
                 </div>
+                
+ 
             </div>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark bg-light">
         <div class="container-fluid y-side">
-            <a href="/" class="small text-white logo">
-                <img height="80" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
-            </a>
+            <!--<a href="/" class="small text-white logo">-->
+            <!--    <img height="80" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">-->
+            <!--</a>-->
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -65,7 +72,7 @@
                     @if (auth('web')->check() || auth('tutor')->check())
                         <li class="nav-item">
                             <div class="dropdown">
-                                <button class="btn join-us-now text-white dropdown-toggle" type="button"
+                                <button class="btn  text-white dropdown-toggle" type="button"
                                     data-toggle="dropdown" aria-expanded="false">
                                     <img src="{{ asset('assets/images/avatar.jpg') }}"
                                         style="border-radius: 50%; width: 30px" alt="">

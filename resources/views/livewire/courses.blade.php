@@ -3,7 +3,7 @@
         @include('partials.nav-header')
         <!-- start add course -->
         <div class="add-2">
-            <div class="container">
+            <div class="container-fluid y-side">
                 <div class="row">
                     <div class="head-path">
                         <ul class="path-menu">
@@ -60,17 +60,17 @@
                                 </button>
                             </li>
                         </ul>
-                        <div class="tab-content tab-content-responsive border mx-1 rounded py-3 my-3" id="myTabContent">
+                        <div class="tab-content tab-content-responsive  mx-1 rounded py-3 my-3" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 @foreach ($plabCourse as $content)
-                                    <div class="p-3 mb-1 bg-light rounded border-bottom">
+                                    <div class="p-3 mb-1 bg-light rounded ">
                                         <p class="mb-0">{{ $content['attributes']['plab2_course'] }}</p>
                                     </div>
                                 @endforeach
                             </div>
                             <div class="tab-pane fade" id="course-content" role="tabpanel"
                                 aria-labelledby="course-content-tab">
-                                <div class="p-3 mb-1 bg-light rounded border-bottom">
+                                <div class="p-3 mb-1 bg-light rounded ">
                                     @foreach ($courseContent as $content)
                                         <div class="p-3 mb-1 bg-light rounded">
                                             <p class="mb-0">{{ $content['attributes']['course_content'] }}</p>
@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="course-for" role="tabpanel" aria-labelledby="course-for-tab">
-                                <div class="p-3 mb-1 bg-light rounded border-bottom">
+                                <div class="p-3 mb-1 bg-light rounded ">
                                     @foreach ($whoTheCourseFor as $content)
                                         <div class="p-3 mb-1 bg-light rounded">
                                             <p class="mb-0">{{ $content['attributes']['who_the_course_for'] }}</p>
@@ -88,7 +88,7 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="course-aims" role="tabpanel" aria-labelledby="course-aims-tab">
-                                <div class="p-3 mb-1 bg-light rounded border-bottom">
+                                <div class="p-3 mb-1 bg-light rounded ">
                                     @foreach ($courseAims as $content)
                                         <div class="p-3 mb-1 bg-light rounded">
                                             <p class="mb-0">{{ $content['attributes']['course_aims'] }}</p>
@@ -98,7 +98,7 @@
                             </div>
                             <div class="tab-pane fade" id="learning-objectives" role="tabpanel"
                                 aria-labelledby="learning-objectives-tab">
-                                <div class="p-3 mb-1 bg-light rounded border-bottom">
+                                <div class="p-3 mb-1 bg-light rounded ">
                                     @foreach ($courseLearningObjectives as $content)
                                         <div class="p-3 mb-1 bg-light rounded">
                                             <p class="mb-0">{{ $content['attributes']['learning_objectives'] }}</p>
@@ -108,7 +108,7 @@
                             </div>
                             <div class="tab-pane fade" id="learning-outcomes" role="tabpanel"
                                 aria-labelledby="learning-outcomes-tab">
-                                <div class="p-3 mb-1 bg-light rounded border-bottom">
+                                <div class="p-3 mb-1 bg-light rounded ">
                                     @foreach ($courseLearningOutcomes as $content)
                                         <div class="p-3 mb-1 bg-light rounded">
                                             <p class="mb-0">{{ $content['attributes']['learning_outcomes'] }}</p>

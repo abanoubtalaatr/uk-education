@@ -1,7 +1,7 @@
 <div>
     @include('partials.nav-header')
     <div class="add-2">
-        <div class="container">
+        <div class="container-fluid y-side">
             <div class="row">
                 <div class="col-md-12">
                     <div class="head-path ml-none">
@@ -26,7 +26,7 @@
                         <hr>
                         <div class="d-flex gap-5">
                         @livewire('book-now-component', ['bookable_id' => $crashCourse->id, 'bookable_type' => "App\Models\CrashCourse"])
-                       <div class="mx-3">
+                       <div class="">
                         <a href="{{ route('crash-courses.group-five', [$crashCourse->id]) }}" class="btn btn-join"><i class="fas fa-ticket-alt"></i> Group of Five persons<a>
                        </div>
                         </div>
@@ -66,7 +66,7 @@
         }
 
         .btn-join {
-            background-color: #007bff;
+            background-color: #4d75b8;
             color: #fff;
         }
     </style>

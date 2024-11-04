@@ -1,6 +1,6 @@
 <div>
     @include('partials.nav-header')
-    <div class="container">
+    <div class="container-fluid y-side">
         <div class="col-md-12">
             <div class="head-path ml-none">
                 <ul class="path-menu">

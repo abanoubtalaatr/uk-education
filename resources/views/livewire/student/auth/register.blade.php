@@ -128,7 +128,7 @@
                                             <div class="d-flex">
 
                                                 @if ($examConfirmationOneUrl)
-                                                    <img height="90" width="120"
+                                                    <img  style="width: 100%;height: 100%;position: relative;z-index: 22;"
                                                         src="{{ $examConfirmationOneUrl }}"
                                                         alt="Exam Confirmation Email" class="img-fluid" />
                                                 @endif
@@ -149,7 +149,7 @@
                                             <div class="d-flex">
 
                                                 @if ($examConfirmationTwoUrl)
-                                                    <img height="90" width="120"
+                                                    <img style="width: 100%;height: 100%;position: relative;z-index: 22;"
                                                         src="{{ $examConfirmationTwoUrl }}"
                                                         alt="Exam Confirmation Email" class="img-fluid" />
                                                 @endif

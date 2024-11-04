@@ -3,7 +3,7 @@
     @include('partials.nav-header')
     <!-- start add course -->
     <div class="add-2">
-        <div class="container">
+        <div class="container-fluid y-side">
             <div class="row">
                 <div class="head-path">
                     <ul class="path-menu">
@@ -36,7 +36,7 @@
                             </button>
                         </li>
                     </ul>
-                    <div class="tab-content tab-content-responsive border mx-1 rounded py-3 my-3" id="myTabContent">
+                    <div class="tab-content tab-content-responsive  mx-1 rounded py-3 my-3" id="myTabContent">
                         <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             @foreach ($ourPlab2Mocks as $content)
                                 <div class="p-3 mb-2 bg-light rounded shadow-sm">
@@ -79,7 +79,7 @@
                 @foreach ($mockExams as $mockExam)
                     <div class="col-md-4 mb-4 d-flex align-items-stretch">
                         <div class="card flex-fill shadow-sm">
-                            <a href="{{ $mockExam->id }}">
+                            <a href="{{ route('mock-exams.book-mock', $mockExam->id) }}">
                                 <img src="{{ asset('storage/' . $mockExam->image) }}" class="card-img-top img-fluid" alt="{{ $mockExam->name }}" />
                             </a>
                             <div class="card-body border p-3 rounded">
@@ -124,6 +124,8 @@
         border: none;
         display: flex;
         flex-direction: column;
+                transition: transform 0.3s;
+
     }
     .card-body {
         background-color: #fff;
@@ -132,7 +134,7 @@
     .card-img-top {
         transition: transform 0.3s;
     }
-    .card-img-top:hover {
+    .card:hover {
         transform: scale(1.05);
     }
     .card-title {
@@ -148,13 +150,13 @@
         color: #666;
     }
     .btn-primary {
-        background-color: #007bff;
-        border-color: #007bff;
+        background-color: #3A3C8E;
+        border-color:#3A3C8E;
         transition: background-color 0.3s, border-color 0.3s;
     }
     .btn-primary:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
+        background-color: #3A3C8E;
+        border-color: #3A3C8E;
     }
     .nav-tabs .nav-link {
         border: none;

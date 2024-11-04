@@ -3,7 +3,7 @@
     <main>
         <!-- start add cours -->
         <div class="add-2">
-            <div class="container">
+            <div class="container-fluid y-side">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="head-path ml-none">
@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-md-12 top-med">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-5">
                                 <div class="info-box">
                                     <img src="{{ asset('storage/' . $tutor->photo) }}" alt="" class="img-fluid" />
                                     <div class="info-text">
