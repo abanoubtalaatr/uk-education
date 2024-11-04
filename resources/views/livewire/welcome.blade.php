@@ -40,8 +40,15 @@
         <button id="mainButton" class="btn main-btn-social">Follow us</button>
         <div id="hiddenButtons" class="hidden">
             <button class="btn">
-                <a target="_blank" href="{{ $settings['linkedin'] }}">
-                    <i class="fab fa-linkedin-in"></i>
+                <a target="_blank" href="{{ $settings['instagram'] }}">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </button>
+            
+            <button class="btn">
+                <a target="_blank" href="{{ 'https://wa.me/' . $settings['whats_app_number_group'] }}">
+                    
+                    <i class="fab fa-whatsapp-square"></i>
                 </a>
             </button>
             <button class="btn">
@@ -54,19 +61,20 @@
                     <i class="fab fa-facebook-f"></i>
                 </a>
             </button>
-            <button class="btn">
+            {{-- <button class="btn">
                 <a target="_blank" href="{{ $settings['twitter'] }}">
                     <i class="fab fa-twitter"></i>
                 </a>
-            </button>
-            <button class="btn">
-                <a target="_blank" href="{{ $settings['instagram'] }}">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </button>
+            </button> --}}
+            
             <button class="btn">
                 <a target="_blank" href="{{ $settings['youtube'] }}">
                     <i class="fab fa-youtube"></i>
+                </a>
+            </button>
+            <button class="btn">
+                <a target="_blank" href="{{ $settings['linkedin'] }}">
+                    <i class="fab fa-linkedin-in"></i>
                 </a>
             </button>
         </div>
