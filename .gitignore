@@ -1,0 +1,9 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/storage/app/*.log
+/vendor
+.env
+.idea
+.vscode
