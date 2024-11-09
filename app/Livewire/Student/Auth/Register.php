@@ -27,6 +27,9 @@ class Register extends Component
     public $examConfirmationTwo;
 
     public $uploadProgress =0;
+    public $uploadProgressEmail =0;
+    public $uploadProgressOne =0;
+    public $uploadProgressTwo =0;
 
     public $form = [
         'name' => '',

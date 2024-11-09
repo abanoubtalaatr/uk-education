@@ -103,67 +103,40 @@
 
                                     <div class="form-group">
                                         <label>Screenshot of Exam Confirmation Email</label>
-                                        <div class="up-img border">
-                                            <input type="file" class="imgpo" wire:model="examConfirmationEmail" />
-                                            <div class="d-flex">
-
-                                                @if ($examConfirmationEmailUrl)
-                                                    <img height="90" width="120"
-                                                        src="{{ $examConfirmationEmailUrl }}"
-                                                        alt="Exam Confirmation Email" class="img-fluid" />
-                                                @endif
-
-                                            </div>
+                                        <input type="file" class="form-control-file" wire:model="examConfirmationEmail" />
+                                        <div wire:loading wire:target="examConfirmationEmail">
+                                            <progress max="100" value="{{ $uploadProgressEmail }}"></progress>
                                         </div>
-                                        <div wire:loading wire:target="examConfirmationEmail" class="progress-bar">
-                                            <progress max="100" value="{{ $uploadProgress }}"></progress>
-                                        </div>
-                                        @error('examConfirmationEmail')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
+                                        @if ($examConfirmationEmailUrl)
+                                            <img height="90" width="120" src="{{ $examConfirmationEmailUrl }}" alt="Exam Confirmation Email" class="img-fluid" />
+                                        @endif
+                                        @error('examConfirmationEmail') <p class="text-danger">{{ $message }}</p> @enderror
                                     </div>
-
+                                    
                                     <div class="form-group">
-                                        <label>First Upload Exam Confirmation Images</label>
-
-                                        <div class="up-img border">
-                                            <input type="file" class="imgpo" wire:model="examConfirmationOne" />
-                                            <div class="d-flex">
-
-                                                @if ($examConfirmationOneUrl)
-                                                    <img style="width: 100%;height: 100%;position: relative;z-index: 22;"
-                                                        src="{{ $examConfirmationOneUrl }}"
-                                                        alt="Exam Confirmation Email" class="img-fluid" />
-                                                @endif
-
-                                            </div>
+                                        <label>First Upload Exam Confirmation Image</label>
+                                        <input type="file" class="form-control-file" wire:model="examConfirmationOne" />
+                                        <div wire:loading wire:target="examConfirmationOne">
+                                            <progress max="100" value="{{ $uploadProgressOne }}"></progress>
                                         </div>
-
-                                        @error('examConfirmationOne')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
+                                        @if ($examConfirmationOneUrl)
+                                            <img src="{{ $examConfirmationOneUrl }}" alt="First Confirmation Image" class="img-fluid" />
+                                        @endif
+                                        @error('examConfirmationOne') <p class="text-danger">{{ $message }}</p> @enderror
                                     </div>
-
+                                    
                                     <div class="form-group">
-                                        <label>Second Upload Exam Confirmation Images</label>
-                                        <hr>
-                                        <div class="up-img border">
-                                            <input type="file" class="imgpo" wire:model="examConfirmationTwo" />
-                                            <div class="d-flex">
-
-                                                @if ($examConfirmationTwoUrl)
-                                                    <img style="width: 100%;height: 100%;position: relative;z-index: 22;"
-                                                        src="{{ $examConfirmationTwoUrl }}"
-                                                        alt="Exam Confirmation Email" class="img-fluid" />
-                                                @endif
-
-                                            </div>
+                                        <label>Second Upload Exam Confirmation Image</label>
+                                        <input type="file" class="form-control-file" wire:model="examConfirmationTwo" />
+                                        <div wire:loading wire:target="examConfirmationTwo">
+                                            <progress max="100" value="{{ $uploadProgressTwo }}"></progress>
                                         </div>
-                                        @error('examConfirmationTwo')
-                                            <p class="text-danger">{{ $message }}</p>
-                                        @enderror
+                                        @if ($examConfirmationTwoUrl)
+                                            <img src="{{ $examConfirmationTwoUrl }}" alt="Second Confirmation Image" class="img-fluid" />
+                                        @endif
+                                        @error('examConfirmationTwo') <p class="text-danger">{{ $message }}</p> @enderror
                                     </div>
-
+                                    
                                     <button type="button" wire:click="register"
                                         class="btn btn-next float-right mt-4">
                                         Create an account
