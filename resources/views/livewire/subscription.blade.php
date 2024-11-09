@@ -4,7 +4,7 @@
     @include('partials.nav-header')
     
     <main>
-        <div class="container">
+        <div class="container-fluid y-side">
             <h4 class="mb-5">Subscriptions</h4>
           <div
             id="carouselExampleCaptions"
@@ -42,7 +42,7 @@
                       <a href="{{route('subscriptions.show', $subscription->id)}}" class="btn btn-join-2"
                         >Subscripe Now
                       </a>
-                      <button class="btn btn-join fw-bolds">{{$subscription->price}} £</button>
+                      <button class="btn btn-join-2 fw-bolds">{{$subscription->price}} £</button>
                     </div>
                   </div>
                 @endforeach

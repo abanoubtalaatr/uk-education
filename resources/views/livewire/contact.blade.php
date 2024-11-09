@@ -3,7 +3,7 @@
     <main>
         <div class="contact">
             
-            <div class="container">
+            <div class="container-fluid y-side">
                 @if (isset($message))
                 <div class="alert alert-success mt-2">
                     {{ $message }} 

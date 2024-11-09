@@ -1,7 +1,7 @@
 <div>
     @include('partials.nav-header')
 
-    <div class="container">
+            <div class="container-fluid y-side">
         <div class="row">
             <div class="col-md-12 mb-3">
                 <div class="d-flex justify-content-between align-items-center">

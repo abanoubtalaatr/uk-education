@@ -1,28 +1,27 @@
-<div class="container-fluid y-side minus-mar">
   
-    <div class="find">
-        <div class="row">
-          <div class="col-md-2 input-mobile-width">
-            <div class="find-info">
+    <div class=" ">
+        <!--minus-mar-->
+      <!--  <div class="container-fluid y-side ">-->
+
+    
+      <!--</div>-->
+          <div class=" find w-100">
+     <div class="find-info mb-2">
               <h5 class='mb-0'>Find Your</h5>
               <p class='mb-0'>Courses or Tutors</p>
             </div>
-          </div>
-          <div class="col-md-10">
-            <form class="form-inline w-100" action="{{route('all-courses', ['search' => request()->input('search')])}}">
-              <div class="form-group form-group-new-width m-1">
-                <input type="text" name="search" class="form-control w-100 form-control-3" id="CoursName" placeholder="Course name">
+                  <form class="d-flex gap-3" action="{{route('all-courses', ['search' => request()->input('search')])}}">
+              <div class="form-group  m-0 mr-2 w-100">
+                <input type="text" name="search" class="form-control w-100 form-control-3" id="CoursName" placeholder="Course name" style='height:50px'>
               </div>
   
   
   
                   
-                <button type="submit" class="btn btn-info p-2 text-white"> Search </button>
+                <button type="submit" class="btn btn-info p-2 text-white" style='height:50px;background-color: #3a3c8e;    border: 1px solid transparent;'> Search </button>
               
             </form>
-          </div>
         </div>
-      </div>
 
   {{-- <div class="row">
     <div class="col-md-12">

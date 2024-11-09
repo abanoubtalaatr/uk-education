@@ -3,7 +3,7 @@
     @include('partials.nav-header')
     <main>
         <div class="add-2">
-            <div class="container">
+            <div class="container-fluid y-side">
                 <div class="row">
                     <div class="head-path">
                         <ul class="path-menu">

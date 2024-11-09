@@ -1,5 +1,6 @@
 <div class="header">
     <div class="container-fluid y-side-big">
+
       <div
         id="carouselExampleControls"
         class="carousel slide "
@@ -8,30 +9,31 @@
         <div class="carousel-inner">
             @foreach ($sliders as $key=> $slider)
             <div class="carousel-item @if($key == 0) active @endif">
-                <div class="row" style="
-    
-    align-items: center;
-">
-                  <div class="col-md-6">
-                    <div class="hero-box-info limit-texts">
+                <div class="row" style="align-items: center;">
+                            
+                  <div class="col-md-8">
+                    <div class="hero-box-info limit-texts mb-3 position-relative">
+                        
+ 
                       <h1 class="text-white fw-bolder new-issues-of-title">{{$slider->title}}</h1>
                       <p class="w-100">
                         {{$slider->description}}
                       </p>
-                      <a href="{{$slider->link}}" class="btn btn-next">
+                      <a href="{{$slider->link}}" class="btn btn-next w_unset">
                         {{$slider->button_name}}
                       </a>
                       <br /<>
                     </div>
                   </div>
     
-                  <div class="col-md-6">
-                    <div class="hero-box-image">
+                  <div class="col-md-4">
+                    <div class="hero-box-image position-relative">
+               
                       <img
                         src="{{asset('storage/'. $slider->image)}}"
                         alt=""
-                        class="img-fluid hero-image-responsive"
-                        style='    margin-top: 50px;'
+                        class="img-fluid  hero-box-layout"
+             
                       />
                     </div>
                   </div>
@@ -42,13 +44,7 @@
           
         </div>
       </div>
-    </div>
-  </div>
- 
-
-
-
-      <div class="svg-carsoul-home">
+           <div class="svg-carsoul-home">
         <svg
           role="button"
           data-target="#carouselExampleControls"
@@ -83,17 +79,48 @@
           />
         </svg>
       </div>
+      <div class='row'>
+          <div class='col-lg-12'>
+                      @include('partials.search')
+
+          </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+
       
       
       
       
       
       <style>
-.hero-box-info h1 {
-  color: #fff;
-  font-size: 70px;
+.hero-box-layout{
+        /*position: absolute;*/
+    /*width: 300px;*/
+    /*height: 100%;*/
+    /*border: 15px solid red;*/
+    /*transform: rotate(81deg);*/
+    /*opacity: 0.5;*/
+      margin-bottom: -50px;
 }
-
+.carousel-me-prev {
+    position: absolute;
+    left: 150px;
+    cursor: pointer;
+    color: #fff;
+    bottom: 93%;
+}
+.carousel-me-next {
+    position: absolute;
+    bottom: 93%;
+    left: 200px;
+    cursor: pointer;
+    color: #fff;
+}
+}
 .hero-box-info p {
   color: #fff;
   font-size: 14px;
@@ -146,9 +173,9 @@
 
 
 @media only screen and (max-width: 1024px) and (min-width: 768px) {
-  .hero-image-responsive {
-    display: none;
-  }
+  /*.hero-image-responsive {*/
+  /*  display: none;*/
+  /*}*/
   
       .new-issues-of-title{
         font-size: 25px !important;

@@ -6,10 +6,10 @@
     <section class="hero">
         <div class="header-1">
             <div class="container-fluid y-side">
-                <div class="row mb-4">
+                <div class="row mb-3">
                         <div class="col-md-6">
                                                                                                <a href="/">
-                <img width="150" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
+                <img width="200" src="{{ asset('storage/' . NovaSettings::getSetting('logo')) }}" alt="Logo">
             </a>
                     </div>
                     <div class="col-md-6">
@@ -33,7 +33,6 @@
         @include('partials.slider')
 
     </section>
-        @include('partials.search')
 
     <!--  -->
 
@@ -208,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             div.innerHTML = `
                 ${displayedText}...
-                <span class="read-more" style="color: blue; cursor: pointer;">Read more</span>
+                <span class="read-more" style=" cursor: pointer;">Read more</span>
                 <span class="more-text" style="display:none;">${hiddenText}</span>
             `;
 
