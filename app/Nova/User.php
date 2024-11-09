@@ -61,8 +61,10 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
-            Image::make('exam_confirmation_email'),
-
+                File::make('Exam Confirmation Email', 'exam_confirmation_email')
+                ->disk('public') // Specify the disk where the media will be stored
+                ->rules('required', 'file', 'mimes:pdf,jpeg,png,jpg')
+                ->path('exam-confirmations'), // Path to store in the disk
             Password::make('Password')
                 ->onlyOnForms()
                 ->creationRules('required', Rules\Password::defaults())

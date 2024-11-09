@@ -91,28 +91,15 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     }
 
     /**
-     * Register the media conversions.
-     */
-    public function registerMediaConversions(?Media $media = null): void
-    {
-        $this->addMediaConversion('thumb')
-            ->fit(Fit::Contain, 300, 300);
-    }
-
-    /**
      * Register the media collections.
      */
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('profile_picture')->singleFile();
 
-        $this->addMediaCollection('exam_confirmation_email');
-
-        $this->addMediaCollection('exam_confirmation_one')
-            ->singleFile();
-
-        $this->addMediaCollection('exam_confirmation_two')
-            ->singleFile();
+            $this->addMediaCollection('exam_confirmation_email');
+            $this->addMediaCollection('exam_confirmation_one');
+            $this->addMediaCollection('exam_confirmation_two');
     }
 
     /**
@@ -130,22 +117,29 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     public function examConfirmationEmail(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $this->getFirstMediaUrl('exam_confirmation_email')
+            get: fn() => $this->getFirstMediaUrl('exam_confirmation_email', 'thumb') ?: null
         );
     }
 
     public function examConfirmationOne(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $this->getFirstMediaUrl('exam_confirmation_one')
+            get: fn() => $this->getFirstMediaUrl('exam_confirmation_one', 'thumb') ?: null
         );
     }
 
     public function examConfirmationTwo(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $this->getFirstMediaUrl('exam_confirmation_two')
+            get: fn() => $this->getFirstMediaUrl('exam_confirmation_two', 'thumb') ?: null
         );
+    }
+
+    // Register media conversions (optional)
+    public function registerMediaConversions(?Media $media = null): void
+    {
+        $this->addMediaConversion('thumb')
+            ->fit(Fit::Contain, 300, 300);
     }
 
     /**
