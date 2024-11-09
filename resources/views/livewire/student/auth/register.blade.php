@@ -178,9 +178,10 @@
     </section>
     <script>
         Livewire.on('upload:progress', progress => {
-            @this.uploadProgress = progress;
+            @this.set('uploadProgress', progress);
         });
     </script>
+    
     <style>
         .progress-bar progress {
             width: 100%;
