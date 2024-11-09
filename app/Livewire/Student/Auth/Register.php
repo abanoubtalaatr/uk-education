@@ -30,7 +30,7 @@ class Register extends Component
     public $uploadProgressEmail =0;
     public $uploadProgressOne =0;
     public $uploadProgressTwo =0;
-
+    
     public $form = [
         'name' => '',
         'email' => '',
