@@ -3299,3 +3299,24 @@ body {
         width: unset !important ;
 
 }
+
+.custom-file-input {
+  border: 1px solid #ced4da;
+  padding: 8px;
+  background-color: #f8f9fa;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.custom-file-input:hover {
+  background-color: #e9ecef;
+}
+
+.progress {
+  height: 6px;
+  border-radius: 3px;
+}
+
+.progress-bar {
+  background-color: #007bff;
+}

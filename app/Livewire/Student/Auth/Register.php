@@ -21,7 +21,10 @@ class Register extends Component
     public $examConfirmationOne;
     public $examConfirmationTwo;
     public $uploadProgress = 0; // Progress tracking variable
-
+    public $uploadProgressEmail= 0;
+    public $uploadProgressOne =0;
+    public $uploadProgressTwo =0;
+    
     public $form = [
         'name' => '',
         'email' => '',
@@ -35,6 +38,8 @@ class Register extends Component
     public $settings;
 
     protected $rules;
+    protected $listeners = ['fileUpload' => 'uploadProgress'];
+
 
     public function mount()
     {
@@ -47,6 +52,8 @@ class Register extends Component
         if ($this->examConfirmationEmail) {
             $this->examConfirmationEmailUrl = $this->examConfirmationEmail->temporaryUrl();
         }
+        $this->resetUploadProgress();
+
     }
 
     public function updatedExamConfirmationOne()
@@ -54,6 +61,8 @@ class Register extends Component
         if ($this->examConfirmationOne) {
             $this->examConfirmationOneUrl = $this->examConfirmationOne->temporaryUrl();
         }
+        $this->resetUploadProgress();
+
     }
 
     public function updatedExamConfirmationTwo()
@@ -61,8 +70,19 @@ class Register extends Component
         if ($this->examConfirmationTwo) {
             $this->examConfirmationTwoUrl = $this->examConfirmationTwo->temporaryUrl();
         }
+        $this->resetUploadProgress();
+
     }
 
+    public function uploadProgress($percent)
+    {
+        $this->uploadProgress = $percent;
+    }
+
+    private function resetUploadProgress()
+    {
+        $this->uploadProgress = 0;
+    }
     public function register()
     {
         $this->validate($this->rules);

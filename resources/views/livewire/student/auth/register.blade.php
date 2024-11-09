@@ -103,10 +103,12 @@
 
                                     <div class="form-group">
                                         <label>Screenshot of Exam Confirmation Email</label>
-                                        <input type="file" wire:model="examConfirmationEmail" />
-                                        <div class="progress mt-2">
-                                            <div class="progress-bar" role="progressbar" style="width: {{ $uploadProgress }}%;" aria-valuenow="{{ $uploadProgress }}" aria-valuemin="0" aria-valuemax="100">
-                                                {{ $uploadProgress }}%
+                                        <input type="file" wire:model="examConfirmationEmail" class="form-control-file custom-file-input" />
+                                        <div wire:loading wire:target="examConfirmationEmail">
+                                            <div class="progress mt-2">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ $uploadProgressEmail }}%;" aria-valuenow="{{ $uploadProgressEmail }}" aria-valuemin="0" aria-valuemax="100">
+                                                    {{ $uploadProgressEmail }}%
+                                                </div>
                                             </div>
                                         </div>
                                         @if ($examConfirmationEmailUrl)
@@ -114,13 +116,15 @@
                                         @endif
                                         @error('examConfirmationEmail') <p class="text-danger">{{ $message }}</p> @enderror
                                     </div>
-
+                                    
                                     <div class="form-group">
                                         <label>First Upload Exam Confirmation Image</label>
-                                        <input type="file" wire:model="examConfirmationOne" />
-                                        <div class="progress mt-2">
-                                            <div class="progress-bar" role="progressbar" style="width: {{ $uploadProgress }}%;" aria-valuenow="{{ $uploadProgress }}" aria-valuemin="0" aria-valuemax="100">
-                                                {{ $uploadProgress }}%
+                                        <input type="file" wire:model="examConfirmationOne" class="form-control-file custom-file-input" />
+                                        <div wire:loading wire:target="examConfirmationOne">
+                                            <div class="progress mt-2">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ $uploadProgressOne }}%;" aria-valuenow="{{ $uploadProgressOne }}" aria-valuemin="0" aria-valuemax="100">
+                                                    {{ $uploadProgressOne }}%
+                                                </div>
                                             </div>
                                         </div>
                                         @if ($examConfirmationOneUrl)
@@ -128,13 +132,15 @@
                                         @endif
                                         @error('examConfirmationOne') <p class="text-danger">{{ $message }}</p> @enderror
                                     </div>
-
+                                    
                                     <div class="form-group">
                                         <label>Second Upload Exam Confirmation Image</label>
-                                        <input type="file" wire:model="examConfirmationTwo" />
-                                        <div class="progress mt-2">
-                                            <div class="progress-bar" role="progressbar" style="width: {{ $uploadProgress }}%;" aria-valuenow="{{ $uploadProgress }}" aria-valuemin="0" aria-valuemax="100">
-                                                {{ $uploadProgress }}%
+                                        <input type="file" wire:model="examConfirmationTwo" class="form-control-file custom-file-input" />
+                                        <div wire:loading wire:target="examConfirmationTwo">
+                                            <div class="progress mt-2">
+                                                <div class="progress-bar" role="progressbar" style="width: {{ $uploadProgressTwo }}%;" aria-valuenow="{{ $uploadProgressTwo }}" aria-valuemin="0" aria-valuemax="100">
+                                                    {{ $uploadProgressTwo }}%
+                                                </div>
                                             </div>
                                         </div>
                                         @if ($examConfirmationTwoUrl)
@@ -142,7 +148,7 @@
                                         @endif
                                         @error('examConfirmationTwo') <p class="text-danger">{{ $message }}</p> @enderror
                                     </div>
-
+                                    
                                     <button type="button" wire:click="register"
                                         class="btn btn-next float-right mt-4">
                                         Create an account
