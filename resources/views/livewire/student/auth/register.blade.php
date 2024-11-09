@@ -182,10 +182,5 @@
         });
     </script>
     
-    <style>
-        .progress-bar progress {
-            width: 100%;
-        }
-    </style>
     <!-- End of section center-1 -->
 </main>
