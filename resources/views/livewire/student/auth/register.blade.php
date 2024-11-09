@@ -103,10 +103,8 @@
 
                                     <div class="form-group">
                                         <label>Screenshot of Exam Confirmation Email</label>
-                                        <input type="file" class="form-control-file" wire:model="examConfirmationEmail" />
-                                        <div wire:loading wire:target="examConfirmationEmail">
-                                            <progress max="100" value="{{ $uploadProgressEmail }}"></progress>
-                                        </div>
+                                        <input type="file" id="examConfirmationEmailInput" class="form-control-file" wire:model="examConfirmationEmail" />
+                                        <progress id="examConfirmationEmailProgress" max="100" value="0"></progress>
                                         @if ($examConfirmationEmailUrl)
                                             <img height="90" width="120" src="{{ $examConfirmationEmailUrl }}" alt="Exam Confirmation Email" class="img-fluid" />
                                         @endif
@@ -115,10 +113,8 @@
                                     
                                     <div class="form-group">
                                         <label>First Upload Exam Confirmation Image</label>
-                                        <input type="file" class="form-control-file" wire:model="examConfirmationOne" />
-                                        <div wire:loading wire:target="examConfirmationOne">
-                                            <progress max="100" value="{{ $uploadProgressOne }}"></progress>
-                                        </div>
+                                        <input type="file" id="examConfirmationOneInput" class="form-control-file" wire:model="examConfirmationOne" />
+                                        <progress id="examConfirmationOneProgress" max="100" value="0"></progress>
                                         @if ($examConfirmationOneUrl)
                                             <img src="{{ $examConfirmationOneUrl }}" alt="First Confirmation Image" class="img-fluid" />
                                         @endif
@@ -127,15 +123,59 @@
                                     
                                     <div class="form-group">
                                         <label>Second Upload Exam Confirmation Image</label>
-                                        <input type="file" class="form-control-file" wire:model="examConfirmationTwo" />
-                                        <div wire:loading wire:target="examConfirmationTwo">
-                                            <progress max="100" value="{{ $uploadProgressTwo }}"></progress>
-                                        </div>
+                                        <input type="file" id="examConfirmationTwoInput" class="form-control-file" wire:model="examConfirmationTwo" />
+                                        <progress id="examConfirmationTwoProgress" max="100" value="0"></progress>
                                         @if ($examConfirmationTwoUrl)
                                             <img src="{{ $examConfirmationTwoUrl }}" alt="Second Confirmation Image" class="img-fluid" />
                                         @endif
                                         @error('examConfirmationTwo') <p class="text-danger">{{ $message }}</p> @enderror
                                     </div>
+                                    
+                                    <script>
+                                        document.addEventListener('DOMContentLoaded', function () {
+                                            // Initialize upload progress tracking for each file input
+                                            setupFileUploadWithProgress('examConfirmationEmailInput', 'examConfirmationEmailProgress');
+                                            setupFileUploadWithProgress('examConfirmationOneInput', 'examConfirmationOneProgress');
+                                            setupFileUploadWithProgress('examConfirmationTwoInput', 'examConfirmationTwoProgress');
+                                        });
+                                    
+                                        function setupFileUploadWithProgress(inputId, progressId) {
+                                            const inputElement = document.getElementById(inputId);
+                                            const progressElement = document.getElementById(progressId);
+                                    
+                                            inputElement.addEventListener('change', function (event) {
+                                                const file = event.target.files[0];
+                                                if (!file) return;
+                                    
+                                                const xhr = new XMLHttpRequest();
+                                                const formData = new FormData();
+                                    
+                                                formData.append(inputElement.getAttribute('wire:model'), file);
+                                    
+                                                xhr.upload.addEventListener('progress', function (e) {
+                                                    if (e.lengthComputable) {
+                                                        const percentComplete = (e.loaded / e.total) * 100;
+                                                        progressElement.value = percentComplete;
+                                                    }
+                                                });
+                                    
+                                                xhr.open('POST', '/livewire/upload-file', true);
+                                                xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+                                    
+                                                xhr.onload = function () {
+                                                    if (xhr.status === 200) {
+                                                        progressElement.value = 100;
+                                                        Livewire.emit('fileUploaded', inputElement.getAttribute('wire:model'), xhr.responseText);
+                                                    } else {
+                                                        console.error('Upload failed');
+                                                    }
+                                                };
+                                    
+                                                xhr.send(formData);
+                                            });
+                                        }
+                                    </script>
+                                    
                                     
                                     <button type="button" wire:click="register"
                                         class="btn btn-next float-right mt-4">
