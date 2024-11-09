@@ -49,7 +49,7 @@
             <button class="btn">
                 <a target="_blank" href="{{ 'https://wa.me/' . $settings['whats_app_number_group'] }}">
                     
-                    <i class="fab fa-whatsapp-square"></i>
+                    <i class="fab fa-whatsapp"></i>
                 </a>
             </button>
             <button class="btn">
