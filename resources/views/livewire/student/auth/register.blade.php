@@ -80,12 +80,12 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                      <input wire:model="form.exam_date" type="date" class="form-control"
-                                          id="exam_date" placeholder="Exam Date" />
-                                      @error('form.exam_date')
-                                          <p class="text-danger">{{ $message }}</p>
-                                      @enderror
-                                  </div>
+                                        <input wire:model="form.exam_date" type="date" class="form-control"
+                                            id="exam_date" placeholder="Exam Date" />
+                                        @error('form.exam_date')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
+                                    </div>
                                     <div class="form-group">
                                         <input wire:model="form.password" type="password" class="form-control"
                                             id="userPassword" placeholder=" Password" />
@@ -131,7 +131,7 @@
                                             <div class="d-flex">
 
                                                 @if ($examConfirmationOneUrl)
-                                                    <img  style="width: 100%;height: 100%;position: relative;z-index: 22;"
+                                                    <img style="width: 100%;height: 100%;position: relative;z-index: 22;"
                                                         src="{{ $examConfirmationOneUrl }}"
                                                         alt="Exam Confirmation Email" class="img-fluid" />
                                                 @endif
@@ -176,5 +176,15 @@
             </div>
         </div>
     </section>
+    <script>
+        Livewire.on('upload:progress', progress => {
+            @this.uploadProgress = progress;
+        });
+    </script>
+    <style>
+        .progress-bar progress {
+            width: 100%;
+        }
+    </style>
     <!-- End of section center-1 -->
 </main>
