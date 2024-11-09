@@ -100,83 +100,71 @@
                                             <p class="text-danger">{{ $message }}</p>
                                         @enderror
                                     </div>
-
                                     <div class="form-group">
                                         <label>Screenshot of Exam Confirmation Email</label>
-                                        <input type="file" id="examConfirmationEmailInput" class="form-control-file" wire:model="examConfirmationEmail" />
-                                        <progress id="examConfirmationEmailProgress" max="100" value="0"></progress>
-                                        @if ($examConfirmationEmailUrl)
-                                            <img height="90" width="120" src="{{ $examConfirmationEmailUrl }}" alt="Exam Confirmation Email" class="img-fluid" />
-                                        @endif
-                                        @error('examConfirmationEmail') <p class="text-danger">{{ $message }}</p> @enderror
+                                        <div class="custom-file-container">
+                                            <input type="file" id="examConfirmationEmailInput"
+                                                class="custom-file-input" wire:model="examConfirmationEmail" />
+                                            <label for="examConfirmationEmailInput" class="custom-file-label">Choose
+                                                file...</label>
+                                        </div>
+                                        <progress id="examConfirmationEmailProgress" max="100" value="0"
+                                            class="progress-bar" style="display: none;"></progress>
+                                        <div class="image-container">
+                                            @if ($examConfirmationEmailUrl)
+                                                <img height="90" width="120"
+                                                    src="{{ $examConfirmationEmailUrl }}" alt="Exam Confirmation Email"
+                                                    class="img-fluid" />
+                                            @endif
+                                        </div>
+                                        @error('examConfirmationEmail')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label>First Upload Exam Confirmation Image</label>
-                                        <input type="file" id="examConfirmationOneInput" class="form-control-file" wire:model="examConfirmationOne" />
-                                        <progress id="examConfirmationOneProgress" max="100" value="0"></progress>
-                                        @if ($examConfirmationOneUrl)
-                                            <img src="{{ $examConfirmationOneUrl }}" alt="First Confirmation Image" class="img-fluid" />
-                                        @endif
-                                        @error('examConfirmationOne') <p class="text-danger">{{ $message }}</p> @enderror
+                                        <div class="custom-file-container">
+                                            <input type="file" id="examConfirmationOneInput"
+                                                class="custom-file-input" wire:model="examConfirmationOne" />
+                                            <label for="examConfirmationOneInput" class="custom-file-label">Choose
+                                                file...</label>
+                                        </div>
+                                        <progress id="examConfirmationOneProgress" max="100" value="0"
+                                            class="progress-bar" style="display: none;"></progress>
+                                        <div class="image-container">
+                                            @if ($examConfirmationOneUrl)
+                                                <img src="{{ $examConfirmationOneUrl }}"
+                                                    alt="First Confirmation Image" class="img-fluid" />
+                                            @endif
+                                        </div>
+                                        @error('examConfirmationOne')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
-                                    
+
                                     <div class="form-group">
                                         <label>Second Upload Exam Confirmation Image</label>
-                                        <input type="file" id="examConfirmationTwoInput" class="form-control-file" wire:model="examConfirmationTwo" />
-                                        <progress id="examConfirmationTwoProgress" max="100" value="0"></progress>
-                                        @if ($examConfirmationTwoUrl)
-                                            <img src="{{ $examConfirmationTwoUrl }}" alt="Second Confirmation Image" class="img-fluid" />
-                                        @endif
-                                        @error('examConfirmationTwo') <p class="text-danger">{{ $message }}</p> @enderror
+                                        <div class="custom-file-container">
+                                            <input type="file" id="examConfirmationTwoInput"
+                                                class="custom-file-input" wire:model="examConfirmationTwo" />
+                                            <label for="examConfirmationTwoInput" class="custom-file-label">Choose
+                                                file...</label>
+                                        </div>
+                                        <progress id="examConfirmationTwoProgress" max="100" value="0"
+                                            class="progress-bar" style="display: none;"></progress>
+                                        <div class="image-container">
+                                            @if ($examConfirmationTwoUrl)
+                                                <img src="{{ $examConfirmationTwoUrl }}"
+                                                    alt="Second Confirmation Image" class="img-fluid" />
+                                            @endif
+                                        </div>
+                                        @error('examConfirmationTwo')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
-                                    
-                                    <script>
-                                        document.addEventListener('DOMContentLoaded', function () {
-                                            // Initialize upload progress tracking for each file input
-                                            setupFileUploadWithProgress('examConfirmationEmailInput', 'examConfirmationEmailProgress');
-                                            setupFileUploadWithProgress('examConfirmationOneInput', 'examConfirmationOneProgress');
-                                            setupFileUploadWithProgress('examConfirmationTwoInput', 'examConfirmationTwoProgress');
-                                        });
-                                    
-                                        function setupFileUploadWithProgress(inputId, progressId) {
-                                            const inputElement = document.getElementById(inputId);
-                                            const progressElement = document.getElementById(progressId);
-                                    
-                                            inputElement.addEventListener('change', function (event) {
-                                                const file = event.target.files[0];
-                                                if (!file) return;
-                                    
-                                                const xhr = new XMLHttpRequest();
-                                                const formData = new FormData();
-                                    
-                                                formData.append(inputElement.getAttribute('wire:model'), file);
-                                    
-                                                xhr.upload.addEventListener('progress', function (e) {
-                                                    if (e.lengthComputable) {
-                                                        const percentComplete = (e.loaded / e.total) * 100;
-                                                        progressElement.value = percentComplete;
-                                                    }
-                                                });
-                                    
-                                                xhr.open('POST', '/livewire/upload-file', true);
-                                                xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
-                                    
-                                                xhr.onload = function () {
-                                                    if (xhr.status === 200) {
-                                                        progressElement.value = 100;
-                                                        Livewire.emit('fileUploaded', inputElement.getAttribute('wire:model'), xhr.responseText);
-                                                    } else {
-                                                        console.error('Upload failed');
-                                                    }
-                                                };
-                                    
-                                                xhr.send(formData);
-                                            });
-                                        }
-                                    </script>
-                                    
-                                    
+
+
                                     <button type="button" wire:click="register"
                                         class="btn btn-next float-right mt-4">
                                         Create an account
@@ -189,11 +177,105 @@
             </div>
         </div>
     </section>
+
     <script>
-        Livewire.on('upload:progress', progress => {
-            @this.set('uploadProgress', progress);
+        document.addEventListener('DOMContentLoaded', function() {
+            setupFileUploadWithProgress('examConfirmationEmailInput', 'examConfirmationEmailProgress');
+            setupFileUploadWithProgress('examConfirmationOneInput', 'examConfirmationOneProgress');
+            setupFileUploadWithProgress('examConfirmationTwoInput', 'examConfirmationTwoProgress');
         });
+
+        function setupFileUploadWithProgress(inputId, progressId) {
+            const inputElement = document.getElementById(inputId);
+            const progressElement = document.getElementById(progressId);
+
+            inputElement.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const xhr = new XMLHttpRequest();
+                const formData = new FormData();
+
+                formData.append(inputElement.getAttribute('wire:model'), file);
+
+                // Show progress bar once file is being uploaded
+                progressElement.style.display = 'block';
+
+                xhr.upload.addEventListener('progress', function(e) {
+                    if (e.lengthComputable) {
+                        const percentComplete = (e.loaded / e.total) * 100;
+                        progressElement.value = percentComplete;
+                    }
+                });
+
+                xhr.open('POST', '/livewire/upload-file', true);
+                xhr.setRequestHeader('X-CSRF-TOKEN', '{{ csrf_token() }}');
+
+                xhr.onload = function() {
+                    if (xhr.status === 200) {
+                        progressElement.value = 100;
+                        Livewire.emit('fileUploaded', inputElement.getAttribute('wire:model'), xhr
+                        .responseText);
+                    } else {
+                        console.error('Upload failed');
+                    }
+                };
+
+                xhr.send(formData);
+            });
+        }
     </script>
-    
+    <style>
+        /* Style for the custom file input */
+        .custom-file-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 55px;
+        }
+
+        .custom-file-input {
+            display: none;
+        }
+
+        .custom-file-label {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: auto;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            margin-top: 10px;
+            background-color: #f3f3f3;
+            border-radius: 5px;
+            display: none;
+            /* Hide the progress bar initially */
+        }
+
+        .progress-bar[value] {
+            background-color: #4caf50;
+        }
+
+        .image-container {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .image-container img {
+            border-radius: 8px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Make sure the layout is responsive */
+        .form-group {
+            margin-bottom: 20px;
+        }
+    </style>
     <!-- End of section center-1 -->
 </main>
