@@ -152,10 +152,17 @@ ul {
 }
 .center-overlay {
   background-image: linear-gradient(#454793d2, #88c5e6e3);
-  height: 100%;
+  height: 100vh;
   width: 100%;
+      display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.card-login.white img{
+    width:200px !important;
+        height:unset!important;
 
+}
 .center-ul {
   list-style: none;
   padding: 30px 100px;
@@ -193,7 +200,8 @@ ul {
 .center-form {
   background-color: #fff;
   padding: 30px 60px;
-  height: 100%;
+     height: 100vh;
+    overflow: auto;
 }
 .center-form h3 {
   font-weight: bold;
@@ -221,6 +229,8 @@ ul {
   padding: 12px 40px;
   border-radius: 8px;
   font-size: 14px;
+    float: none !important;
+    width: 100%;
 }
 .btn-next:hover {
   background-color: #4d75b8;
@@ -1021,7 +1031,7 @@ ul {
 }
 .head-path h3 {
   font-size: 30px;
-  color: #25252a;
+  color: #383A8C;
   font-weight: bold;
 }
 /* start Courses page */
@@ -1876,26 +1886,42 @@ ul {
 }
 /* start upload  custom input */
 .up-img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 50px;
   position: relative;
-  border-radius: 50%;
+  border-radius: 10px;
   overflow: hidden;
+      border: 1px dashed #dee2e6 !important;
+}
+.up-img::before {
+  content: 'Upload file';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc; /* Adjust the text color if needed */
+  font-size: 14px; /* Adjust the font size if needed */
 }
 #blah {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
 }
 
 .imgpo {
-  position: absolute;
-  top: 50%;
-  opacity: 0;
-  padding: 50px 0;
-  z-index: 11111;
-  cursor: pointer;
-  width: 100%;
+    position: absolute;
+    top: 0%;
+    opacity: 0;
+    padding: 0;
+    z-index: 11111;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+  border-radius: 10px;
 }
 .file-hover {
   position: absolute;
@@ -1939,7 +1965,7 @@ ul {
 }
 .carousel-me-next {
   position: absolute;
-  bottom: 75%;
+  bottom: 70%;
   left: 200px;
   cursor: pointer;
   color: #fff;
@@ -1947,15 +1973,15 @@ ul {
 
 .carousel-me-prev {
   position: absolute;
-  bottom: 75%;
+  bottom: 70%;
   left: 160px;
   cursor: pointer;
   color: #fff;
 }
 
-.btn-info {
-  background-color: #3A3C8E !important;
-}
+/*.btn-info {*/
+/*  background-color: #3A3C8E !important;*/
+/*}*/
 
 /* start my Media-Quary *************************************************** ********/
 @media only screen and (max-width: 600px) {
@@ -2587,13 +2613,13 @@ body {
     position: absolute;
     left: 10px;
     top: 10px;
-    color:#3a3c8e;
+    color:#FB3232;
 }
 .fa-quote-right{
     position: absolute;
     right: 10px;
     bottom: 10px;
-    color:#3a3c8e;
+    color:#FB3232;
 }
 .new-style-reviews {
   width: 100%;
@@ -2809,7 +2835,7 @@ body {
   font-size: 14px;
 }
 .path-menu li a {
-  color: #007bff;
+  color: #5E8FC7;
   text-decoration: none;
 }
 .path-menu li a:hover {
@@ -3067,7 +3093,7 @@ body {
     height: 100vh !important;
 }
 .minus-mar{
-        margin-top: -210px;
+        margin-top: -32vh;
     margin-bottom:50px;
 }
 @keyframes pulse {
@@ -3122,15 +3148,32 @@ body {
 }
  .read-more{
 
-    color:#3d4899;
+    color:#FB3232;
 
 }
 .navbar-nav-2 {
     margin-left: -15px;
 
 }
+@media  (min-width: 601px) and (max-width: 1000px)  {
 
+.y-side {
+    padding-left: 1rem;
+    padding-right: 0rem;
+}
+.y-side-big {
+    padding: 0 1rem;
+}
+    .carousel-me-next , .carousel-me-prev{
+
+    display: none;
+}
+}
 @media  (max-width: 600px) {
+    .carousel-me-next , .carousel-me-prev{
+
+    display: none;
+}
 .navbar-nav-2 {
     margin-left: 0px;
 
@@ -3206,4 +3249,53 @@ body {
         bottom: 38%;
         left: 75px;
     }
+    .path-menu li a {
+    color: #8d95a6;
+    font-size: 11px;
+}
+.small.text-white.logo img{
+        width: 100px !important;
+}
+.header-1 .row.mb-3{
+        padding-bottom: 0px !important;
+
+}
+.navbar-toggler {
+        margin-top: -25px;
+}
+.nav-header {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    background-size: unset !important;
+            background-image: linear-gradient(to right, #8bd1ef, #3a3c8e) !important;
+}
+.center-overlay {
+    height: 100%;
+}
+}
+
+
+.nav-header {
+    padding-top: 20px;
+    padding-bottom: 170px;
+    background: url(../images/nav-header.png) no-repeat;
+    background-position: top;
+    background-size: 100% 100%;
+}
+.banner_story {
+    padding: 30px;
+    /*background: #333 url('https://img.freepik.com/free-photo/blurred-abstract-background-interior-view-looking-out-toward-empty-office-lobby-entrance-doors-glass-curtain-wall-with-frame_1339-6352.jpg?t=st=1723305450~exp=1723309050~hmac=265b8771e5ef94726e5a6bb1bdcdc774d45c625560df940ec39e41f91f4c4525&w=1380') no-repeat center center;*/
+    background-size: cover; /* Adjusts the image to cover the entire background */
+}
+.center-1 .logo-container img {
+    width: 200px;
+}
+.btn-primary{
+        color: #fff !important;
+    background-color: #17a2b8 !important;
+    border-color: #17a2b8 !important;
+}
+.w_unset{
+        width: unset !important ;
+
 }
