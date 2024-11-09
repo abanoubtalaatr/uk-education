@@ -131,7 +131,7 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
     {
         return Attribute::make(
             // get: fn($value) => $this->getFirstMediaUrl('exam_confirmation_email')
-            get: fn($value) => url($this->getFirstMediaUrl('exam_confirmation_email'))
+            get: fn($value) => $this->getFirstMediaUrl('exam_confirmation_email')
 
         );
     }
