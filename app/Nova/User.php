@@ -60,7 +60,7 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}'),
 
-            File::make('exam_confirmation_email'),
+            Avatar::make('exam_confirmation_email'),
 
             Password::make('Password')
                 ->onlyOnForms()
