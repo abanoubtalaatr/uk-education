@@ -485,7 +485,7 @@ ul {
 }
 .hero-box-info h1 {
   color: #fff;
-  font-size: 50px;
+  /* font-size: 50px; */
 }
 .hero-box-info p {
   color: #fff;
@@ -2210,7 +2210,7 @@ ul {
     text-align: center;
   }
   .hero-box-info h1 {
-    font-size: 25px;
+    /* font-size: 25px; */
   }
   .hero-box-info p {
     width: 100%;

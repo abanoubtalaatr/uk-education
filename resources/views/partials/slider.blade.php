@@ -159,7 +159,7 @@
   }
   
     .hero-box-info h1 {
-    font-size: 40px;
+    /* font-size: 40px; */
   }
   .hero-box-info p {
     width: 100%;
