@@ -81,7 +81,7 @@
       </div>
       <div class='row'>
           <div class='col-lg-12'>
-                      @include('partials.search')
+                      {{-- @include('partials.search') --}}
 
           </div>
       </div>

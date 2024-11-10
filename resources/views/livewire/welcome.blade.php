@@ -20,7 +20,7 @@
                             <li class="sperator">|</li>
 
                             <li>
-                                <a href="#">{{ $settings['email'] }} 000</a>
+                                <a href="#">{{ $settings['email'] }} </a>
                             </li>
                         </ul>
                     </div>
