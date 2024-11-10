@@ -15,7 +15,7 @@
                     <div class="hero-box-info limit-texts mb-3 position-relative">
                         
  
-                      <h2 class="text-white fw-bolder new-issues-of-title">{{$slider->title}}</h2>
+                      <h3 class="text-white fw-bolder new-issues-of-title">{{$slider->title}}</h3>
                       <p class="w-100">
                         {{$slider->description}}
                       </p>
